@@ -6,6 +6,7 @@ import './style.css';
 import Footer from './Footer.js'
 import Login from './Login.js'
 import NavBar from './NavBar.js'
+import SmallButtonGroup from './SmallButtonGroup'
 
 class App extends React.Component {
   constructor() {
@@ -151,24 +152,19 @@ class App extends React.Component {
       
       {!loggedIn && <Login />}
 
-      {loggedIn &&
-      <div>
-        
+      {loggedIn && <div>
+      
         <NavBar link1={this.track} link2={this.artist} link3={this.recent}/>
           
         <div className="container-fluid">
+          
           <br></br>
+
           {tracks !== 'none' && <div>
             { tracks === 'all' && <h2>Top 20 Tracks (All Time)</h2>}
             { tracks === 'six' && <h2>Top 20 Tracks (Last 6 Months)</h2>}
             { tracks === 'last' && <h2>Top 20 Tracks (Last Month)</h2>}
-            <div className='text-center'>
-              <div className="btn-group" role="group">
-                <button className="btn btn-success btn-sm" onClick={() => {this.allt()}}>All Time</button>
-                <button className="btn btn-success btn-sm" onClick={() => {this.six()}}>Last 6 Months</button>
-                <button className="btn btn-success btn-sm" onClick={() => {this.last()}}>Last Month</button>
-              </div>
-            </div>
+            <SmallButtonGroup link1={this.allt} link2={this.six} link3={this.last}/>
             {track[tracks].map((a, i) => <ol className='list-group' key={i}>
               <a href={a.uri} target='_blank' rel="noreferrer">
                 <li className='list-group-item'>
@@ -192,13 +188,7 @@ class App extends React.Component {
             { artists === 'all' && <h2>Top 20 Artists (All Time)</h2>}
             { artists === 'six' && <h2>Top 20 Artists (Last 6 Months)</h2>}
             { artists === 'last' && <h2>Top 20 Artists (Last Month)</h2>}
-            <div className='text-center'>
-              <div className="btn-group" role="group">
-                <button className="btn btn-success btn-sm" onClick={() => {this.alltA()}}>All Time</button>
-                <button className="btn btn-success btn-sm" onClick={() => {this.sixA()}}>Last 6 Months</button>
-                <button className="btn btn-success btn-sm" onClick={() => {this.lastA()}}>Last Month</button>
-              </div>
-            </div>
+            <SmallButtonGroup link1={this.alltA} link2={this.sixA} link3={this.lastA}/>
             {artist[artists].map((a, i) => <ol className='list-group' key={i}>
               <a href={a.uri} target='_blank' rel="noreferrer">
                 <li className='list-group-item'>
@@ -240,14 +230,15 @@ class App extends React.Component {
 
         </div>
 
+        <br></br>
+
+        <Footer />
+
       </div>}
-
-      <br></br>
-
-      {loggedIn && <Footer/>}
 
     </div>
     )
+
   }
 }
 

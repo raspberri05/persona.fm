@@ -2,7 +2,7 @@ import React from 'react'
 import $ from "jquery";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
+import './style.css';
 import Footer from './Footer.js'
 import Login from './Login.js'
 import SideButton from './SideButton.js'

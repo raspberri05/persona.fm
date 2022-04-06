@@ -13,7 +13,7 @@ class Login extends React.Component {
         
         <br></br>
 
-        <h1 class="h1-login">Tunestats</h1>
+        <h1 className="h1-login">Tunestats</h1>
 
         <br></br>
 

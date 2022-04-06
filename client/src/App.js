@@ -7,6 +7,8 @@ import Footer from './components/Footer.js'
 import Login from './components/Login.js'
 import NavBar from './components/NavBar.js'
 import SmallButtonGroup from './components/SmallButtonGroup'
+import SongDisplay from './components/SongDisplay.js';
+import ArtistDisplay from './components/ArtistDisplay.js';
 
 class App extends React.Component {
   constructor() {
@@ -36,9 +38,7 @@ class App extends React.Component {
       window.location.href = "/#"
 
     } else {
-      // render initial screen
       this.setState({loggedIn: false})
-
     }
   }
 
@@ -116,33 +116,19 @@ class App extends React.Component {
     this.alltA();
   }
 
-  allt = () => {
-    this.setState({tracks: 'all'})
-  }
+  allt = () => this.setState({tracks: 'all'})
 
-  six = () => {
-    this.setState({tracks: 'six'})
-  }
+  six = () => this.setState({tracks: 'six'})
 
-  last = () => {
-    this.setState({tracks: 'last'})
-  }
+  last = () => this.setState({tracks: 'last'})
 
-  alltA = () => {
-    this.setState({artists: 'all'})
-  }
+  alltA = () => this.setState({artists: 'all'})
 
-  sixA = () => {
-    this.setState({artists: 'six'})
-  }
+  sixA = () => this.setState({artists: 'six'})
 
-  lastA = () => {
-    this.setState({artists: 'last'})
-  }
+  lastA = () => this.setState({artists: 'last'})
 
-  recent = () => {
-    this.setState({tracks: 'none', artists: 'none', recents: true})
-  }
+  recent = () => this.setState({tracks: 'none', artists: 'none', recents: true})
 
   render() {
     let { loggedIn, tracks, artists, track, artist, recents, recent } = this.state
@@ -165,23 +151,7 @@ class App extends React.Component {
             { tracks === 'six' && <h2>Top 20 Tracks (Last 6 Months)</h2>}
             { tracks === 'last' && <h2>Top 20 Tracks (Last Month)</h2>}
             <SmallButtonGroup link1={this.allt} link2={this.six} link3={this.last}/>
-            {track[tracks].map((a, i) => <ol className='list-group' key={i}>
-              <a href={a.uri} target='_blank' rel="noreferrer">
-                <li className='list-group-item'>
-                  <div className='row'>
-                    <div className='col col-auto'>
-                      <img className='cropped imga' src={a.url} alt={a.name + "album image"}/>
-                    </div>
-                    <div className='col textsize'>
-                      <div className='ms-2 me-auto'>
-                        <div className='fw-bold'>{a.name}</div>
-                        {a.artist}
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </a>
-            </ol>)}
+            <SongDisplay data={track[tracks]}/>
           </div>}
 
           {artists !== 'none' && <div>
@@ -189,43 +159,12 @@ class App extends React.Component {
             { artists === 'six' && <h2>Top 20 Artists (Last 6 Months)</h2>}
             { artists === 'last' && <h2>Top 20 Artists (Last Month)</h2>}
             <SmallButtonGroup link1={this.alltA} link2={this.sixA} link3={this.lastA}/>
-            {artist[artists].map((a, i) => <ol className='list-group' key={i}>
-              <a href={a.uri} target='_blank' rel="noreferrer">
-                <li className='list-group-item'>
-                  <div className='row'>
-                    <div className='col col-auto'>
-                      <img className='cropped imga' src={a.url} alt={a.name + 'profile picture'}/>
-                    </div>
-                    <div className='col textsize'>
-                      <div className='ms-2 me-auto'>
-                        <div className='fw-bold'>{a.name}</div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </a>
-            </ol>)}
+            <ArtistDisplay data={artist[artists]}/>
           </div>}
 
           {recents && <div>
             <h2>Recently Played</h2>
-            {recent.map((a, i) => <ol className='list-group' key={i}>
-              <a href={a.uri} target='_blank' rel="noreferrer">
-                <li className='list-group-item'>
-                  <div className='row'>
-                    <div className='col col-auto'>
-                      <img className='cropped imga' src={a.url} alt={a.name + 'album cover'}/>
-                    </div>
-                    <div className='col textsize'>
-                      <div className='ms-2 me-auto'>
-                        <div className='fw-bold'>{a.name}</div>
-                        {a.artist}
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </a>
-            </ol>)}
+            <SongDisplay data={recent}/>
           </div>}
 
         </div>

@@ -15,9 +15,9 @@ class NavBar extends React.Component {
           <SideButton />
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <NavLink link={() => this.props.link1()} name="Top Tracks"/>
-              <NavLink link={() => this.props.link2()} name="Top Artists"/>
-              <NavLink link={() => this.props.link3()} name="Recently Played"/>
+              <NavLink link={() => this.props.link1()} name={this.props.name1}/>
+              <NavLink link={() => this.props.link2()} name={this.props.name2}/>
+              <NavLink link={() => this.props.link3()} name={this.props.name3}/>
             </div>
           </div>
         </div>

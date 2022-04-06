@@ -9,6 +9,7 @@ import NavBar from './components/NavBar.js'
 import SmallButtonGroup from './components/SmallButtonGroup'
 import SongDisplay from './components/SongDisplay.js';
 import ArtistDisplay from './components/ArtistDisplay.js';
+import Titles from './components/Titles.js';
 
 class App extends React.Component {
   constructor() {
@@ -21,9 +22,7 @@ class App extends React.Component {
   componentDidMount() {
     const access_token = this.getHashParams().access_token;
     if (access_token) {
-      this.setState({loggedIn: true})
-      this.setState({tracks: 'all'})
-      this.setState({main: true})
+      this.setState({loggedIn: true, tracks: 'all', main: true})
 
       this.getTopTracks('long_term', 'all', access_token) 
       this.getTopTracks('medium_term', 'six', access_token) 
@@ -46,6 +45,7 @@ class App extends React.Component {
     var hashParams = {};
     var e, r = /([^&;=]+)=?([^&;]*)/g
     var q = window.location.hash.substring(1);
+    //eslint-disable-next-line
     while (e = r.exec(q)) {
        hashParams[e[1]] = decodeURIComponent(e[2]);
     }
@@ -140,25 +140,21 @@ class App extends React.Component {
 
       {loggedIn && <div>
       
-        <NavBar link1={this.track} link2={this.artist} link3={this.recent}/>
+        <NavBar link1={this.track} link2={this.artist} link3={this.recent} name1={"Top Tracks"} name2={"Top Artists"} name3={"Recently Played"}/>
           
         <div className="container-fluid">
           
           <br></br>
 
           {tracks !== 'none' && <div>
-            { tracks === 'all' && <h2>Top 20 Tracks (All Time)</h2>}
-            { tracks === 'six' && <h2>Top 20 Tracks (Last 6 Months)</h2>}
-            { tracks === 'last' && <h2>Top 20 Tracks (Last Month)</h2>}
-            <SmallButtonGroup link1={this.allt} link2={this.six} link3={this.last}/>
+            <Titles condition={tracks} title={"Tracks"}/>
+            <SmallButtonGroup link1={this.allt} link2={this.six} link3={this.last} />
             <SongDisplay data={track[tracks]}/>
           </div>}
 
           {artists !== 'none' && <div>
-            { artists === 'all' && <h2>Top 20 Artists (All Time)</h2>}
-            { artists === 'six' && <h2>Top 20 Artists (Last 6 Months)</h2>}
-            { artists === 'last' && <h2>Top 20 Artists (Last Month)</h2>}
-            <SmallButtonGroup link1={this.alltA} link2={this.sixA} link3={this.lastA}/>
+            <Titles condition={artists} title={"Artists"}/>
+            <SmallButtonGroup link1={this.alltA} link2={this.sixA} link3={this.lastA} />
             <ArtistDisplay data={artist[artists]}/>
           </div>}
 

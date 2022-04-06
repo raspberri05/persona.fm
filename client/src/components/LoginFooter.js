@@ -1,8 +1,8 @@
 import React from 'react'
-import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './style.css';
-import spotify_logo from './spotify_logo.png'
+import "../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../assets/style.css';
+import spotify_logo from '../assets/spotify_logo.png'
 
 class LoginFooter extends React.Component {
 

@@ -5,7 +5,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import Footer from './Footer.js'
 import Login from './Login.js'
-import SideButton from './SideButton.js'
+import NavBar from './NavBar.js'
 
 class App extends React.Component {
   constructor() {
@@ -154,19 +154,7 @@ class App extends React.Component {
       {loggedIn &&
       <div>
         
-        <nav className="navbar navbar-expand-lg navbar-dark">
-          <div className="container-fluid">
-            <a className="navbar-brand" href="/#">Tunestats</a>
-            <SideButton />
-            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div className="navbar-nav">
-                <a className="nav-link" onClick={() => {this.track()}}href="/#">Top Tracks</a>
-                <a className="nav-link" onClick={() => {this.artist()}} href="/#">Top Artists</a>
-                <a className="nav-link" onClick={() => {this.recent()}} href="/#">Recently Played</a>
-              </div>
-            </div>
-          </div>
-        </nav>
+        <NavBar link1={this.track} link2={this.artist} link3={this.recent}/>
           
         <div className="container-fluid">
           <br></br>

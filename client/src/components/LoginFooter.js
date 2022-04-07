@@ -13,11 +13,11 @@ class LoginFooter extends React.Component {
         <div className="container text-center">
           <div className="row">
             <div className="col">
-              <p>© 2022 Tunestats. All Rights Reserved</p>
+              <p>Copyright 2022 Tunestats</p>
               <a href="https://docs.google.com/document/d/e/2PACX-1vRv6Zh3olDlKpcOXZDw9vw9mNA5_sT_LXIs2BWdQ_AafbPkY1Xo6jHZVu5N4JZ-ivRYDTUZJHlf9yF2/pub" target="blank" rel="noopener">Privacy Policy</a>
             </div>
             <div className="col">
-              <p className="footer-text">Powered by the
+              <p>Powered by the
               <a href="https://developer.spotify.com/documentation/web-api/" target="blank" rel="noopener"> Spotify Web API</a>
               </p>
               <a href="https://spotify.com" target="blank" rel="noopener">

@@ -17,8 +17,8 @@ class Login extends React.Component {
 
         <br></br>
 
-        <a href="http://localhost:3001/login" className="btn btn-titlebtn-success btn-lg">Log in with Spotify</a>
-        {/* <a href="/login" className="btn btn-success btn-lg">Log in with Spotify</a> */}
+        {/* <a href="http://localhost:3001/login" className="btn btn-titlebtn-success btn-lg">Log in with Spotify</a> */}
+        <a href="/login" className="btn btn-success btn-lg">Log in with Spotify</a>
 
         <br></br>
         <br></br>

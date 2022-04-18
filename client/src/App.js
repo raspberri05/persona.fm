@@ -3,7 +3,6 @@ import $ from "jquery";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './assets/style.css';
-import Footer from './components/Footer.js'
 import Login from './components/Login.js'
 import NavBar from './components/NavBar.js'
 import SmallButtonGroup from './components/SmallButtonGroup'
@@ -166,8 +165,6 @@ class App extends React.Component {
         </div>
 
         <br></br>
-
-        <Footer />
 
       </div>}
 

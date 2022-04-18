@@ -1,0 +1,108 @@
+@import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+
+/*
+#1d8954
+#ffffff
+#191414
+*/
+
+body, li, a {
+  color: #ffffff !important;
+  background-color: #191414 !important;
+}
+
+nav, a{
+  background-color: #1d8954 !important;
+}
+
+h2 {
+  text-align: center;
+}
+
+li {
+  border: none !important;
+}
+
+li:hover {
+  color: #1d8954 !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+svg {
+  color: #ffffff !important;
+}
+
+svg:hover {
+  color: #191414 !important;
+}
+
+@media screen and (max-width: 599px) {
+  .imga {
+    width:35px !important;
+    height:35px !important;
+  }
+
+  .textsize {
+    font-size:12px;
+  }
+}
+
+.btn {
+  color: white !important;
+}
+
+.btn-success:hover {
+  color: #191414 !important;
+  border-color: #1d8954 !important;
+}
+
+.btn-success {
+  background-color: #1d8954 !important;
+}
+
+.nav-link:hover {
+  color: #191414 !important;
+}
+
+.navbar-brand:hover {
+  cursor: default;
+}
+
+.navbar-toggler {
+  border-color: #1d8954 !important;
+}
+
+.cropped {
+  width: 64px; 
+  height: 64px;
+  object-fit: cover;
+}
+
+.footer {
+  background-color:#1d8954;
+  padding: 15px 0px 0px 0px;
+}
+
+.logo-img {
+  height: 26px;
+  margin: 0px 13px 13px 13px;
+}
+
+.h1-login {
+  font-size: 3.2em;
+}
+
+.btn-title {
+  height: 65px !important;
+  width: 260px !important;
+  font-size: 1.75em !important;
+}
+
+.footer-login {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

@@ -2,7 +2,6 @@ import React from 'react'
 import "../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../assets/style.css';
-import LoginFooter from './LoginFooter.js'
 
 class Login extends React.Component {
 
@@ -26,7 +25,6 @@ class Login extends React.Component {
 
         <h3>View your top songs, artists, and recently played songs!</h3>
         <h3>Please login with your Spotify account using the button above to begin</h3>
-        <LoginFooter />
       </div>
     )
   }

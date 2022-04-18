@@ -30,7 +30,7 @@ git push heroku main
 
 cd ../tunestats/client
 
-sed 's@/login@http://localhost:3001/login@g' src/components/Login.js > temp.js
+sed 's@/login@http://localhost:3001/login@g' src/components/Login.js > src/components/temp.js
 
 cp src/components/temp.js src/components/Login.js
 

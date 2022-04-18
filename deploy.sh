@@ -1,8 +1,6 @@
 cd client
 
-sed 's@http://localhost:3001/login@/login@g' src/components/Login.js > temp.js
-
-wait
+sed 's@http://localhost:3001/login@/login@g' src/components/Login.js > src/components/temp.js
 
 cp src/components/temp.js src/components/Login.js
 
@@ -33,8 +31,6 @@ git push heroku main
 cd ../tunestats/client
 
 sed 's@/login@http://localhost:3001/login@g' src/components/Login.js > temp.js
-
-wait
 
 cp src/components/temp.js src/components/Login.js
 

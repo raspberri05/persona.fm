@@ -1,14 +1,14 @@
-# cd client
+cd client
 
-# npm run build
+npm run build
 
-# mv build ../../tunestats_build
+mv build ../../tunestats_build
 
-# cd ../../tunestats_build
+cd ../../tunestats_build
 
-# rm -rf public
+rm -rf public
 
-# mv build public
+mv build public
 
 git add .
 

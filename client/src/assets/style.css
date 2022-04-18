@@ -100,9 +100,3 @@ svg:hover {
   width: 260px !important;
   font-size: 1.75em !important;
 }
-
-.footer-login {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}

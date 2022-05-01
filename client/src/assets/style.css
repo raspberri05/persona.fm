@@ -100,3 +100,7 @@ svg:hover {
   width: 260px !important;
   font-size: 1.75em !important;
 }
+
+.greentext {
+  color: #1d8954;
+}

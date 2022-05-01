@@ -29,10 +29,10 @@ class Login extends React.Component {
 
         <div className="container">
           <div className="row">
-            <div className="col">
+            <div className="col-md">
             </div>
-            <div className="col text-start">
-              <h2 className="col text-start">Simple and Secure</h2>
+            <div className="col-md text-start">
+              <h2 className="text-start">Simple and Secure</h2>
               <p className="greentext">With a single click, you can log in with your Spotify account to view your top songs, artists, and recently played songs without worrying about the safety of your data.</p>
               <br></br>
               <h4>

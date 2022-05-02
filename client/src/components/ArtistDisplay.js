@@ -12,7 +12,7 @@ class ArtistDisplay extends React.Component {
             <ListGroupItem className='list-group-item'>
               <div className='row'>
                 <div className='col col-auto'>
-                  <img className='cropped imga' src={a.url} alt={a.name + 'profile picture'}/>
+                  <img className='cropped' src={a.url} alt={a.name + 'profile picture'}/>
                 </div>
                 <div className='col textsize'>
                   <div className='ms-2 me-auto'>

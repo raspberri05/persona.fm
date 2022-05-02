@@ -41,17 +41,6 @@ svg:hover {
   color: #191414 !important;
 }
 
-@media screen and (max-width: 599px) {
-  .imga {
-    width:35px !important;
-    height:35px !important;
-  }
-
-  .textsize {
-    font-size:14px;
-  }
-}
-
 .navbar-toggler {
   border-color: #1d8954 !important;
 }
@@ -78,7 +67,7 @@ svg:hover {
 
 .greenbg {
   background-color: #1d8954 !important;
-  padding: 5px;
+  padding: 8px;
 }
 
 .nav:hover {
@@ -86,10 +75,6 @@ svg:hover {
   cursor: pointer;
 }
 
-p {
-  font-size: 18px !important;
-}
-
-a {
+p, a {
   font-size: 18px !important;
 }

@@ -67,7 +67,8 @@ svg:hover {
 
 .greenbg {
   background-color: #1d8954 !important;
-  padding: 8px;
+  padding: 12px;
+  font-size: 18px;
 }
 
 .nav:hover {

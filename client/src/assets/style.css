@@ -57,18 +57,27 @@ svg:hover {
 }
 
 .logo-img {
-  height: 30px;
   margin: 0px 13px 13px 13px;
 }
 
 .greentext {
   color: #1d8954;
+  font-size: 20px !important;
 }
 
 .greenbg {
   background-color: #1d8954 !important;
   padding: 12px;
-  font-size: 18px;
+  font-size: 18px !important;
+}
+
+.brand-size {
+  font-size: 18px !important;
+}
+
+.login-button {
+  font-size: 20px !important;
+  border-color: #191414;
 }
 
 .nav:hover {
@@ -77,5 +86,5 @@ svg:hover {
 }
 
 p, a {
-  font-size: 18px !important;
+  font-size: 16px !important;
 }

@@ -7,6 +7,7 @@ import SongDisplay from './components/SongDisplay.js';
 import ArtistDisplay from './components/ArtistDisplay.js';
 import Titles from './components/Titles.js';
 import { Container } from 'reactstrap';
+import Footer from './components/Footer.js';
 
 class App extends React.Component {
   constructor() {
@@ -165,6 +166,8 @@ class App extends React.Component {
         <br></br>
 
       </div>}
+
+      <Footer />
 
     </div>
     )

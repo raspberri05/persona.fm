@@ -1,8 +1,4 @@
 import React from 'react'
-import "../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../assets/style.css';
-import NavLink from './NavLink.js'
 
 class NavBar extends React.Component {
 
@@ -18,9 +14,9 @@ class NavBar extends React.Component {
            </button>
            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
              <div className="navbar-nav">
-               <NavLink link={() => this.props.link1()} name={this.props.name1}/>
-               <NavLink link={() => this.props.link2()} name={this.props.name2}/>
-               <NavLink link={() => this.props.link3()} name={this.props.name3}/>
+                <a className="nav-link" onClick={() => this.props.link1()} href="/#">{this.props.name1}</a>
+                <a className="nav-link" onClick={() => this.props.link2()} href="/#">{this.props.name2}</a>
+                <a className="nav-link" onClick={() => this.props.link3()} href="/#">{this.props.name3}</a>
              </div>
            </div>
          </div>

@@ -1,7 +1,4 @@
 import React from 'react'
-import "../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../assets/style.css';
 import { Button, Container, Row, Col } from 'reactstrap';
 
 class Login extends React.Component {

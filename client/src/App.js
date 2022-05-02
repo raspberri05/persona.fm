@@ -9,6 +9,7 @@ import SmallButtonGroup from './components/SmallButtonGroup'
 import SongDisplay from './components/SongDisplay.js';
 import ArtistDisplay from './components/ArtistDisplay.js';
 import Titles from './components/Titles.js';
+import { Container } from 'reactstrap';
 
 class App extends React.Component {
   constructor() {
@@ -141,7 +142,7 @@ class App extends React.Component {
       
         <NavBar link1={this.track} link2={this.artist} link3={this.recent} name1={"Top Tracks"} name2={"Top Artists"} name3={"Recently Played"}/>
           
-        <div className="container-fluid">
+        <Container fluid>
           
           <br></br>
 
@@ -162,7 +163,7 @@ class App extends React.Component {
             <SongDisplay data={recent}/>
           </div>}
 
-        </div>
+        </Container>
 
         <br></br>
 

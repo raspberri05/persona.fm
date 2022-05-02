@@ -2,21 +2,21 @@ import React from 'react'
 import "../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../assets/style.css';
+import { Button, Container, Row, Col } from 'reactstrap';
 
 class Login extends React.Component {
 
   render() {
 
     return (
-      <div className="text-center container">
+      <Container fluid className="text-center">
         
         <br></br>
 
         <h1 className="h1-login">Tunestats</h1>
 
         <br></br>
-
-        <a href="http://localhost:3001/login" className="btn btn-titlebtn-success btn-lg">Log in with Spotify</a>
+        <Button href="http://localhost:3001/login">Log in with Spotify</Button>
 
         <br></br>
         <br></br>
@@ -28,10 +28,10 @@ class Login extends React.Component {
         <br></br>
 
         <div className="container">
-          <div className="row">
-            <div className="col-md">
-            </div>
-            <div className="col-md">
+          <Row>
+            <Col md="6">
+            </Col>
+            <Col md="6">
               <h2>Simple and Secure</h2>
               <p className="greentext">With a single click, you can log in with your Spotify account to view your top songs, artists, and recently played songs without worrying about the safety of your data.</p>
               <br></br>
@@ -62,15 +62,15 @@ class Login extends React.Component {
                  Recall recently played songs
               </h4>
               <p className="greentext">If you can't recall a song you recently played, this feature will allow to do just that.</p>
-            </div>
-          </div>
+            </Col>
+          </Row>
         </div>
 
         <br></br>
         <br></br>
         <br></br>
 
-      </div>
+      </Container>
     )
   }
 }

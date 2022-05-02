@@ -8,7 +8,7 @@ class Login extends React.Component {
   render() {
 
     return (
-      <div className="text-center">
+      <div className="text-center container">
         
         <br></br>
 
@@ -31,8 +31,8 @@ class Login extends React.Component {
           <div className="row">
             <div className="col-md">
             </div>
-            <div className="col-md text-start">
-              <h2 className="text-start">Simple and Secure</h2>
+            <div className="col-md">
+              <h2>Simple and Secure</h2>
               <p className="greentext">With a single click, you can log in with your Spotify account to view your top songs, artists, and recently played songs without worrying about the safety of your data.</p>
               <br></br>
               <h4>

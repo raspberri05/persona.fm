@@ -46,7 +46,7 @@ svg:hover {
   }
 
   .textsize {
-    font-size:12px;
+    font-size:14px;
   }
 }
 
@@ -83,11 +83,11 @@ svg:hover {
 
 .footer {
   background-color:#1d8954;
-  padding: 15px 0px 0px 0px;
+  padding: 15px 0px 15px 0px;
 }
 
 .logo-img {
-  height: 26px;
+  height: 30px;
   margin: 0px 13px 13px 13px;
 }
 
@@ -103,4 +103,12 @@ svg:hover {
 
 .greentext {
   color: #1d8954;
+}
+
+p {
+  font-size: 20px !important;
+}
+
+a {
+  font-size: 18px !important;
 }

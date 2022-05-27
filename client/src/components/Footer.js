@@ -5,22 +5,22 @@ class Footer extends React.Component {
   render() {
 
     return (
-      <div class="footer">
-      <div class="container text-center">
-        <div class="row">
-          <div class="col">
+      <div className="footer">
+      <div className="container text-center">
+        <div className="row">
+          <div className="col">
             <p>Copyright 2022 Tunestats</p>
             <a href="Tunestats_Privacy_Policy.pdf" target="blank" rel="noopener">Privacy Policy</a>
           </div>
-          <div class="col">
-            <p class="footer-text">
+          <div className="col">
+            <p className="footer-text">
             <a href="https://developer.spotify.com/documentation/web-api/" target="blank" rel="noopener">Powered by the Spotify Web API</a>
             </p>
             <a href="https://spotify.com" target="blank" rel="noopener">
-              <img class="logo-img" src="spotify_logo.png" alt='Spotify Logo' height="30px"/>
+              <img className="logo-img" src="spotify_logo.png" alt='Spotify Logo' height="30px"/>
             </a>
           </div>
-          <div class="col">
+          <div className="col">
             <p>
               <a href="https://vedantsinghania.com" target="blank" rel="noopener">Created by Vedant Singhania</a>
               </p>

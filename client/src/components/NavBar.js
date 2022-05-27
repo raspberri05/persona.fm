@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem } from 'reactstrap'
+import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink } from 'reactstrap'
 
 class NavBar extends React.Component {
   
@@ -31,6 +31,7 @@ class NavBar extends React.Component {
             <NavItem className="nav greenbg" onClick={() => this.props.link1()}>{this.props.name1}</NavItem>
             <NavItem className="nav greenbg" onClick={() => this.props.link2()}>{this.props.name2}</NavItem>
             <NavItem className="nav greenbg" onClick={() => this.props.link3()}>{this.props.name3}</NavItem>
+            <NavItem className="nav greenbg" onClick={() => this.props.logout()}>Log Out</NavItem>
           </Nav>
         </Collapse>
       </Navbar>

@@ -127,18 +127,8 @@ class App extends React.Component {
   lastA = () => this.setState({artists: 'last'})
 
   recent = () => this.setState({tracks: 'none', artists: 'none', recents: true})
-  
-  pause = (milliseconds) => {
-    var dt = new Date();
-    while ((new Date()) - dt <= milliseconds) { /* Do nothing */ }
-  }
 
-  logout = () => {
-    const spotifyLogoutWindow = window.open('https://www.spotify.com/logout/', 'Spotify Logout', 'width=700,height=500,top=40,left=40')                                                                                                
-    setTimeout(() => spotifyLogoutWindow.close(), 2000)
-    this.pause(2000);
-    window.location.href = '/'
-  }
+  logout = () =>  window.location.href = '/'
 
   render() {
     let { loggedIn, tracks, artists, track, artist, recents, recent } = this.state

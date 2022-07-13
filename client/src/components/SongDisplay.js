@@ -12,7 +12,7 @@ class SongDisplay extends React.Component {
             <ListGroupItem className='list-group-item'>
               <div className='row'>
                 <div className='col col-auto'>
-                  <img className='cropped' src={a.url} alt={a.name + "album image"}/>
+                  <img className='cropped' src={a.url} alt={a.name + "album image"} />
                 </div>
                 <div className='col textsize'>
                   <div className='ms-2 me-auto'>

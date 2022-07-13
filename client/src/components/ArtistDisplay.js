@@ -7,12 +7,12 @@ class ArtistDisplay extends React.Component {
 
     return (
       <div>
-        {this.props.data.map((a, i) => <ListGroup className='list-group' key={i}> 
+        {this.props.data.map((a, i) => <ListGroup className='list-group' key={i}>
           <a href={a.uri} target='_blank' rel="noreferrer">
             <ListGroupItem className='list-group-item'>
               <div className='row'>
                 <div className='col col-auto'>
-                  <img className='cropped' src={a.url} alt={a.name + 'profile picture'}/>
+                  <img className='cropped' src={a.url} alt={a.name + 'profile picture'} />
                 </div>
                 <div className='col textsize'>
                   <div className='ms-2 me-auto'>

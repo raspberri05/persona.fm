@@ -6,11 +6,11 @@
 
 body, li, a {
   color: #ffffff !important;
-  background-color: #191414 !important;
+  background-color: #000000 !important;
 }
 
 nav, a{
-  background-color: #1d8954 !important;
+  background-color: #f58b57 !important;
 }
 
 h1 {
@@ -26,7 +26,7 @@ li {
 }
 
 li:hover {
-  color: #1d8954 !important;
+  color: #f58b57 !important;
 }
 
 a {
@@ -38,11 +38,11 @@ svg {
 }
 
 svg:hover {
-  color: #191414 !important;
+  color: #000000 !important;
 }
 
 .navbar-toggler {
-  border-color: #1d8954 !important;
+  border-color: #f58b57 !important;
 }
 
 .cropped {
@@ -52,7 +52,7 @@ svg:hover {
 }
 
 .footer {
-  background-color:#1d8954;
+  background-color:#f58b57;
   padding: 15px 0px 15px 0px;
 }
 
@@ -61,12 +61,12 @@ svg:hover {
 }
 
 .greentext {
-  color: #1d8954;
+  color: #f58b57;
   font-size: 20px !important;
 }
 
 .greenbg {
-  background-color: #1d8954 !important;
+  background-color: #f58b57 !important;
   padding: 12px;
   font-size: 18px !important;
 }
@@ -77,14 +77,23 @@ svg:hover {
 
 .login-button {
   font-size: 20px !important;
-  border-color: #191414;
+  border-color: #000000;
 }
 
 .nav:hover {
-  color: #191414 !important;
+  color: #000000 !important;
   cursor: pointer;
 }
 
 p, a {
   font-size: 16px !important;
+}
+
+.btn-clr {
+  background-color: #f58b57;
+  color: #ffffff
+}
+
+.btn-clr:hover {
+  color: #000000;
 }

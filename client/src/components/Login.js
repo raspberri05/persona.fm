@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Container, Row, Col } from 'reactstrap';
+import demo from '../assets/demo.png'
 
 class Login extends React.Component {
 
@@ -27,6 +28,7 @@ class Login extends React.Component {
         <div className="container">
           <Row>
             <Col md="6">
+              <img src={demo} alt='demo image' width='80%'></img>
             </Col>
             <Col md="6">
               <h2>Simple and Secure</h2>
@@ -38,7 +40,7 @@ class Login extends React.Component {
                 </svg>
                 Security comes first
               </h4>
-              <p className="greentext">Privacy is very important, and therefore this platform does not store or sell any information.</p>
+              <p className="greentext">Privacy is very important, so this platform does not store or sell any information.</p>
               <br></br>
               <h4>
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-music-note-list" viewBox="0 0 16 16">
@@ -49,7 +51,7 @@ class Login extends React.Component {
                 </svg>
                 Easily see your top songs and artists
               </h4>
-              <p className="greentext">Tunestats allows you to view your top songs and artists with a simple navigation bar.</p>
+              <p className="greentext">Tunestats allows you to view your top songs and artists with a intuitive navigation bar.</p>
               <br></br>
               <h4>
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
@@ -58,7 +60,7 @@ class Login extends React.Component {
                 </svg>
                 Recall recently played songs
               </h4>
-              <p className="greentext">If you can't recall a song you recently played, this feature will allow to do just that.</p>
+              <p className="greentext">If you can't recall a song you recently played, this feature can help by showing your recently played music</p>
             </Col>
           </Row>
         </div>

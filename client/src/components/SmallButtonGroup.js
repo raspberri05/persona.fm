@@ -11,6 +11,8 @@ class SmallButtonGroup extends React.Component {
           <SmallButton link={() => this.props.link2()} name='Last 6 Months' />
           <SmallButton link={() => this.props.link3()} name='Last Month' />
         </div>
+        <br></br>
+        <br></br>
       </div>
     )
   }

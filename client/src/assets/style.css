@@ -6,11 +6,15 @@
 
 body, li, a {
   color: #ffffff !important;
-  background-color: #000000 !important;
+  background-color: #050609 !important;
 }
 
 nav, a{
-  background-color: #f58b57 !important;
+  background-color: #39A2AE !important;
+}
+
+img {
+  border-radius: 5%;
 }
 
 h1 {
@@ -26,7 +30,7 @@ li {
 }
 
 li:hover {
-  color: #f58b57 !important;
+  color: #39A2AE !important;
 }
 
 a {
@@ -38,11 +42,11 @@ svg {
 }
 
 svg:hover {
-  color: #000000 !important;
+  color: #050609 !important;
 }
 
 .navbar-toggler {
-  border-color: #f58b57 !important;
+  border-color: #39A2AE !important;
 }
 
 .cropped {
@@ -52,7 +56,7 @@ svg:hover {
 }
 
 .footer {
-  background-color:#f58b57;
+  background-color:#39A2AE;
   padding: 15px 0px 15px 0px;
 }
 
@@ -61,12 +65,12 @@ svg:hover {
 }
 
 .greentext {
-  color: #f58b57;
+  color: #39A2AE;
   font-size: 20px !important;
 }
 
 .greenbg {
-  background-color: #f58b57 !important;
+  background-color: #39A2AE !important;
   padding: 12px;
   font-size: 18px !important;
 }
@@ -77,11 +81,11 @@ svg:hover {
 
 .login-button {
   font-size: 20px !important;
-  border-color: #000000;
+  border-color: #050609;
 }
 
 .nav:hover {
-  color: #000000 !important;
+  color: #050609 !important;
   cursor: pointer;
 }
 
@@ -90,10 +94,10 @@ p, a {
 }
 
 .btn-clr {
-  background-color: #f58b57;
-  color: #ffffff
+  background-color: #B486AB;
+  color: #050609
 }
 
 .btn-clr:hover {
-  color: #000000;
+  color: #ffffff;
 }

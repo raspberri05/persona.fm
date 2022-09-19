@@ -5,12 +5,13 @@ class SmallButtonGroup extends React.Component {
 
   render() {
     return (
-      <div className='text-center'>
+      <div className="h2_p_left">
         <div className="btn-group" role="group">
           <SmallButton link={() => this.props.link1()} name='All Time' />
           <SmallButton link={() => this.props.link2()} name='Last 6 Months' />
           <SmallButton link={() => this.props.link3()} name='Last Month' />
         </div>
+        <br></br>
         <br></br>
         <br></br>
       </div>

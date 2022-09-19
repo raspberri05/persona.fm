@@ -13,16 +13,17 @@ nav, a{
   background-color: #39A2AE !important;
 }
 
+nav {
+  font-weight: bold;
+}
+
 img {
-  border-radius: 5%;
+  border-radius: 10%;
 }
 
 h1 {
   font-size: 3.2em;
-}
-
-h2 {
-  text-align: center;
+  font-weight: bold;
 }
 
 li {
@@ -30,7 +31,7 @@ li {
 }
 
 li:hover {
-  color: #39A2AE !important;
+  color: #B486AB !important;
 }
 
 a {
@@ -65,7 +66,7 @@ svg:hover {
 }
 
 .greentext {
-  color: #39A2AE;
+  color: #B486AB;
   font-size: 20px !important;
 }
 
@@ -81,7 +82,12 @@ svg:hover {
 
 .login-button {
   font-size: 20px !important;
-  border-color: #050609;
+  font-weight: bold;
+  color: #050609 !important;
+}
+
+.login-button:hover {
+  color: #ffffff !important;
 }
 
 .nav:hover {
@@ -95,9 +101,37 @@ p, a {
 
 .btn-clr {
   background-color: #B486AB;
-  color: #050609
+  color: #050609;
+  font-weight: bold;
 }
 
 .btn-clr:hover {
   color: #ffffff;
+}
+
+.btn-clr:active {
+  background-color: #39A2AE;
+}
+
+.demo_img {
+  border-radius: 1%;
+}
+
+.artist_size {
+  font-size: 18px !important;
+}
+
+.h2_p_left {
+  padding-left: 30px;
+}
+
+.h2_main {
+  padding-left: 30px;
+  font-weight: bold;
+  font-size: 2.3em;
+}
+
+.logo_cursor {
+  padding-left: 10px;
+  cursor: default
 }

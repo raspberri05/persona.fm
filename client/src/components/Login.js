@@ -19,7 +19,7 @@ class Login extends React.Component {
         <br></br>
         <br></br>
 
-        <h2>View your top songs, artists, and recently played songs!</h2>
+        <h2 className="h2_home">View your top songs, artists, and recently played songs!</h2>
         <h2>Please login with your Spotify account using the button above to begin</h2>
 
         <br></br>
@@ -28,7 +28,7 @@ class Login extends React.Component {
         <div className="container">
           <Row>
             <Col md="6">
-              <img src={demo} alt='demo image' width='80%'></img>
+              <img src={demo} alt='demo image' className='demo_img' width='80%'></img>
             </Col>
             <Col md="6">
               <h2>Simple and Secure</h2>

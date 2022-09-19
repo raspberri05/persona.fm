@@ -19,7 +19,7 @@ class Login extends React.Component {
         <br></br>
         <br></br>
 
-        <h2 className="h2_home">View your top songs, artists, and recently played songs!</h2>
+        <h2>View your top songs, artists, and recently played songs!</h2>
         <h2>Please login with your Spotify account using the button above to begin</h2>
 
         <br></br>

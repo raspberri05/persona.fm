@@ -1,19 +1,23 @@
-/*
-#1d8954
-#ffffff
-#191414
-*/
-
-body, li, a {
+body, li {
   color: #ffffff !important;
-  background-color: #050609 !important;
+  background-color: #000000 !important;
 }
 
-nav, a{
-  background-color: #39A2AE !important;
+p, a {
+  font-size: 16px !important;
+}
+
+a {
+  text-decoration: none !important;
+  color: #ffffff;
+}
+
+a:hover {
+  color: #000000
 }
 
 nav {
+  background-color: #39A2AE !important;
   font-weight: bold;
 }
 
@@ -31,11 +35,7 @@ li {
 }
 
 li:hover {
-  color: #B486AB !important;
-}
-
-a {
-  text-decoration: none !important;
+  color: #39A2AE !important;
 }
 
 svg {
@@ -43,7 +43,7 @@ svg {
 }
 
 svg:hover {
-  color: #050609 !important;
+  color: #000000 !important;
 }
 
 .navbar-toggler {
@@ -57,16 +57,27 @@ svg:hover {
 }
 
 .footer {
-  background-color:#39A2AE;
+  background-color:#B486AB;
   padding: 15px 0px 15px 0px;
+}
+
+.footer_text {
+  background-color: #B486AB;
 }
 
 .logo-img {
   margin: 0px 13px 13px 13px;
+  filter: invert(100%) !important;
+  -webkit-filter: invert(100%) !important;
+}
+
+.logo-img:hover {
+  filter: invert(0%) !important;
+  -webkit-filter: invert(0%) !important;
 }
 
 .greentext {
-  color: #B486AB;
+  color: #39A2AE;
   font-size: 20px !important;
 }
 
@@ -83,34 +94,28 @@ svg:hover {
 .login-button {
   font-size: 20px !important;
   font-weight: bold;
-  color: #050609 !important;
+  color: #000000 !important;
+  background-color: #B486AB
 }
 
 .login-button:hover {
   color: #ffffff !important;
+  background-color: #B486AB;
 }
 
 .nav:hover {
-  color: #050609 !important;
+  color: #000000 !important;
   cursor: pointer;
-}
-
-p, a {
-  font-size: 16px !important;
 }
 
 .btn-clr {
   background-color: #B486AB;
-  color: #050609;
+  color: #000000;
   font-weight: bold;
 }
 
 .btn-clr:hover {
   color: #ffffff;
-}
-
-.btn-clr:active {
-  background-color: #39A2AE;
 }
 
 .demo_img {
@@ -122,16 +127,20 @@ p, a {
 }
 
 .h2_p_left {
-  padding-left: 30px;
+  padding-left: 2%;
 }
 
 .h2_main {
-  padding-left: 30px;
+  padding-left: 20px;
   font-weight: bold;
-  font-size: 2.3em;
+  font-size: 4vh;
 }
 
 .logo_cursor {
-  padding-left: 10px;
+  padding-left: 2%;
   cursor: default
+}
+
+.logo_cursor:hover {
+  color: #ffffff;
 }

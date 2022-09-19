@@ -13,7 +13,7 @@ class Footer extends React.Component {
               <a href="Tunestats_Privacy_Policy.pdf" target="blank" rel="noopener">Privacy Policy</a>
             </div>
             <div className="col">
-              <p className="footer-text">
+              <p >
                 <a href="https://developer.spotify.com/documentation/web-api/" target="blank" rel="noopener">Powered by the Spotify Web API</a>
               </p>
               <a href="https://spotify.com" target="blank" rel="noopener">

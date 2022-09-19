@@ -160,7 +160,9 @@ class App extends React.Component {
             </div>}
 
             {recents && <div>
-              <h2>Recently Played</h2>
+              <br></br>
+              <h2 className="h2_main">Recently Played</h2>
+              <br></br>
               <SongDisplay data={recent} />
             </div>}
 

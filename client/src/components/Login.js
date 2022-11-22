@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Container, Row, Col } from 'reactstrap';
+import { Button, Container, Row, Col } from 'reactstrap'
 import demo from '../assets/demo.png'
 
 class Login extends React.Component {

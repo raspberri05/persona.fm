@@ -28,7 +28,7 @@ class Login extends React.Component {
         <div className="container">
           <Row>
             <Col md="6">
-              <img src={demo} alt='demo image' className='demo_img' width='80%'></img>
+              <img src={demo} alt='demo' className='demo_img' width='80%'></img>
             </Col>
             <Col md="6">
               <h2>Simple and Secure</h2>

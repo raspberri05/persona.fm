@@ -2,11 +2,12 @@ import React from 'react'
 import $ from "jquery";
 import Login from './components/Login.js'
 import NavBar from './components/NavBar.js'
+import SmallButton from './components/SmallButton.js';
 import SmallButtonGroup from './components/SmallButtonGroup'
 import SongDisplay from './components/SongDisplay.js';
 import ArtistDisplay from './components/ArtistDisplay.js';
 import Titles from './components/Titles.js';
-import { Container } from 'reactstrap';
+import { Button, Container } from 'reactstrap';
 import Footer from './components/Footer.js';
 
 class App extends React.Component {
@@ -14,14 +15,18 @@ class App extends React.Component {
     super();
     this.state = {
       loggedIn: false, tracks: 'none', artists: 'none', recents: false, recent: [],
-      track: { all: [], six: [], last: [] }, artist: { all: [], six: [], last: [] }
+      track: { all: [], six: [], last: [] }, artist: { all: [], six: [], last: [] }, 
+      token: '', id: '', name: '', description: ''
     }
   }
 
   componentDidMount() {
     const access_token = this.getHashParams().access_token;
     if (access_token) {
-      this.setState({ loggedIn: true, tracks: 'all', main: true })
+
+      this.getUserInfo(access_token)
+
+      this.setState({ loggedIn: true, tracks: 'all', main: true})
 
       this.getTopTracks('long_term', 'all', access_token)
       this.getTopTracks('medium_term', 'six', access_token)
@@ -33,7 +38,10 @@ class App extends React.Component {
 
       this.getRecents(access_token)
 
+      this.setState({ token: access_token });
+
       window.location.href = "/#"
+
 
     } else {
       this.setState({ loggedIn: false })
@@ -49,6 +57,40 @@ class App extends React.Component {
       hashParams[e[1]] = decodeURIComponent(e[2]);
     }
     return hashParams;
+  }
+
+  getUserInfo = (token) => {
+    $.ajax({
+      url: 'https://api.spotify.com/v1/me',
+      headers: {
+        'Authorization': 'Bearer ' + token
+      },
+      success: response => {
+        this.setState({ id: response.id })
+      }
+    })
+  }
+  
+  createPlaylist = (token, id, name, description) => {
+    console.log(token)
+    $.ajax({
+      method: 'POST',
+      url: 'https://api.spotify.com/v1/users/' + id + '/playlists',
+      headers: {
+        'Authorization': 'Bearer ' + token
+      },
+      data: JSON.stringify({
+        'name': name,
+        'description': description
+      }),
+      json: true,
+      success: response => {
+        console.log(response)
+      },
+      error: response => {
+        console.log(response.responseJSON.error)
+      }
+    })
   }
 
   getTopTracks = (data, type, token) => {
@@ -132,7 +174,7 @@ class App extends React.Component {
   logout = () => window.location.href = '/'
 
   render() {
-    let { loggedIn, tracks, artists, track, artist, recents, recent } = this.state
+    let { loggedIn, tracks, artists, track, artist, recent, token, id } = this.state
 
     return (
       <div>
@@ -144,27 +186,19 @@ class App extends React.Component {
           <NavBar logout={this.logout} link1={this.track} link2={this.artist} link3={this.recent} name1={"Top Tracks"} name2={"Top Artists"} name3={"Recently Played"} />
 
           <Container fluid>
+            
+            <br></br>
+            
+            {(tracks == 'none' && artists == 'none') ? <h2 className="h2_main">Recently Played</h2> : (tracks !== 'none' ? <Titles condition={tracks} title={"Tracks"} /> : <Titles condition={artists} title={"Artists"} />)}
+
+            {tracks !== 'none' && <SmallButtonGroup link1={this.allt} link2={this.six} link3={this.last} />}
+            {artists !== 'none' && <SmallButtonGroup link1={this.alltA} link2={this.sixA} link3={this.lastA} />}
+
+            <Button onClick={() => this.createPlaylist(token, id, 'Test Name', "Test Description")}>Create Playlist</Button>
 
             <br></br>
 
-            {tracks !== 'none' && <div>
-              <Titles condition={tracks} title={"Tracks"} />
-              <SmallButtonGroup link1={this.allt} link2={this.six} link3={this.last} />
-              <SongDisplay data={track[tracks]} />
-            </div>}
-
-            {artists !== 'none' && <div>
-              <Titles condition={artists} title={"Artists"} />
-              <SmallButtonGroup link1={this.alltA} link2={this.sixA} link3={this.lastA} />
-              <ArtistDisplay data={artist[artists]} />
-            </div>}
-
-            {recents && <div>
-              <br></br>
-              <h2 className="h2_main">Recently Played</h2>
-              <br></br>
-              <SongDisplay data={recent} />
-            </div>}
+            {(tracks == 'none' && artists == 'none') ? <SongDisplay data={recent} /> : (tracks !== 'none' ? <SongDisplay data={track[tracks]} /> : <ArtistDisplay data={artist[artists]} />)}
 
           </Container>
 

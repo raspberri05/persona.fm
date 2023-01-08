@@ -2,7 +2,7 @@ import React from 'react'
 import $ from "jquery";
 import Login from './components/Login.js'
 import NavBar from './components/NavBar.js'
-import SmallButton from './components/SmallButton.js';
+//import SmallButton from './components/SmallButton.js';
 import SmallButtonGroup from './components/SmallButtonGroup'
 import SongDisplay from './components/SongDisplay.js';
 import ArtistDisplay from './components/ArtistDisplay.js';
@@ -81,10 +81,10 @@ class App extends React.Component {
     // let artist = this.state.artist
     let recent = this.state.recent
 
-    if (recents == true) {
+    if (recents === true) {
       rawData = recent
     }
-    else if (tracks != 'none') {
+    else if (tracks !== 'none') {
       rawData = track[tracks]
     }
     // else if (artists != 'none') {
@@ -231,18 +231,18 @@ class App extends React.Component {
             
             <br></br>
             
-            {(tracks == 'none' && artists == 'none') ? <h2 className="h2_main">Recently Played</h2> : (tracks !== 'none' ? <Titles condition={tracks} title={"Tracks"} /> : <Titles condition={artists} title={"Artists"} />)}
+            {(tracks === 'none' && artists === 'none') ? <h2 className="h2_main">Recently Played</h2> : (tracks !== 'none' ? <Titles condition={tracks} title={"Tracks"} /> : <Titles condition={artists} title={"Artists"} />)}
 
             {tracks !== 'none' && <SmallButtonGroup link1={this.allt} link2={this.six} link3={this.last} />}
             {artists !== 'none' && <SmallButtonGroup link1={this.alltA} link2={this.sixA} link3={this.lastA} />}
 
             {tracks !== 'none' && <Button onClick={() => this.createPlaylist(token, id,'Top 20 Tracks (' + ranges[tracks] + ')', String(new Date()))}>Create Playlist</Button>}
             {/* {artists !== 'none' && <Button onClick={() => this.createPlaylist(token, id, 'Top 20 Artists (' + ranges[artists] + ')', String(new Date()))}>Create Playlist</Button>} */}
-            {recents == true && <Button onClick={() => this.createPlaylist(token, id, 'Recently Played', String(new Date()))}>Create Playlist</Button>}
+            {recents === true && <Button onClick={() => this.createPlaylist(token, id, 'Recently Played', String(new Date()))}>Create Playlist</Button>}
 
             <br></br>
 
-            {(tracks == 'none' && artists == 'none') ? <SongDisplay data={recent} /> : (tracks !== 'none' ? <SongDisplay data={track[tracks]} /> : <ArtistDisplay data={artist[artists]} />)}
+            {(tracks === 'none' && artists === 'none') ? <SongDisplay data={recent} /> : (tracks !== 'none' ? <SongDisplay data={track[tracks]} /> : <ArtistDisplay data={artist[artists]} />)}
 
           </Container>
 

@@ -14,7 +14,7 @@ class Login extends React.Component {
         <h1>Tunestats</h1>
 
         <br></br>
-        <Button size="lg" className="login-button" href="http://localhost:3001/login">Log in with Spotify</Button>
+        <Button size="lg" className="login-button" href="/login">Log in with Spotify</Button>
 
         <br></br>
         <br></br>

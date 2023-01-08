@@ -16,7 +16,7 @@ class App extends React.Component {
     this.state = {
       loggedIn: false, tracks: 'none', artists: 'none', recents: false, recent: [],
       track: { all: [], six: [], last: [] }, artist: { all: [], six: [], last: [] }, 
-      token: '', id: '', name: '', description: ''
+      token: '', id: '', name: '', description: '', ranges: {"all": "All Time", "six": "Last 6 Months", "last": "Last Month"}
     }
   }
 
@@ -72,7 +72,29 @@ class App extends React.Component {
   }
   
   createPlaylist = (token, id, name, description) => {
-    console.log(token)
+    var rawData = []
+    var cleanData = []
+    let tracks = this.state.tracks
+    // let artists = this.state.artists
+    let recents = this.state.recents
+    let track = this.state.track
+    // let artist = this.state.artist
+    let recent = this.state.recent
+
+    if (recents == true) {
+      rawData = recent
+    }
+    else if (tracks != 'none') {
+      rawData = track[tracks]
+    }
+    // else if (artists != 'none') {
+    //   rawData = artist[artists]
+    // }
+
+    for (let i = 0; i < rawData.length; i++) {
+    cleanData.push(rawData[i].uri)
+    }
+
     $.ajax({
       method: 'POST',
       url: 'https://api.spotify.com/v1/users/' + id + '/playlists',
@@ -85,7 +107,27 @@ class App extends React.Component {
       }),
       json: true,
       success: response => {
-        console.log(response)
+        this.addToPlaylist(token, response.id, cleanData)
+      },
+      error: response => {
+        console.log(response.responseJSON.error)
+      }
+    })
+  }
+
+  addToPlaylist = (token, playlistId, tracks) => {
+    $.ajax({
+      method: 'POST',
+      url: 'https://api.spotify.com/v1/playlists/' + playlistId + '/tracks',
+      headers: {
+        'Authorization': 'Bearer ' + token
+      },
+      data: JSON.stringify({
+        'uris': tracks
+      }),
+      json: true,
+      success: response => {
+        console.log('successfully added tracks to playlist')
       },
       error: response => {
         console.log(response.responseJSON.error)
@@ -174,7 +216,7 @@ class App extends React.Component {
   logout = () => window.location.href = '/'
 
   render() {
-    let { loggedIn, tracks, artists, track, artist, recent, token, id } = this.state
+    let { loggedIn, tracks, artists, track, artist, recents, recent, token, id, ranges } = this.state
 
     return (
       <div>
@@ -194,7 +236,9 @@ class App extends React.Component {
             {tracks !== 'none' && <SmallButtonGroup link1={this.allt} link2={this.six} link3={this.last} />}
             {artists !== 'none' && <SmallButtonGroup link1={this.alltA} link2={this.sixA} link3={this.lastA} />}
 
-            <Button onClick={() => this.createPlaylist(token, id, 'Test Name', "Test Description")}>Create Playlist</Button>
+            {tracks !== 'none' && <Button onClick={() => this.createPlaylist(token, id,'Top 20 Tracks (' + ranges[tracks] + ')', String(new Date()))}>Create Playlist</Button>}
+            {/* {artists !== 'none' && <Button onClick={() => this.createPlaylist(token, id, 'Top 20 Artists (' + ranges[artists] + ')', String(new Date()))}>Create Playlist</Button>} */}
+            {recents == true && <Button onClick={() => this.createPlaylist(token, id, 'Recently Played', String(new Date()))}>Create Playlist</Button>}
 
             <br></br>
 

@@ -7,7 +7,7 @@ import SmallButtonGroup from './components/SmallButtonGroup'
 import SongDisplay from './components/SongDisplay.js';
 import ArtistDisplay from './components/ArtistDisplay.js';
 import Titles from './components/Titles.js';
-import { Button, Container } from 'reactstrap';
+import { Container } from 'reactstrap';
 import Footer from './components/Footer.js';
 
 class App extends React.Component {
@@ -16,7 +16,9 @@ class App extends React.Component {
     this.state = {
       loggedIn: false, tracks: 'none', artists: 'none', recents: false, recent: [],
       track: { all: [], six: [], last: [] }, artist: { all: [], six: [], last: [] }, 
-      token: '', id: '', name: '', description: '', ranges: {"all": "All Time", "six": "Last 6 Months", "last": "Last Month"}
+      token: '', id: '', name: '', description: '', 
+      ranges: {"all": "All Time", "six": "Last 6 Months", "last": "Last Month"},
+      displayName: ''
     }
   }
 
@@ -66,7 +68,9 @@ class App extends React.Component {
         'Authorization': 'Bearer ' + token
       },
       success: response => {
+        console.log(response)
         this.setState({ id: response.id })
+        this.setState({displayName: response.display_name})
       }
     })
   }
@@ -143,10 +147,12 @@ class App extends React.Component {
         'Authorization': 'Bearer ' + token
       },
       data: {
-        "time_range": data
+        "time_range": data,
+        "limit": 50
       },
       success: response => {
-        for (let i = 0; i < 20; i++) {
+        console.log(response)
+        for (let i = 0; i < 50; i++) {
           trackInfo[type].push({ uri: response['items'][i]['uri'], url: response['items'][i]['album']['images'][2]['url'], name: response['items'][i]['name'], artist: response['items'][i]['artists'][0]['name'] })
         }
         this.setState({ track: trackInfo })
@@ -163,9 +169,10 @@ class App extends React.Component {
       },
       data: {
         "time_range": data,
+        "limit": 50
       },
       success: response => {
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 50; i++) {
           artistInfo[type].push({ uri: response['items'][i]['uri'], url: response['items'][i]['images'][2]['url'], name: response['items'][i]['name'] })
         }
         this.setState({ artist: artistInfo })
@@ -179,9 +186,12 @@ class App extends React.Component {
       headers: {
         'Authorization': 'Bearer ' + token
       },
+      data : {
+        "limit": 50
+      },
       success: response => {
         let recentInfo = this.state.recent
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 50; i++) {
           recentInfo.push({ uri: response['items'][i]['track']['uri'], url: response['items'][i]['track']['album']['images'][2]['url'], name: response['items'][i]['track']['name'], artist: response['items'][i]['track']['artists'][0]['name'] })
         }
         this.setState({ recent: recentInfo })
@@ -216,7 +226,7 @@ class App extends React.Component {
   logout = () => window.location.href = '/'
 
   render() {
-    let { loggedIn, tracks, artists, track, artist, recents, recent, token, id, ranges } = this.state
+    let { loggedIn, tracks, artists, track, artist, recents, recent, token, id, ranges, displayName } = this.state
 
     return (
       <div>
@@ -231,15 +241,16 @@ class App extends React.Component {
             
             <br></br>
             
-            {(tracks === 'none' && artists === 'none') ? <h2 className="h2_main">Recently Played</h2> : (tracks !== 'none' ? <Titles condition={tracks} title={"Tracks"} /> : <Titles condition={artists} title={"Artists"} />)}
+            {(tracks === 'none' && artists === 'none') ? <h2 className="h2_main">{displayName}'s Recently Played Tracks</h2> : (tracks !== 'none' ? <Titles condition={tracks} title={displayName + "'s Top 50 Tracks"} /> : <Titles condition={artists} title={displayName + "'s Top 50 Artists"} />)}
 
             {tracks !== 'none' && <SmallButtonGroup link1={this.allt} link2={this.six} link3={this.last} />}
             {artists !== 'none' && <SmallButtonGroup link1={this.alltA} link2={this.sixA} link3={this.lastA} />}
 
-            {tracks !== 'none' && <Button onClick={() => this.createPlaylist(token, id,'Top 20 Tracks (' + ranges[tracks] + ')', String(new Date()))}>Create Playlist</Button>}
+            {artists === 'none' && <br></br>}
+            {tracks !== 'none' && <button className="btn btn-playlist btn-md" onClick={() => this.createPlaylist(token, id,'Top 20 Tracks (' + ranges[tracks] + ')', String(new Date()))}>Create Playlist</button>}
             {/* {artists !== 'none' && <Button onClick={() => this.createPlaylist(token, id, 'Top 20 Artists (' + ranges[artists] + ')', String(new Date()))}>Create Playlist</Button>} */}
-            {recents === true && <Button onClick={() => this.createPlaylist(token, id, 'Recently Played', String(new Date()))}>Create Playlist</Button>}
-
+            {recents === true && <button className="btn btn-playlist btn-md" onClick={() => this.createPlaylist(token, id, 'Recently Played', String(new Date()))}>Create Playlist</button>}
+            { artists === 'none' && <br></br>}
             <br></br>
 
             {(tracks === 'none' && artists === 'none') ? <SongDisplay data={recent} /> : (tracks !== 'none' ? <SongDisplay data={track[tracks]} /> : <ArtistDisplay data={artist[artists]} />)}

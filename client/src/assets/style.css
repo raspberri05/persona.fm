@@ -144,3 +144,20 @@ svg:hover {
 .logo_cursor:hover {
   color: #ffffff;
 }
+
+.btn-playlist {
+  background-color: #B486AB;
+  color: #000000;
+  font-weight: bold;
+  margin-left: 2%;
+
+}
+
+.logo_cursor2 {
+  padding-left: 2%;
+  cursor: default
+}
+
+.logo_cursor2:hover {
+  color: #000000
+}

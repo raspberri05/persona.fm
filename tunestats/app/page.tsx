@@ -3,7 +3,7 @@
 export default function Page() {
 
   function login() {
-    window.location.href = "http://localhost:3000/api/login";
+    window.location.href = "/api/login";
   }
   return (
     <div className="text-center">

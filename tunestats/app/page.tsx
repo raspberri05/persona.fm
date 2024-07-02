@@ -3,7 +3,8 @@
 export default function Page() {
 
   function login() {
-    window.location.href = "/api/login";
+    //@ts-expect-error
+    window.location.href = process.env.NEXT_PUBLIC_LOGIN_URI;
   }
   return (
     <div className="text-center">

@@ -4,10 +4,10 @@ import "./globals.css";
 import Footer from "./components/footer";
 
 const roboto = Roboto({
-  weight: '500',
-  subsets: ['latin'],
-  display: 'swap',
-})
+  weight: "500",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,11 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="forest">
       <body className={roboto.className}>
-        <br/>
         {children}
-        <br/>
+        <br />
         <Footer />
       </body>
     </html>

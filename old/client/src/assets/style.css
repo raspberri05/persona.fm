@@ -1,9 +1,11 @@
-body, li {
+body,
+li {
   color: #ffffff !important;
   background-color: #000000 !important;
 }
 
-p, a {
+p,
+a {
   font-size: 16px !important;
 }
 
@@ -13,11 +15,11 @@ a {
 }
 
 a:hover {
-  color: #000000
+  color: #000000;
 }
 
 nav {
-  background-color: #39A2AE !important;
+  background-color: #39a2ae !important;
   font-weight: bold;
 }
 
@@ -35,7 +37,7 @@ li {
 }
 
 li:hover {
-  color: #39A2AE !important;
+  color: #39a2ae !important;
 }
 
 svg {
@@ -47,22 +49,22 @@ svg:hover {
 }
 
 .navbar-toggler {
-  border-color: #39A2AE !important;
+  border-color: #39a2ae !important;
 }
 
 .cropped {
-  width: 64px; 
+  width: 64px;
   height: 64px;
   object-fit: cover;
 }
 
 .footer {
-  background-color:#B486AB;
+  background-color: #b486ab;
   padding: 15px 0px 15px 0px;
 }
 
 .footer_text {
-  background-color: #B486AB;
+  background-color: #b486ab;
 }
 
 .logo-img {
@@ -77,12 +79,12 @@ svg:hover {
 }
 
 .greentext {
-  color: #39A2AE;
+  color: #39a2ae;
   font-size: 20px !important;
 }
 
 .greenbg {
-  background-color: #39A2AE !important;
+  background-color: #39a2ae !important;
   padding: 12px;
   font-size: 18px !important;
 }
@@ -95,12 +97,12 @@ svg:hover {
   font-size: 20px !important;
   font-weight: bold;
   color: #000000 !important;
-  background-color: #B486AB
+  background-color: #b486ab;
 }
 
 .login-button:hover {
   color: #ffffff !important;
-  background-color: #B486AB;
+  background-color: #b486ab;
 }
 
 .nav:hover {
@@ -109,7 +111,7 @@ svg:hover {
 }
 
 .btn-clr {
-  background-color: #B486AB;
+  background-color: #b486ab;
   color: #000000;
   font-weight: bold;
 }
@@ -138,7 +140,7 @@ svg:hover {
 
 .logo_cursor {
   padding-left: 2%;
-  cursor: default
+  cursor: default;
 }
 
 .logo_cursor:hover {
@@ -146,18 +148,17 @@ svg:hover {
 }
 
 .btn-playlist {
-  background-color: #B486AB;
+  background-color: #b486ab;
   color: #000000;
   font-weight: bold;
   margin-left: 2%;
-
 }
 
 .logo_cursor2 {
   padding-left: 2%;
-  cursor: default
+  cursor: default;
 }
 
 .logo_cursor2:hover {
-  color: #000000
+  color: #000000;
 }

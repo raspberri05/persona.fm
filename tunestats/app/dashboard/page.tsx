@@ -17,6 +17,7 @@ export default function Page() {
       }
 
       useEffect(() => {
+        //@ts-expect-error
         const access_token = getHashParams().access_token;
         console.log(access_token)
         if (access_token) {

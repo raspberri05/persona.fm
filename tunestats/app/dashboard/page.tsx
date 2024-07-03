@@ -154,7 +154,7 @@ export default function Page() {
       <Header click={typeSet}/>
       <div className="container mx-auto">
         <div className="text-center">
-          <p className="text-4xl">{username}'s Top 50 {type} {type !== "recents" ? "(" + ranges[range] + ")" : ""} </p>
+          <p className="text-4xl">{username}&apos;s Top 50 {type} {type !== "recents" ? "(" + ranges[range] + ")" : ""} </p>
           <br />
           {type !== "recents" && <Buttongroup click={rangeSet}/>}
           <br />

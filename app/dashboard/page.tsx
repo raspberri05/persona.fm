@@ -151,8 +151,36 @@ export default function Page() {
   })
       .then((response) => {
         console.log(response.data);
+        addPlaylistItems();
       })
       .catch((error) => console.log(error))
+  }
+
+  const addPlaylistItems = () => {
+    let playlistData:any = []
+    let uriList = []
+
+    switch (type) {
+      case "tracks":
+        //@ts-expect-error
+        playlistData = tracks[range];
+        break;
+      case "artists":
+        //@ts-expect-error
+        playlistData = artists[range];
+        break;
+      case "recents":
+        playlistData = recents;
+        break;
+      default:
+        playlistData = [];
+        console.log("error")
+    }
+
+    for (let i = 0; i < playlistData.length; i++) {
+      uriList.push(playlistData[i]["uri"])
+    }
+    console.log(uriList)
   }
 
   useEffect(() => {

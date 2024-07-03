@@ -72,12 +72,14 @@ export default function Page() {
         },
       })
       .then((response) => {
+        console.log(response.data)
         for (let i = 0; i < 50; i++) {
           trackInfo[type].push({
             uri: response.data["items"][i]["uri"],
             url: response.data["items"][i]["album"]["images"][2]["url"],
             name: response.data["items"][i]["name"],
             artist: response.data["items"][i]["artists"][0]["name"],
+            album: response.data["items"][i]["album"]["name"],
           });
         }
         setTracks(trackInfo);
@@ -104,6 +106,7 @@ export default function Page() {
             url: response.data["items"][i]["images"][2]["url"],
             name: response.data["items"][i]["name"],
             artist: "",
+            album: ""
           });
         }
         setArtists(artistInfo);
@@ -132,6 +135,7 @@ export default function Page() {
             ],
             name: response.data["items"][i]["track"]["name"],
             artist: response.data["items"][i]["track"]["artists"][0]["name"],
+            album: response.data["items"][i]["track"]["album"]["name"],
           });
         }
         setRecents(recentInfo);
@@ -182,7 +186,7 @@ export default function Page() {
       //uriCSV += playlistData[i].uri + ","
       uriList.push(playlistData[i].uri)
     }
-    
+
     axios
       .post("https://api.spotify.com/v1/playlists/" + playlistId + "/tracks", {
         uris: uriList,

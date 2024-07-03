@@ -27,7 +27,7 @@ export default function Display(props: any) {
               </td>
               <td>
                 <p className="font-bold text-lg">{t.name}</p>
-                <p>{t.artist}</p>
+                {t.album !== "" && <p>{t.artist + " - " + t.album}</p>}
               </td>
             </tr>
           ))}

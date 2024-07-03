@@ -151,14 +151,15 @@ export default function Page() {
   })
       .then((response) => {
         console.log(response.data);
-        addPlaylistItems();
+        addPlaylistItems(response.data.id);
       })
       .catch((error) => console.log(error))
   }
 
-  const addPlaylistItems = () => {
+  const addPlaylistItems = (playlistId: string) => {
     let playlistData:any = []
-    let uriList = []
+    let uriList:any = []
+    let uriCSV = ""
 
     switch (type) {
       case "tracks":
@@ -178,9 +179,22 @@ export default function Page() {
     }
 
     for (let i = 0; i < playlistData.length; i++) {
-      uriList.push(playlistData[i]["uri"])
+      //uriCSV += playlistData[i].uri + ","
+      uriList.push(playlistData[i].uri)
     }
-    console.log(uriList)
+    
+    axios
+      .post("https://api.spotify.com/v1/playlists/" + playlistId + "/tracks", {
+        uris: uriList,
+      }, {
+        headers: {
+          "Authorization": `Bearer ${token}`,    
+        },
+      })
+      .then((response) => {
+      })
+      .catch((error) => console.log(error))
+
   }
 
   useEffect(() => {
@@ -218,7 +232,7 @@ export default function Page() {
           {type !== "recents" && <Buttongroup click={rangeSet} />}
           <br />
           <br />
-          <button className="btn btn-neutral" onClick={() => createPlaylist()}>Create Playlist</button>
+          {type !== "artists" && <button className="btn btn-neutral" onClick={() => createPlaylist()}>Create Playlist</button>}
         </div>
         {type === "tracks" && range === "all" && (
           <Display data={tracks["all"]} />

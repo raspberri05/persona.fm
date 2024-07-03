@@ -16,7 +16,7 @@ export default function Page() {
   const [tracks, setTracks] = useState({ all: [], six: [], last: [] }); // [track1, track2, track3, ...
   const [artists, setArtists] = useState({ all: [], six: [], last: [] }); // [track1, track2, track3, ...
   const [recents, setRecents ] = useState([]); // [track1, track2, track3, ...
-  const ranges = { all: "All Time", six: "Last 6 Months", last: "Last Month" }
+  const ranges:any = { all: "All Time", six: "Last 6 Months", last: "Last Month" }
 
   function getHashParams() {
     var hashParams = {};
@@ -52,7 +52,7 @@ export default function Page() {
   }
 
   const getTracks = (data:any, type:any, token:string) => {
-    let trackInfo = tracks
+    let trackInfo:any = tracks
     axios.get("https://api.spotify.com/v1/me/top/tracks", {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -77,7 +77,7 @@ export default function Page() {
   }
 
   const getArtists = (data:any, type:any, token:string) => {
-    let artistInfo = artists
+    let artistInfo:any = artists
     axios.get("https://api.spotify.com/v1/me/top/artists", {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -101,7 +101,7 @@ export default function Page() {
     .catch((error) => console.log(error));
   }
 
-  const getRecents = (token) => {
+  const getRecents = (token:any) => {
     let recentInfo = recents
     axios.get("https://api.spotify.com/v1/me/player/recently-played", {
       headers: {

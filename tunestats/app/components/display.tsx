@@ -13,7 +13,7 @@ export default function Display(props:any) {
         <div className="">
             <table className="table">
                 <tbody>
-                    {data.map((t) => (
+                    {data.map((t:any) => (
                         <tr key={t.uri} onClick={() => redirClick(t.uri)} className="hover:text-primary">
                             <td style={{ width: "100px" }}>
                                 <img

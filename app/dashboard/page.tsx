@@ -6,6 +6,7 @@ import Header from "../components/header";
 import Buttongroup from "../components/buttongroup";
 import Display from "../components/display";
 import { get } from "http";
+import { error } from "console";
 
 export default function Page() {
   const [auth, setAuth] = useState(false);
@@ -16,6 +17,7 @@ export default function Page() {
   const [tracks, setTracks] = useState({ all: [], six: [], last: [] }); // [track1, track2, track3, ...
   const [artists, setArtists] = useState({ all: [], six: [], last: [] }); // [track1, track2, track3, ...
   const [recents, setRecents] = useState([]); // [track1, track2, track3, ...
+  const [id, setId] = useState(""); // [id, setId
   const ranges: any = {
     all: "All Time",
     six: "Last 6 Months",
@@ -43,6 +45,7 @@ export default function Page() {
       })
       .then((response) => {
         setUsername(response.data.display_name);
+        setId(response.data.id)
       })
       .catch((error) => console.log(error));
   }
@@ -120,7 +123,7 @@ export default function Page() {
         },
       })
       .then((response) => {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 50; i++) {
           //@ts-ignore
           recentInfo.push({
             uri: response.data["items"][i]["track"]["uri"],
@@ -135,6 +138,22 @@ export default function Page() {
       })
       .catch((error) => console.log(error));
   };
+
+  const createPlaylist = () => {
+    axios
+      .post("https://api.spotify.com/v1/users/" + id + "/playlists", {
+        name: "Top 50 " + type + " " + (type !== "recents" ? ranges[range] : ""),
+        description: "exported from tunestats",
+      }, {
+        headers: {
+          "Authorization": `Bearer ${token}`,    
+        },
+  })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => console.log(error))
+  }
 
   useEffect(() => {
     //@ts-expect-error
@@ -171,6 +190,7 @@ export default function Page() {
           {type !== "recents" && <Buttongroup click={rangeSet} />}
           <br />
           <br />
+          <button className="btn btn-neutral" onClick={() => createPlaylist()}>Create Playlist</button>
         </div>
         {type === "tracks" && range === "all" && (
           <Display data={tracks["all"]} />

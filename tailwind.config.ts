@@ -6,11 +6,10 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {
-  },
+  theme: {},
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["forest"]
-  }
+    themes: ["forest"],
+  },
 };
 export default config;

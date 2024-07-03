@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 import Header from "../components/header";
 import Buttongroup from "../components/buttongroup";
 import Display from "../components/display";
@@ -15,8 +15,12 @@ export default function Page() {
   const [range, setRange] = useState("");
   const [tracks, setTracks] = useState({ all: [], six: [], last: [] }); // [track1, track2, track3, ...
   const [artists, setArtists] = useState({ all: [], six: [], last: [] }); // [track1, track2, track3, ...
-  const [recents, setRecents ] = useState([]); // [track1, track2, track3, ...
-  const ranges:any = { all: "All Time", six: "Last 6 Months", last: "Last Month" }
+  const [recents, setRecents] = useState([]); // [track1, track2, track3, ...
+  const ranges: any = {
+    all: "All Time",
+    six: "Last 6 Months",
+    last: "Last Month",
+  };
 
   function getHashParams() {
     var hashParams = {};
@@ -31,38 +35,40 @@ export default function Page() {
   }
 
   function getUserInfo(token: string) {
-    axios.get("https://api.spotify.com/v1/me", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then((response) => {
-      setUsername(response.data.display_name);
-    })
-    .catch((error) => console.log(error));
-  };
+    axios
+      .get("https://api.spotify.com/v1/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setUsername(response.data.display_name);
+      })
+      .catch((error) => console.log(error));
+  }
 
   const typeSet = (type: string) => {
     setType(type);
-  }
+  };
 
   const rangeSet = (range: string) => {
-    console.log(range)
+    console.log(range);
     setRange(range);
-  }
+  };
 
-  const getTracks = (data:any, type:any, token:string) => {
-    let trackInfo:any = tracks
-    axios.get("https://api.spotify.com/v1/me/top/tracks", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      params: {
-        limit: 50,
-        time_range: data,
-      },
-    })
-    .then((response) => {
+  const getTracks = (data: any, type: any, token: string) => {
+    let trackInfo: any = tracks;
+    axios
+      .get("https://api.spotify.com/v1/me/top/tracks", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          limit: 50,
+          time_range: data,
+        },
+      })
+      .then((response) => {
         for (let i = 0; i < 50; i++) {
           trackInfo[type].push({
             uri: response.data["items"][i]["uri"],
@@ -72,22 +78,23 @@ export default function Page() {
           });
         }
         setTracks(trackInfo);
-    })
-    .catch((error) => console.log(error));
-  }
+      })
+      .catch((error) => console.log(error));
+  };
 
-  const getArtists = (data:any, type:any, token:string) => {
-    let artistInfo:any = artists
-    axios.get("https://api.spotify.com/v1/me/top/artists", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      params: {
-        limit: 50,
-        time_range: data,
-      },
-    })
-    .then((response) => {
+  const getArtists = (data: any, type: any, token: string) => {
+    let artistInfo: any = artists;
+    axios
+      .get("https://api.spotify.com/v1/me/top/artists", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          limit: 50,
+          time_range: data,
+        },
+      })
+      .then((response) => {
         for (let i = 0; i < 50; i++) {
           artistInfo[type].push({
             uri: response.data["items"][i]["uri"],
@@ -97,43 +104,45 @@ export default function Page() {
           });
         }
         setArtists(artistInfo);
-    })
-    .catch((error) => console.log(error));
-  }
+      })
+      .catch((error) => console.log(error));
+  };
 
-  const getRecents = (token:any) => {
-    let recentInfo = recents
-    axios.get("https://api.spotify.com/v1/me/player/recently-played", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      params: {
-        limit: 50,
-      },
-    })
-    .then((response) => {
-      for (let i = 0; i < 10; i++) {
-        //@ts-ignore
-        recentInfo.push({
-          uri: response.data["items"][i]["track"]["uri"],
-          url: response.data["items"][i]["track"]["album"]["images"][2]["url"],
-          name: response.data["items"][i]["track"]["name"],
-          artist: response.data["items"][i]["track"]["artists"][0]["name"],
-        });
-      }
-      setRecents(recentInfo);
-    })
-    .catch((error) => console.log(error));
-
-  }
+  const getRecents = (token: any) => {
+    let recentInfo = recents;
+    axios
+      .get("https://api.spotify.com/v1/me/player/recently-played", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          limit: 50,
+        },
+      })
+      .then((response) => {
+        for (let i = 0; i < 10; i++) {
+          //@ts-ignore
+          recentInfo.push({
+            uri: response.data["items"][i]["track"]["uri"],
+            url: response.data["items"][i]["track"]["album"]["images"][2][
+              "url"
+            ],
+            name: response.data["items"][i]["track"]["name"],
+            artist: response.data["items"][i]["track"]["artists"][0]["name"],
+          });
+        }
+        setRecents(recentInfo);
+      })
+      .catch((error) => console.log(error));
+  };
 
   useEffect(() => {
     //@ts-expect-error
     const access_token = getHashParams().access_token;
     if (access_token) {
       getUserInfo(access_token);
-      setType("tracks")
-      setRange("all")
+      setType("tracks");
+      setRange("all");
       setAuth(true);
       getTracks("long_term", "all", access_token);
       getTracks("medium_term", "six", access_token);
@@ -144,29 +153,44 @@ export default function Page() {
       getRecents(access_token);
       setToken(access_token);
     } else {
-      setAuth(false)
+      setAuth(false);
       window.location.href = "/";
     }
   }, []);
 
   return (
     <div>
-      <Header click={typeSet}/>
+      <Header click={typeSet} />
       <div className="container mx-auto">
         <div className="text-center">
-          <p className="text-4xl">{username}&apos;s Top 50 {type} {type !== "recents" ? "(" + ranges[range] + ")" : ""} </p>
+          <p className="text-4xl">
+            {username}&apos;s Top 50 {type}{" "}
+            {type !== "recents" ? "(" + ranges[range] + ")" : ""}{" "}
+          </p>
           <br />
-          {type !== "recents" && <Buttongroup click={rangeSet}/>}
+          {type !== "recents" && <Buttongroup click={rangeSet} />}
           <br />
           <br />
         </div>
-        {type === "tracks" && range==="all" && <Display data={tracks["all"]}/>}
-        {type === "tracks" && range==="last" && <Display data={tracks["last"]}/>}
-        {type === "tracks" && range==="six" && <Display data={tracks["six"]}/>}
-        {type === "artists" && range==="all" && <Display data={artists["all"]}/>}
-        {type === "artists" && range==="last" && <Display data={artists["last"]}/>}
-        {type === "artists" && range==="six" && <Display data={artists["six"]}/>}
-        {type === "recents" && <Display data={recents}/>}
+        {type === "tracks" && range === "all" && (
+          <Display data={tracks["all"]} />
+        )}
+        {type === "tracks" && range === "last" && (
+          <Display data={tracks["last"]} />
+        )}
+        {type === "tracks" && range === "six" && (
+          <Display data={tracks["six"]} />
+        )}
+        {type === "artists" && range === "all" && (
+          <Display data={artists["all"]} />
+        )}
+        {type === "artists" && range === "last" && (
+          <Display data={artists["last"]} />
+        )}
+        {type === "artists" && range === "six" && (
+          <Display data={artists["six"]} />
+        )}
+        {type === "recents" && <Display data={recents} />}
       </div>
     </div>
   );

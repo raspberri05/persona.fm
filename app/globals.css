@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 .cropped {
-    width: 64px;
-    height: 64px;
-    object-fit: cover;
-    border-radius: 10%;
-  }
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 10%;
+}

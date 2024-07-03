@@ -1,4 +1,4 @@
-export default function Header(props:any) {
+export default function Header(props: any) {
   return (
     <div>
       <div className="navbar bg-neutral text-neutral-content">
@@ -25,17 +25,17 @@ export default function Header(props:any) {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a>Tracks</a>
+                <a onClick={() => props.click("tracks")}>Tracks</a>
               </li>
               <li>
-                <a>Artists</a>
+                <a onClick={() => props.click("artists")}>Artists</a>
               </li>
               <li>
-                <a>Recently Played</a>
+                <a onClick={() => props.click("recents")}>Recently Played</a>
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Tunestats</a>
+          <a className="btn btn-ghost text-xl" href="/">Tunestats</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -51,7 +51,7 @@ export default function Header(props:any) {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Log Out</a>
+          <a href="/">Log Out&nbsp;&nbsp;</a>
         </div>
       </div>
       <br />

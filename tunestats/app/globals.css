@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cropped {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 10%;
+  }

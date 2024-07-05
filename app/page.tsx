@@ -13,11 +13,11 @@ export default function Home() {
   const [ userInfo, setUserInfo ] = useState<any>({});
 
   function authenticate() {
-    window.location.href=`http://www.last.fm/api/auth/?api_key=${process.env.NEXT_PUBLIC_API_KEY}&cb=${process.env.NEXT_PUBLIC_CALLBACK_URL}?authenticated=true`
+    window.location.href=`https://www.last.fm/api/auth/?api_key=${process.env.NEXT_PUBLIC_API_KEY}&cb=${process.env.NEXT_PUBLIC_CALLBACK_URL}?authenticated=true`
   }
 
   function getSession(token: string, signature: string) {
-    axios.get(`http://ws.audioscrobbler.com/2.0/`, {
+    axios.get(`https://ws.audioscrobbler.com/2.0/`, {
       params: {
         method: 'auth.getSession',
         api_key: process.env.NEXT_PUBLIC_API_KEY,
@@ -39,7 +39,7 @@ export default function Home() {
   }
 
   function getUserInfo(user: string) {
-    axios.get(`http://ws.audioscrobbler.com/2.0/`, {
+    axios.get(`https://ws.audioscrobbler.com/2.0/`, {
       params: {
         method: 'user.getInfo',
         user: user,

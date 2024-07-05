@@ -5,12 +5,14 @@ import crypto from "crypto";
 import axios from "axios";
 import  Header  from "./components/header";
 import { setCookie, getCookie, hasCookie } from "cookies-next";
+import Image from 'next/image';
 
 export default function Home() {
   const [ authenticated, setAuthenticated ] = useState<boolean>(false);
   const [ sessionKey, setSessionKey ] = useState<string>("");
   const [ recentTracks, setRecentTracks ] = useState<any[]>([]);
   const [ userInfo, setUserInfo ] = useState<any>({});
+  const [ activeTab, setActiveTab ] = useState<string>("recent-tracks");
 
   function setCookies(session_key: string, username: string) {
     setCookie('session_key', session_key)
@@ -45,8 +47,6 @@ export default function Home() {
       }
     })
     .then(response => {
-      // handle success
-      console.log(response.data);
       setCookies(response.data.session.key, response.data.session.name);
       window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
     })
@@ -74,12 +74,62 @@ export default function Home() {
     })
   }
 
+  function getRecentTracks(username: string) {
+    axios.get(`https://ws.audioscrobbler.com/2.0/`, {
+      params: {
+        method: 'user.getRecentTracks',
+        user: username,
+        api_key: process.env.NEXT_PUBLIC_API_KEY,
+        format: 'json'
+      }
+    })
+    .then(response => {
+      console.log(response.data)
+      setRecentTracks(response.data.recenttracks.track);
+    })
+    .catch(error => {
+      console.log(error);
+    })  
+  }
+
+  function switchTab(tab: string) {
+    setActiveTab(tab);
+  }
+
+  function convertUTCDateToLocal(dateStr: string) {
+    // Parse the date string to a Date object as UTC
+    const [day, month, year, time] = dateStr.split(/[\s,]+/);
+    const date = new Date(`${month} ${day}, ${year} ${time} UTC`);
+  
+    // Convert to the user's local time zone and format
+    const localDateStr = date.toLocaleString('en-US', {
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+  
+    // Extract date and time parts
+    const [datePart, timePart] = localDateStr.split(', ');
+  
+    // Return JSX with <br> between date and time
+    return <>{datePart}<br />{timePart}</>;
+  }
+
+  function nowPlaying() {
+    const now = "Now"
+    const playing = "Playing"
+    return <>{now}<br/> {playing}</>
+  }
+
   useEffect(() => {
     const cookieList = getCookies();
     if (cookieList != undefined) {
       getUserInfo(cookieList[1] || '');
       setAuthenticated(true);
       setSessionKey(cookieList[0] || '');
+      getRecentTracks(cookieList[1] || '');
       return
     }
 
@@ -114,6 +164,45 @@ export default function Home() {
         <div>
           <Header image={userInfo?.image?.[0]?.['#text'] ?? "vercel.svg"}/>
           <div className="container mx-auto">
+            <br />
+            <br />
+            <div role="tablist" className="tabs tabs-boxed">
+              <a role="tab" className={"tab " + (activeTab === "recent-tracks" ? "tab-active" : "")} onClick={() => switchTab("recent-tracks")}>Recent Tracks</a>
+              <a role="tab" className={"tab " + (activeTab === "artists" ? "tab-active" : "")} onClick={() => switchTab("artists")}>Artists</a>
+              <a role="tab" className={"tab " + (activeTab === "albums" ? "tab-active" : "")} onClick={() => switchTab("albums")}>Albums</a>
+            </div>
+            <br />
+            {activeTab === "recent-tracks" && 
+              <div className="overflow-x-auto">
+                <table className="table">
+                  <tbody>
+                    {recentTracks.map((track, index) => (
+                      <tr key={index} className="hover:text-primary">
+                        <td style={{ width: "0" }} className="pr-1 pb-1">
+                          <div className="avatar">
+                            <div className="w-12 rounded-md">
+                            <Image
+                          alt="album cover"
+                            src={track.image[2]['#text']} 
+                            width={50}
+                            height={50}
+                          />
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p className="font-bold text-md">{track.name}</p>
+                          <p>{track.artist['#text']} - {track.album['#text']}</p>
+                        </td>
+                        <td className="text-end">
+                          <p className={track?.['@attr']?.['nowplaying'] ? "text-error" : ""}>{!track?.['@attr']?.['nowplaying'] ? convertUTCDateToLocal(track?.date?.['#text']) : nowPlaying()}</p>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            }
           </div>
         </div>
       }

@@ -9,6 +9,7 @@ export async function setCookie(session_key: string, username: string) {
         value: session_key,
         httpOnly: true,
         path: '/',
+        sameSite: 'lax',
         maxAge: 60 * 24 * 60 * 60,
       })
 
@@ -17,6 +18,7 @@ export async function setCookie(session_key: string, username: string) {
         value: username,
         httpOnly: true,
         path: '/',
+        sameSite: 'lax',
         maxAge: 60 * 24 * 60 * 60,
       })
 }

@@ -3,14 +3,32 @@
 import { useEffect, useState } from "react";
 import crypto from "crypto";
 import axios from "axios";
-import { setCookie, getCookie } from "@/app/actions";
 import  Header  from "./components/header";
+import { setCookie, getCookie, hasCookie } from "cookies-next";
 
 export default function Home() {
   const [ authenticated, setAuthenticated ] = useState<boolean>(false);
   const [ sessionKey, setSessionKey ] = useState<string>("");
   const [ recentTracks, setRecentTracks ] = useState<any[]>([]);
   const [ userInfo, setUserInfo ] = useState<any>({});
+
+  function setCookies(session_key: string, username: string) {
+    setCookie('session_key', session_key)
+    setCookie('username', username)
+  }
+
+  function getCookies() {
+    let cookieList = []
+    if (!hasCookie('session_key') || !hasCookie('username')) {
+      return undefined
+    }
+    else {
+      cookieList.push(getCookie('session_key'))
+      cookieList.push(getCookie('username'))
+      return cookieList
+    }
+
+  }
 
   function authenticate() {
     window.location.href=`https://www.last.fm/api/auth/?api_key=${process.env.NEXT_PUBLIC_API_KEY}&cb=${process.env.NEXT_PUBLIC_CALLBACK_URL}?authenticated=true`
@@ -29,7 +47,7 @@ export default function Home() {
     .then(response => {
       // handle success
       console.log(response.data);
-      setCookie(response.data.session.key, response.data.session.name);
+      setCookies(response.data.session.key, response.data.session.name);
       window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
     })
     .catch(error => {
@@ -57,27 +75,34 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const asyncEffect = async () => {
-      const cookie = await getCookie();
-      return cookie
+    const cookieList = getCookies();
+    if (cookieList != undefined) {
+      getUserInfo(cookieList[1] || '');
+      setAuthenticated(true);
+      setSessionKey(cookieList[0] || '');
+      return
     }
-    asyncEffect()
-    .then((response) => {
-      if (response[0] && response[1]) {
-        if (response[0].value != undefined) {
-          getUserInfo(response[1].value);
-          setAuthenticated(true);
-          setSessionKey(response[0].value);
-          return;
-        }
-      }
+    // const asyncEffect = async () => {
+    //   const cookie = await getCookies();
+    //   return cookie
+    // }
+    // asyncEffect()
+    // .then((response) => {
+    //   if (response[0] && response[1]) {
+    //     if (response[0].value != undefined) {
+    //       getUserInfo(response[1].value);
+    //       setAuthenticated(true);
+    //       setSessionKey(response[0].value);
+    //       return;
+    //     }
+    //   }
   
-      return;
-    })
-    .catch((error) => {
-      console.log(error);
-      return;
-    });
+    //   return;
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    //   return;
+    // });
 
     const queryParams = new URLSearchParams(window.location.search);
     const isAuthenticated = queryParams.get('authenticated') === 'true';

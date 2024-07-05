@@ -11,7 +11,7 @@ export async function setCookie(session_key: string, username: string) {
         path: '/',
         sameSite: 'none',
         secure: true,
-        //domain: "tunestats.vercel.app",
+        domain: "tunestats.vercel.app",
         maxAge: 60 * 24 * 60 * 60,
       })
 
@@ -22,7 +22,7 @@ export async function setCookie(session_key: string, username: string) {
         path: '/',
         sameSite: 'none',
         secure: true,
-        //domain: "tunestats.vercel.app",
+        domain: "tunestats.vercel.app",
         maxAge: 60 * 24 * 60 * 60,
       })
 }

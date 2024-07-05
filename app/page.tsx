@@ -1,113 +1,116 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState } from "react";
+import crypto from "crypto";
+import axios from "axios";
+import { setCookie, getCookie } from "@/app/actions";
+import  Header  from "./components/header";
 
 export default function Home() {
+  const [ authenticated, setAuthenticated ] = useState<boolean>(false);
+  const [ sessionKey, setSessionKey ] = useState<string>("");
+  const [ recentTracks, setRecentTracks ] = useState<any[]>([]);
+  const [ userInfo, setUserInfo ] = useState<any>({});
+
+  function authenticate() {
+    window.location.href=`http://www.last.fm/api/auth/?api_key=${process.env.NEXT_PUBLIC_API_KEY}&cb=${process.env.NEXT_PUBLIC_CALLBACK_URL}?authenticated=true`
+  }
+
+  function getSession(token: string, signature: string) {
+    axios.get(`http://ws.audioscrobbler.com/2.0/`, {
+      params: {
+        method: 'auth.getSession',
+        api_key: process.env.NEXT_PUBLIC_API_KEY,
+        token: token,
+        api_sig: signature,
+        format: 'json'
+      }
+    })
+    .then(response => {
+      // handle success
+      console.log(response.data);
+      setCookie(response.data.session.key, response.data.session.name);
+      window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
+    })
+    .catch(error => {
+      // handle error
+      window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
+    });
+  }
+
+  function getUserInfo(user: string) {
+    axios.get(`http://ws.audioscrobbler.com/2.0/`, {
+      params: {
+        method: 'user.getInfo',
+        user: user,
+        api_key: process.env.NEXT_PUBLIC_API_KEY,
+        format: 'json'
+      }
+    })
+    .then(response => {
+      setUserInfo(response.data.user);
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
+
+  useEffect(() => {
+    const asyncEffect = async () => {
+      const cookie = await getCookie();
+      return cookie
+    }
+    asyncEffect()
+    .then((response) => {
+      if (response[0] && response[1]) {
+        if (response[0].value != undefined) {
+          getUserInfo(response[1].value);
+          setAuthenticated(true);
+          setSessionKey(response[0].value);
+          return;
+        }
+      }
+  
+      return;
+    })
+    .catch((error) => {
+      console.log(error);
+      return;
+    });
+
+    const queryParams = new URLSearchParams(window.location.search);
+    const isAuthenticated = queryParams.get('authenticated') === 'true';
+    const token = queryParams.get('token');
+    const signature = `api_key${process.env.NEXT_PUBLIC_API_KEY}methodauth.getSessiontoken${token}${process.env.NEXT_PUBLIC_SHARED_SECRET}`;
+    const hashedSignature = crypto.createHash('md5').update(signature).digest('hex');
+    if (isAuthenticated && token) {
+      setAuthenticated(true);
+      getSession(token, hashedSignature);
+    }
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div>
+      { !authenticated && 
+        <div className="h-screen content-center grid justify-items-center">
+          <div className="card bg-neutral text-neutral-content w-96 shadow-xl">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title">Tunestats</h2>
+              <p className="pb-2">A better last.fm client</p>
+              <div className="card-actions justify-end">
+                <button className="btn btn-sm btn-block btn-error" onClick={authenticate}>Log In with Lastfm</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      }
+      { authenticated &&
+        <div>
+          <Header image={userInfo?.image?.[0]?.['#text'] ?? "vercel.svg"}/>
+          <div className="container mx-auto">
+          </div>
+        </div>
+      }
+    </div>
   );
 }

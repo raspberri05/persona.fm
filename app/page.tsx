@@ -86,6 +86,7 @@ export default function Home() {
     const hashedSignature = crypto.createHash('md5').update(signature).digest('hex');
     if (isAuthenticated && token) {
       setAuthenticated(true);
+      console.log("here")
       getSession(token, hashedSignature);
     }
   }, []);

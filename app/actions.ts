@@ -21,6 +21,7 @@ export async function setCookie(session_key: string, username: string) {
 }
 
 export async function getCookie() {
+    console.log("hi")
     const cookieStore = cookies()
     const session_key = cookieStore.get("session_key")
     const username = cookieStore.get("username")

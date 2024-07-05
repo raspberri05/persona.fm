@@ -1,6 +1,12 @@
 import Image from 'next/image';
+import { deleteCookie } from "cookies-next";
 
 export default function Header(props:any) {
+  function logout() {
+    deleteCookie('session_key');
+    deleteCookie('username');
+    window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
+  }
     return (
       <div className="navbar bg-error text-error-content">
         <div className="flex-1">
@@ -20,7 +26,7 @@ export default function Header(props:any) {
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-error text-error-content rounded-box z-[1] mt-3 w-52 p-2 shadow">
-              <li><a>Logout</a></li>
+              <li><a onClick={logout}>Logout</a></li>
             </ul>
           </div>
         </div>

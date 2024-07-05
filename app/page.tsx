@@ -82,27 +82,6 @@ export default function Home() {
       setSessionKey(cookieList[0] || '');
       return
     }
-    // const asyncEffect = async () => {
-    //   const cookie = await getCookies();
-    //   return cookie
-    // }
-    // asyncEffect()
-    // .then((response) => {
-    //   if (response[0] && response[1]) {
-    //     if (response[0].value != undefined) {
-    //       getUserInfo(response[1].value);
-    //       setAuthenticated(true);
-    //       setSessionKey(response[0].value);
-    //       return;
-    //     }
-    //   }
-  
-    //   return;
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    //   return;
-    // });
 
     const queryParams = new URLSearchParams(window.location.search);
     const isAuthenticated = queryParams.get('authenticated') === 'true';

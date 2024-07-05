@@ -35,6 +35,7 @@ export default function Home() {
     .catch(error => {
       // handle error
       window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
+      console.log(error)
     });
   }
 

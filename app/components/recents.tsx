@@ -54,9 +54,9 @@ export default function Recents(props: any) {
                   <div className="w-12 rounded-md">
                     <Image
                       alt="album cover"
-                      src={track.image[2]["#text"]}
-                      width={50}
-                      height={50}
+                      src={track.image[3]["#text"]}
+                      width={64}
+                      height={64}
                     />
                   </div>
                 </div>

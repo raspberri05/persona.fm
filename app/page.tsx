@@ -3,38 +3,9 @@
 import { useEffect } from "react";
 import Login from "./components/login";
 import crypto from "crypto";
-import axios from "axios";
-const { getCookies, setCookies } = require("lastfm-api-node");
+const { getCookies, setCookies, getSession } = require("lastfm-api-node");
 
 export default function Page() {
-  function getSession(token: string, signature: string) {
-    axios
-      .get(`https://ws.audioscrobbler.com/2.0/`, {
-        params: {
-          method: "auth.getSession",
-          api_key: process.env.NEXT_PUBLIC_API_KEY,
-          token: token,
-          api_sig: signature,
-          format: "json",
-        },
-      })
-      .then((response) => {
-        return setCookies(
-          "nextjs",
-          response.data.session.key,
-          response.data.session.name,
-        );
-      })
-      .then((response) => {
-        window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}/home`;
-        console.log(response);
-      })
-      .catch((error) => {
-        window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
-        console.log(error);
-      });
-  }
-
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const isAuthenticated = queryParams.get("authenticated") === "true";
@@ -52,26 +23,22 @@ export default function Page() {
         .update(signature)
         .digest("hex");
       if (token) {
-        getSession(token, hashedSignature);
+        getSession(token, hashedSignature, process.env.NEXT_PUBLIC_API_KEY)
+          .then((response: any) => {
+            return setCookies(
+              "nextjs",
+              response.data.session.key,
+              response.data.session.name,
+            );
+          })
+          .then((response: any) => {
+            window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}/home`;
+          })
+          .catch((error: any) => {
+            window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
+          });
       }
     }
-
-    // if (getCookies() != undefined) {
-    //   window.location.href="/home";
-    // }
-    // //const queryParams = new URLSearchParams(window.location.search);
-    // //const isAuthenticated = queryParams.get("authenticated") === "true";
-    // const token = queryParams.get("token");
-    // const signature = `api_key${process.env.NEXT_PUBLIC_API_KEY}methodauth.getSessiontoken${token}${process.env.NEXT_PUBLIC_SHARED_SECRET}`;
-    // const hashedSignature = crypto
-    //   .createHash("md5")
-    //   .update(signature)
-    //   .digest("hex");
-    //   if (isAuthenticated && token) {
-    //     getSession(token, hashedSignature);
-    //   } else {
-    //     window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
-    //   }
   }, []);
 
   return (

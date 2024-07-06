@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Header from "../components/header";
-import { getCookies, getUserInfo } from "../cookies";
-const { getAllArtists } = require("lastfm-scraper");
+const { getArtistCount, getUserInfo, getCookies } = require("lastfm-api-node");
 
 export default function HomeLayout({
   children,
@@ -15,15 +14,15 @@ export default function HomeLayout({
 
   useEffect(() => {
     const fetchData = async (username: string) => {
-      const data = await getUserInfo(username);
+      const data = await getUserInfo(username, process.env.NEXT_PUBLIC_API_KEY);
       return data;
     };
-    const cookieList = getCookies();
+    const cookieList = getCookies("nextjs");
     if (cookieList != undefined) {
       fetchData(cookieList[1] || "")
         .then((response) => {
           setUserInfo(response);
-          return getAllArtists(cookieList[1], true);
+          return getArtistCount(cookieList[1], true);
         })
         .then((response) => {
           setTotalArtists(response);

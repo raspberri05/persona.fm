@@ -5,7 +5,7 @@ import axios from "axios";
 import Recents from "../components/recents";
 import Loading from "../components/loading";
 import Tabs from "../components/tabs";
-import { getCookies } from "../cookies";
+const { getCookies } = require("lastfm-api-node");
 
 export default function Page() {
   const [recentTracks, setRecentTracks] = useState<any[]>([]);
@@ -36,7 +36,7 @@ export default function Page() {
   }
 
   useEffect(() => {
-    const cookieList = getCookies();
+    const cookieList = getCookies("nextjs");
     if (cookieList != undefined) {
       getRecentTracks(cookieList[1] || "");
     } else {

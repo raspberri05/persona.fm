@@ -1,20 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Login from "./components/login";
 import crypto from "crypto";
 import axios from "axios";
-import { setCookie } from "cookies-next";
-import { getCookies } from "./cookies";
+const { getCookies, setCookies } = require("lastfm-api-node");
 
 export default function Page() {
-  async function setCookies(session_key: string, username: string) {
-    console.log("settings");
-    setCookie("session_key", session_key);
-    setCookie("username", username);
-    return "done";
-  }
-
   function getSession(token: string, signature: string) {
     axios
       .get(`https://ws.audioscrobbler.com/2.0/`, {
@@ -28,6 +20,7 @@ export default function Page() {
       })
       .then((response) => {
         return setCookies(
+          "nextjs",
           response.data.session.key,
           response.data.session.name,
         );
@@ -45,7 +38,7 @@ export default function Page() {
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const isAuthenticated = queryParams.get("authenticated") === "true";
-    if (getCookies() != undefined) {
+    if (getCookies("nextjs") != undefined) {
       window.location.href = "/home";
     }
 

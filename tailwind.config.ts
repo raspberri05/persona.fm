@@ -7,8 +7,7 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-    },
+    extend: {},
   },
   plugins: [require("daisyui")],
   daisyui: {
@@ -18,10 +17,9 @@ const config: Config = {
           ...require("daisyui/src/theming/themes")["business"],
           "--rounded-box": "0.5rem",
           "--rounded-btn": "0.5rem",
-
         },
       },
     ],
-  }
+  },
 };
 export default config;

@@ -63,9 +63,7 @@ export default function Recents(props: any) {
               </td>
               <td>
                 <p className="font-bold text-md">{track.name}</p>
-                <p>
-                  {track.artist["#text"]}
-                </p>
+                <p>{track.artist["#text"]}</p>
               </td>
               <td className="text-end pr-2 lg:pr-0">
                 <p

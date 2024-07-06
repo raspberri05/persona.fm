@@ -9,6 +9,7 @@ import Loading from "./components/loading";
 import Login from "./components/login";
 import Info from "./components/info";
 import { setCookie, getCookie, hasCookie } from "cookies-next";
+import Tabs from "./components/tabs";
 
 export default function Home() {
   const [authenticated, setAuthenticated] = useState<boolean>(false);
@@ -128,31 +129,14 @@ export default function Home() {
       {!authenticated && <Login />}
       {authenticated && (
         <div>
-          <Header image={userInfo?.image?.[0]?.["#text"] ?? "/images/image.png"} />
+          <Header
+            image={userInfo?.image?.[0]?.["#text"] ?? "/images/image.png"}
+          />
           <div className="container mx-auto">
             <br />
             <Info userInfo={userInfo} />
             <br />
-            <div role="tablist" className="tabs tabs-boxed">
-              <a
-                role="tab"
-                className={
-                  "tab " + (activeTab === "recent-tracks" ? "tab-active" : "")
-                }
-                onClick={() => switchTab("recent-tracks")}
-              >
-                Recent Tracks
-              </a>
-              <a
-                role="tab"
-                className={
-                  "tab " + (activeTab === "charts" ? "tab-active" : "")
-                }
-                onClick={() => switchTab("charts")}
-              >
-                Charts
-              </a>
-            </div>
+            <Tabs activeTab={activeTab} switchTab={switchTab} />
             <br />
             {loading && <Loading />}
             {activeTab === "recent-tracks" && (

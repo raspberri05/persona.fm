@@ -6,7 +6,7 @@ import Header from "../components/header";
 import Recents from "../components/recents";
 import Loading from "../components/loading";
 import Tabs from "../components/tabs";
-import { getCookies } from "../cookies";
+import { getCookies, getUserInfo } from "../cookies";
 
 export default function Page() {
   const [recentTracks, setRecentTracks] = useState<any[]>([]);
@@ -24,7 +24,6 @@ export default function Page() {
         },
       })
       .then((response) => {
-        console.log(response.data);
         setRecentTracks(response.data.recenttracks.track);
         setLoading(false);
       })
@@ -38,10 +37,17 @@ export default function Page() {
   }
 
   useEffect(() => {
+    const fetchData = async (username: string) => {
+      const data = await getUserInfo(username);
+      return data
+    };
     const cookieList = getCookies();
     if (cookieList != undefined) {
+      fetchData(cookieList[1] || "")
+      .then((response) => {
+        //console.log(response)
+      })
       getRecentTracks(cookieList[1] || "");
-      return;
     } else {
       window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
     }

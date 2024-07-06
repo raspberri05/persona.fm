@@ -11,3 +11,21 @@ export function getCookies() {
     return cookieList;
   }
 }
+
+export async function getUserInfo(user: string) {
+  return axios
+    .get(`https://ws.audioscrobbler.com/2.0/`, {
+      params: {
+        method: "user.getInfo",
+        user: user,
+        api_key: process.env.NEXT_PUBLIC_API_KEY,
+        format: "json",
+      },
+    })
+    .then((response) => {
+      return response.data.user
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}

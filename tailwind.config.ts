@@ -8,13 +8,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
     },
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      {
+        business: {
+          ...require("daisyui/src/theming/themes")["business"],
+          "--rounded-box": "0.5rem",
+          "--rounded-btn": "0.5rem",
+
+        },
+      },
+    ],
+  }
 };
 export default config;

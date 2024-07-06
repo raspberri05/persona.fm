@@ -46,10 +46,10 @@ export default function Recents(props: any) {
           {props.recentTracks.map((track: any, index: any) => (
             <tr
               key={index}
-              className="hover:text-primary cursor-pointer"
+              className="hover:text-secondary cursor-pointer"
               onClick={() => redirect(track.url)}
             >
-              <td style={{ width: "0" }} className="pr-1 pb-1">
+              <td style={{ width: "0" }} className="pr-1 pb-1 pl-2 lg:pl-0">
                 <div className="avatar">
                   <div className="w-12 rounded-md">
                     <Image
@@ -64,10 +64,10 @@ export default function Recents(props: any) {
               <td>
                 <p className="font-bold text-md">{track.name}</p>
                 <p>
-                  {track.artist["#text"]} - {track.album["#text"]}
+                  {track.artist["#text"]}
                 </p>
               </td>
-              <td className="text-end">
+              <td className="text-end pr-2 lg:pr-0">
                 <p
                   className={
                     track?.["@attr"]?.["nowplaying"] ? "text-error" : ""

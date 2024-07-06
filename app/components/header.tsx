@@ -8,7 +8,7 @@ export default function Header(props: any) {
     window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
   }
   return (
-    <div className="navbar bg-error text-error-content">
+    <div className="navbar bg-neutral text-neutral-content">
       <div className="flex-1">
         <a className="btn btn-ghost text-xl">Tunestats</a>
       </div>

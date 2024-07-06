@@ -7,6 +7,7 @@ import Header from "./components/header";
 import Recents from "./components/recents";
 import Loading from "./components/loading";
 import Login from "./components/login";
+import Info from "./components/info";
 import { setCookie, getCookie, hasCookie } from "cookies-next";
 
 export default function Home() {
@@ -127,9 +128,10 @@ export default function Home() {
       {!authenticated && <Login />}
       {authenticated && (
         <div>
-          <Header image={userInfo?.image?.[0]?.["#text"] ?? "vercel.svg"} />
+          <Header image={userInfo?.image?.[0]?.["#text"] ?? "/images/image.png"} />
           <div className="container mx-auto">
             <br />
+            <Info userInfo={userInfo} />
             <br />
             <div role="tablist" className="tabs tabs-boxed">
               <a

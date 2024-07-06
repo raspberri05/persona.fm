@@ -23,7 +23,7 @@ export async function getUserInfo(user: string) {
       },
     })
     .then((response) => {
-      return response.data.user
+      return response.data.user;
     })
     .catch((error) => {
       console.log(error);

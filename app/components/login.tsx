@@ -1,6 +1,6 @@
 export default function Login() {
   function authenticate() {
-    window.location.href = `https://www.last.fm/api/auth/?api_key=${process.env.NEXT_PUBLIC_API_KEY}&cb=${process.env.NEXT_PUBLIC_CALLBACK_URL}?authenticated=true`;
+    window.location.href = `https://www.last.fm/api/auth/?api_key=${process.env.NEXT_PUBLIC_API_KEY}&cb=${process.env.NEXT_PUBLIC_CALLBACK_URL}/home?authenticated=true`;
   }
 
   return (

@@ -19,10 +19,9 @@ export default function HomeLayout({
     };
     const cookieList = getCookies("nextjs");
     if (cookieList != undefined) {
-      fetchData(cookieList[1] || "")
-        .then((response) => {
-          setUserInfo(response);
-        })
+      fetchData(cookieList[1] || "").then((response) => {
+        setUserInfo(response);
+      });
     } else {
       window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
     }

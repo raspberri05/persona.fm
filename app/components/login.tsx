@@ -1,4 +1,4 @@
-export default function Login() {
+export default function Login(props: any) {
   function authenticate() {
     window.location.href = `https://www.last.fm/api/auth/?api_key=${process.env.NEXT_PUBLIC_API_KEY}&cb=${process.env.NEXT_PUBLIC_CALLBACK_URL}?authenticated=true`;
   }
@@ -10,12 +10,17 @@ export default function Login() {
           <h2 className="card-title">Tunestats</h2>
           <p className="pb-2">A better last.fm client</p>
           <div className="card-actions justify-end">
-            <button
-              className="btn btn-sm btn-block btn-error"
-              onClick={authenticate}
-            >
-              Log In with Lastfm
-            </button>
+            {props.loading === false && (
+              <button
+                className="btn btn-sm btn-block btn-error"
+                onClick={authenticate}
+              >
+                Log In with Lastfm
+              </button>
+            )}
+            {props.loading === true && (
+              <span className="loading loading-spinner text-error"></span>
+            )}
           </div>
         </div>
       </div>

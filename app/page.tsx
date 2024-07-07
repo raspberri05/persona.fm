@@ -1,16 +1,19 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Login from "./components/login";
 import crypto from "crypto";
 const { getCookies, setCookies, getSession } = require("lastfm-api-node");
 
 export default function Page() {
+  const [auth, setAuth] = useState<boolean>(false);
+
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const isAuthenticated = queryParams.get("authenticated") === "true";
+    setAuth(isAuthenticated);
     if (getCookies("nextjs") != undefined) {
-      window.location.href = "/home#overview";
+      window.location.href = "/home#overview/recents";
     }
 
     if (isAuthenticated === false) {
@@ -32,7 +35,7 @@ export default function Page() {
             );
           })
           .then((response: any) => {
-            window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}/home#overview`;
+            window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}/home#overview/recents`;
           })
           .catch((error: any) => {
             window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
@@ -43,7 +46,7 @@ export default function Page() {
 
   return (
     <div>
-      <Login />
+      <Login loading={auth} />
     </div>
   );
 }

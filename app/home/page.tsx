@@ -4,31 +4,32 @@ import { useEffect, useState } from "react";
 import Recents from "../components/recents";
 import Loading from "../components/loading";
 const { getCookies, getRecentTracks } = require("lastfm-api-node");
+const { comparePath } = require("../paths");
 
 export default function Page() {
   const [recentTracks, setRecentTracks] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [active, setActive] = useState("")
-
-  function comparePath() {
-    const path = window.location.hash.split("#")[1]
-    setActive(path)
-  }
+  const [active, setActive] = useState("");
 
   useEffect(() => {
-    window.addEventListener("hashchange", comparePath, false);
+    const handleHashChange = () => {
+      setActive(comparePath());
+    };
+    window.addEventListener("hashchange", handleHashChange, false);
+
     const cookieList = getCookies("nextjs");
     if (cookieList != undefined) {
       getRecentTracks(cookieList[1] || "", process.env.NEXT_PUBLIC_API_KEY)
         .then((response: any) => {
           setRecentTracks(response.data.recenttracks.track);
           setLoading(false);
-          comparePath()
+          setActive(comparePath());
         })
         .catch((error: any) => {
           console.log(error);
         });
-        return () => window.removeEventListener("hashchange", comparePath, false);
+      return () =>
+        window.removeEventListener("hashchange", handleHashChange, false);
     } else {
       window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
     }
@@ -37,7 +38,9 @@ export default function Page() {
   return (
     <div className="container mx-auto">
       {loading && <Loading />}
-      {active === "overview" && <Recents recentTracks={recentTracks} />}
+      {active.includes("overview") && active === "overview/recents" && (
+        <Recents recentTracks={recentTracks} />
+      )}
       {active === "charts" && <p>Charts</p>}
     </div>
   );

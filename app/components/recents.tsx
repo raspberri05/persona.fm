@@ -51,7 +51,7 @@ export default function Recents(props: any) {
             >
               <td style={{ width: "0" }} className="pr-1 pb-1 pl-2 lg:pl-0">
                 <div className="avatar">
-                  <div className="w-12 rounded-md">
+                  <div className="w-12">
                     <Image
                       alt="album cover"
                       src={track.image[3]["#text"]}

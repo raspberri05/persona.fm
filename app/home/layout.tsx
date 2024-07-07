@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Header from "../components/header";
-const { getArtistCount, getUserInfo, getCookies } = require("lastfm-api-node");
+import Tabs from "../components/tabs";
+const { getUserInfo, getCookies } = require("lastfm-api-node");
 
 export default function HomeLayout({
   children,
@@ -10,7 +11,6 @@ export default function HomeLayout({
   children: React.ReactNode;
 }>) {
   const [userInfo, setUserInfo] = useState<any>({});
-  const [totalArtists, setTotalArtists] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async (username: string) => {
@@ -22,11 +22,7 @@ export default function HomeLayout({
       fetchData(cookieList[1] || "")
         .then((response) => {
           setUserInfo(response);
-          return getArtistCount(cookieList[1], true);
         })
-        .then((response) => {
-          setTotalArtists(response);
-        });
     } else {
       window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
     }
@@ -37,9 +33,9 @@ export default function HomeLayout({
       <body suppressHydrationWarning={true}>
         <Header
           image={userInfo?.image?.[0]?.["#text"] ?? "/images/image.png"}
-          scrobbles={userInfo?.playcount}
-          artists={totalArtists}
         />
+        <br />
+        <Tabs />
         <br />
         {children}
       </body>

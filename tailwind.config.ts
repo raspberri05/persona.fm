@@ -15,8 +15,6 @@ const config: Config = {
       {
         business: {
           ...require("daisyui/src/theming/themes")["business"],
-          "--rounded-box": "0.5rem",
-          "--rounded-btn": "0.5rem",
         },
       },
     ],

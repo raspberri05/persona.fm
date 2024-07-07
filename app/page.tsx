@@ -10,7 +10,7 @@ export default function Page() {
     const queryParams = new URLSearchParams(window.location.search);
     const isAuthenticated = queryParams.get("authenticated") === "true";
     if (getCookies("nextjs") != undefined) {
-      window.location.href = "/home";
+      window.location.href = "/home#overview";
     }
 
     if (isAuthenticated === false) {
@@ -32,7 +32,7 @@ export default function Page() {
             );
           })
           .then((response: any) => {
-            window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}/home`;
+            window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}/home#overview`;
           })
           .catch((error: any) => {
             window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;

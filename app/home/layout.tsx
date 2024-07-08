@@ -33,10 +33,13 @@ export default function HomeLayout({
         <Header
           image={userInfo?.image?.[0]?.["#text"] ?? "/images/image.png"}
         />
-        <br />
-        <Tabs />
-        <br />
-        {children}
+        <div className="container mx-auto px-4">
+          <br />
+          <Tabs />
+          <br />
+          {children}
+          <br />
+        </div>
       </body>
     </html>
   );

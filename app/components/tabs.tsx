@@ -25,7 +25,7 @@ export default function Tabs() {
   }, []);
 
   return (
-    <div className="container mx-auto">
+    <div>
       <div role="tablist" className="tabs tabs-boxed">
         <a
           role="tab"

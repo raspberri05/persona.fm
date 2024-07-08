@@ -8,11 +8,11 @@ export default function Header(props: any) {
     window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
   }
   return (
-    <div className="navbar bg-neutral text-neutral-content">
-      <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Tunestats</a>
+    <div className="navbar bg-neutral text-neutral-content hover:cursor-default">
+      <div className="flex-1 sm:pl-16">
+        <a className="text-xl">Tunestats</a>
       </div>
-      <div className="flex-none gap-2">
+      <div className="flex-none gap-2 sm:pr-12">
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
@@ -30,10 +30,12 @@ export default function Header(props: any) {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-error text-error-content rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-error text-error-content z-[1] mt-3 w-18 p-0 shadow"
           >
-            <li>
-              <a onClick={logout}>Logout</a>
+            <li className="">
+              <a className="block text-center px-4 py-2" onClick={logout}>
+                Logout
+              </a>
             </li>
           </ul>
         </div>

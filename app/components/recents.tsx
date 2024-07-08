@@ -40,7 +40,7 @@ export default function Recents(props: any) {
   };
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto w-full">
       <table className="table">
         <tbody>
           {props.recentTracks.map((track: any, index: any) => (
@@ -49,7 +49,7 @@ export default function Recents(props: any) {
               className="hover:text-secondary cursor-pointer"
               onClick={() => redirect(track.url)}
             >
-              <td style={{ width: "0" }} className="pr-1 pb-1 pl-2 lg:pl-0">
+              <td style={{ width: "0" }} className="px-0 py-0">
                 <div className="avatar">
                   <div className="w-12">
                     <Image
@@ -65,7 +65,7 @@ export default function Recents(props: any) {
                 <p className="font-bold text-md">{track.name}</p>
                 <p>{track.artist["#text"]}</p>
               </td>
-              <td className="text-end pr-2 lg:pr-0">
+              <td className="text-end px-0">
                 <p
                   className={
                     track?.["@attr"]?.["nowplaying"] ? "text-error" : ""

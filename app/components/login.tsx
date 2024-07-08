@@ -4,18 +4,18 @@ export default function Login(props: any) {
   }
 
   return (
-    <div className="h-screen content-center grid justify-items-center">
-      <div className="card bg-neutral text-neutral-content w-96 shadow-xl">
+    <div className="h-dvh content-center grid justify-items-center bg-neutral sm:btn-active">
+      <div className="card bg-neutral text-neutral-content w-96">
         <div className="card-body items-center text-center">
-          <h2 className="card-title">Tunestats</h2>
-          <p className="pb-2">A better last.fm client</p>
+          <h2 className="card-title text-4xl">Tunestats</h2>
+          <p className="pb-4 pt-3 text-xl">A better last.fm client</p>
           <div className="card-actions justify-end">
             {props.loading === false && (
               <button
-                className="btn btn-sm btn-block btn-error"
+                className="btn btn-sm btn-block btn-error text-lg px-4 pt-2 pb-9"
                 onClick={authenticate}
               >
-                Log In with Lastfm
+                Log In
               </button>
             )}
             {props.loading === true && (

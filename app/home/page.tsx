@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Recents from "../components/recents";
 import Loading from "../components/loading";
+import Search from "../components/search";
 const { getCookies, getRecentTracks } = require("lastfm-api-node");
 const { comparePath } = require("../paths");
 
@@ -41,7 +42,8 @@ export default function Page() {
       {active.includes("overview") && active === "overview/recents" && (
         <Recents recentTracks={recentTracks} />
       )}
-      {active === "charts" && <p>Charts</p>}
+      {active.includes("charts") && <p>Charts</p>}
+      {active.includes("search") && <Search active={active} />}
     </div>
   );
 }

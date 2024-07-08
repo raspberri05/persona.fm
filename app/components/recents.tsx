@@ -46,7 +46,7 @@ export default function Recents(props: any) {
           {props.recentTracks.map((track: any, index: any) => (
             <tr
               key={index}
-              className="hover:text-secondary cursor-pointer"
+              className="hover:text-secondary cursor-pointer border-0"
               onClick={() => redirect(track.url)}
             >
               <td style={{ width: "0" }} className="px-0 py-0">

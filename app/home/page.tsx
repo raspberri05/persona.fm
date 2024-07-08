@@ -42,7 +42,6 @@ export default function Page() {
       {active.includes("overview") && active === "overview/recents" && (
         <Recents recentTracks={recentTracks} />
       )}
-      {active.includes("charts") && <p>Charts</p>}
       {active.includes("search") && <Search active={active} />}
     </div>
   );

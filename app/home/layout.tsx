@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Header from "../components/header";
 import Tabs from "../components/tabs";
 const { getUserInfo, getCookies } = require("lastfm-api-node");
 
@@ -30,11 +29,7 @@ export default function HomeLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
-        <Header
-          image={userInfo?.image?.[0]?.["#text"] ?? "/images/image.png"}
-        />
         <div className="container mx-auto px-4">
-          <br />
           <Tabs />
           <br />
           {children}

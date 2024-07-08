@@ -25,8 +25,17 @@ export default function Tabs() {
   }, []);
 
   return (
-    <div>
-      <div role="tablist" className="tabs tabs-boxed">
+    <div
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
+        backgroundColor: "#1f1f1f",
+        width: "100%",
+      }}
+    >
+      <br />
+      <div role="tablist" className="tabs tabs-boxed bg-neutral">
         <a
           role="tab"
           className={`tab hover:tab-active ${active.includes("overview") ? "tab-active" : ""}`}
@@ -36,10 +45,10 @@ export default function Tabs() {
         </a>
         <a
           role="tab"
-          className={`tab hover:tab-active ${active.includes("charts") ? "tab-active" : ""}`}
-          onClick={() => switchTab("charts/abc")}
+          className={`tab hover:tab-active ${active.includes("social") ? "tab-active" : ""}`}
+          onClick={() => switchTab("social/followers")}
         >
-          Charts
+          Social
         </a>
         <a
           role="tab"
@@ -47,6 +56,20 @@ export default function Tabs() {
           onClick={() => switchTab("search/tracks")}
         >
           Search
+        </a>
+        <a
+          role="tab"
+          className={`tab hover:tab-active ${active.includes("scrobble") ? "tab-active" : ""}`}
+          onClick={() => switchTab("scrobble/manual")}
+        >
+          Scrobble
+        </a>
+        <a
+          role="tab"
+          className={`tab hover:tab-active ${active.includes("tools") ? "tab-active" : ""}`}
+          onClick={() => switchTab("tools/settings")}
+        >
+          Tools
         </a>
       </div>
       <br />
@@ -82,6 +105,24 @@ export default function Tabs() {
           </a>
         </div>
       )}
+      {active.includes("social") && (
+        <div role="tablist" className="tabs tabs-bordered">
+          <a
+            role="tab"
+            className={`tab hover:tab-active ${active.includes("social/followers") ? "tab-active" : ""}`}
+            onClick={() => switchTab("social/followers")}
+          >
+            Recents
+          </a>
+          <a
+            role="tab"
+            className={`tab hover:tab-active ${active.includes("social/following") ? "tab-active" : ""}`}
+            onClick={() => switchTab("social/following")}
+          >
+            Tracks
+          </a>
+        </div>
+      )}
       {active.includes("search") && (
         <div role="tablist" className="tabs tabs-bordered">
           <a
@@ -104,6 +145,28 @@ export default function Tabs() {
             onClick={() => switchTab("search/albums")}
           >
             Albums
+          </a>
+        </div>
+      )}
+      {active.includes("scrobble") && (
+        <div role="tablist" className="tabs tabs-bordered">
+          <a
+            role="tab"
+            className={`tab hover:tab-active ${active.includes("scrobble/manual") ? "tab-active" : ""}`}
+            onClick={() => switchTab("scrobble/manual")}
+          >
+            Manual
+          </a>
+        </div>
+      )}
+      {active.includes("tools") && (
+        <div role="tablist" className="tabs tabs-bordered">
+          <a
+            role="tab"
+            className={`tab hover:tab-active ${active.includes("tools/settings") ? "tab-active" : ""}`}
+            onClick={() => switchTab("tools/settings")}
+          >
+            Settings
           </a>
         </div>
       )}

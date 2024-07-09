@@ -41,7 +41,7 @@ function getRecentTracks(username: string, api_key: string) {
 function getTopItems(
   user: string,
   type: string,
-  period: number,
+  period: string,
   limit: number,
   page: number,
   api_key: string,

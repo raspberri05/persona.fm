@@ -9,6 +9,11 @@ export default function Tabs() {
   function switchTab(tab: string) {
     window.location.hash = `#${tab}`;
     setActive(comparePath());
+    const elem = document.activeElement;
+    if (elem) {
+      //@ts-expect-error
+      elem?.blur();
+    }
   }
 
   useEffect(() => {
@@ -140,7 +145,7 @@ export default function Tabs() {
           <a
             role="tab"
             className={`tab hover:tab-active ${active.includes("overview/tracks") ? "tab-active" : ""}`}
-            onClick={() => switchTab("overview/tracks")}
+            onClick={() => switchTab("overview/tracks/7day")}
           >
             Tracks
           </a>
@@ -205,6 +210,48 @@ export default function Tabs() {
           >
             Settings
           </a>
+        </div>
+      )}
+
+      {active.includes("overview/tracks/") && (
+        <div className="dropdown dropdown-hover">
+          <br />
+          <div tabIndex={0} role="button" className="btn btn-primary m-1">
+            {active.split("tracks/")[1]}{" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-caret-down-fill"
+              viewBox="0 0 16 16"
+            >
+              <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+            </svg>
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu bg-primary z-[1] w-206 p-2 shadow"
+          >
+            <li>
+              <a onClick={() => switchTab("overview/tracks/7day")}>7 days</a>
+            </li>
+            <li>
+              <a onClick={() => switchTab("overview/tracks/1month")}>1 month</a>
+            </li>
+            <li>
+              <a onClick={() => switchTab("overview/tracks/3month")}>3 months</a>
+            </li>
+            <li>
+              <a onClick={() => switchTab("overview/tracks/6month")}>6 months</a>
+            </li>
+            <li>
+              <a onClick={() => switchTab("overview/tracks/12month")}>12 months</a>
+            </li>
+            <li>
+              <a onClick={() => switchTab("overview/tracks/overall")}>overall</a>
+            </li>
+          </ul>
         </div>
       )}
     </div>

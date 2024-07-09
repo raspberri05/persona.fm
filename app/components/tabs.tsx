@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-const { comparePath } = require("../paths");
+import { comparePath } from "../api/lib/paths";
 
 export default function Tabs() {
   const [active, setActive] = useState("");

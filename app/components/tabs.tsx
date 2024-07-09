@@ -240,16 +240,24 @@ export default function Tabs() {
               <a onClick={() => switchTab("overview/tracks/1month")}>1 month</a>
             </li>
             <li>
-              <a onClick={() => switchTab("overview/tracks/3month")}>3 months</a>
+              <a onClick={() => switchTab("overview/tracks/3month")}>
+                3 months
+              </a>
             </li>
             <li>
-              <a onClick={() => switchTab("overview/tracks/6month")}>6 months</a>
+              <a onClick={() => switchTab("overview/tracks/6month")}>
+                6 months
+              </a>
             </li>
             <li>
-              <a onClick={() => switchTab("overview/tracks/12month")}>12 months</a>
+              <a onClick={() => switchTab("overview/tracks/12month")}>
+                12 months
+              </a>
             </li>
             <li>
-              <a onClick={() => switchTab("overview/tracks/overall")}>overall</a>
+              <a onClick={() => switchTab("overview/tracks/overall")}>
+                overall
+              </a>
             </li>
           </ul>
         </div>

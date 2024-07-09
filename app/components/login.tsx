@@ -19,7 +19,7 @@ export default function Login(props: any) {
               </button>
             )}
             {props.loading === true && (
-              <span className="loading loading-spinner text-error"></span>
+              <span className="loading loading-spinner text-error" />
             )}
           </div>
         </div>

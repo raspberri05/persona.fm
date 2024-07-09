@@ -21,7 +21,7 @@ export default function HomeLayout({
 
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true}>
+      <body suppressHydrationWarning>
         <div className="container mx-auto px-4">
           <Tabs />
           <br />

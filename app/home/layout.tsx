@@ -9,11 +9,10 @@ export default function HomeLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   useEffect(() => {
     const cookieList = getCookies("nextjs");
     if (cookieList != undefined) {
-      return
+      return;
     } else {
       window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
     }
@@ -22,7 +21,7 @@ export default function HomeLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning>
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-2">
           <Tabs />
           <br />
           {children}

@@ -66,4 +66,25 @@ function getTopItems(
     });
 }
 
-export { getRecentTracks, getOverallCount, getTopItems };
+function getFriends(user: string, api_key: string, limit:number, page:number) {
+  return axios
+    .get("https://ws.audioscrobbler.com/2.0/", {
+      params: {
+        method: "user.getFriends",
+        user: user,
+        api_key: api_key,
+        limit: limit,
+        page: page,
+        recenttracks: true,
+        format: "json",
+      },
+    })
+    .then((response) => {
+      return response.data.friends;
+    })
+    .catch((error) => {
+      return error;
+    });
+}
+
+export { getRecentTracks, getOverallCount, getTopItems, getFriends };

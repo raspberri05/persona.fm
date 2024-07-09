@@ -9,7 +9,7 @@ const {
 
 function getUserInfo(username: string, api_key: string) {
   return axios
-    .get(`https://ws.audioscrobbler.com/2.0/`, {
+    .get("https://ws.audioscrobbler.com/2.0/", {
       params: {
         method: "user.getInfo",
         user: username,
@@ -51,7 +51,7 @@ function setCookies(type: string, session_key: string, username: string) {
 
 function getSession(token: string, signature: string, api_key: string) {
   return axios
-    .get(`https://ws.audioscrobbler.com/2.0/`, {
+    .get("https://ws.audioscrobbler.com/2.0/", {
       params: {
         method: "auth.getSession",
         api_key: api_key,

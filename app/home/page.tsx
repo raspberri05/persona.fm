@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import Recents from "../components/recents";
 import Loading from "../components/loading";
 import Search from "../components/search";
-const { getRecentTracks } = require("../api/lib/lastfm/user");
-const { getCookies} = require('../api/lib/lastfm/auth')
-const { comparePath } = require("../paths");
+import { getRecentTracks } from "../api/lib/lastfm/user";
+import { getCookies } from "../api/lib/lastfm/auth";
+import { comparePath } from "../api/lib/paths";
 
 export default function Page() {
   const [recentTracks, setRecentTracks] = useState<any[]>([]);
@@ -21,6 +21,7 @@ export default function Page() {
 
     const cookieList = getCookies("nextjs");
     if (cookieList != undefined) {
+      //@ts-expect-error
       getRecentTracks(cookieList[1] || "", process.env.NEXT_PUBLIC_API_KEY)
         .then((response: any) => {
           setRecentTracks(response.data.recenttracks.track);

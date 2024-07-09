@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Login from "./components/login";
 import crypto from "crypto";
-const { getCookies, setCookies, getSession } = require("./api/lib/lastfm/auth");
+import { getCookies, setCookies, getSession } from "./api/lib/lastfm/auth";
 
 export default function Page() {
   const [auth, setAuth] = useState<boolean>(false);
@@ -26,6 +26,7 @@ export default function Page() {
         .update(signature)
         .digest("hex");
       if (token) {
+        //@ts-expect-error
         getSession(token, hashedSignature, process.env.NEXT_PUBLIC_API_KEY)
           .then((response: any) => {
             return setCookies(

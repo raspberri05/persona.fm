@@ -1,26 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Tabs from "../components/tabs";
-const { getUserInfo, getCookies } = require("../api/lib/lastfm/auth");
+import { getCookies } from "../api/lib/lastfm/auth";
 
 export default function HomeLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [userInfo, setUserInfo] = useState<any>({});
 
   useEffect(() => {
-    const fetchData = async (username: string) => {
-      const data = await getUserInfo(username, process.env.NEXT_PUBLIC_API_KEY);
-      return data;
-    };
     const cookieList = getCookies("nextjs");
     if (cookieList != undefined) {
-      fetchData(cookieList[1] || "").then((response) => {
-        setUserInfo(response);
-      });
+      return
     } else {
       window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
     }

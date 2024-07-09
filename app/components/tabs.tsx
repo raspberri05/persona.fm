@@ -124,7 +124,10 @@ export default function Tabs() {
           </svg>
         </a>
       </div>
-      {(active.includes("overview") || active.includes("search") || active.includes("scrobble") || active.includes("tools")) && <br />}
+      {(active.includes("overview") ||
+        active.includes("search") ||
+        active.includes("scrobble") ||
+        active.includes("tools")) && <br />}
       {active.includes("overview") && (
         <div role="tablist" className="tabs tabs-bordered tabs-sm">
           <a

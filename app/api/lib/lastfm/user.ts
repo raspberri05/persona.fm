@@ -66,7 +66,12 @@ function getTopItems(
     });
 }
 
-function getFriends(user: string, api_key: string, limit:number, page:number) {
+function getFriends(
+  user: string,
+  api_key: string,
+  limit: number,
+  page: number,
+) {
   return axios
     .get("https://ws.audioscrobbler.com/2.0/", {
       params: {

@@ -22,7 +22,7 @@ function getOverallCount(username: string, cors: boolean, type: string) {
 
 function getRecentTracks(username: string, api_key: string) {
   return axios
-    .get(`https://ws.audioscrobbler.com/2.0/`, {
+    .get("https://ws.audioscrobbler.com/2.0/", {
       params: {
         method: "user.getRecentTracks",
         user: username,
@@ -47,7 +47,7 @@ function getTopItems(
   api_key: string,
 ) {
   return axios
-    .get(`https://ws.audioscrobbler.com/2.0/`, {
+    .get("https://ws.audioscrobbler.com/2.0/", {
       params: {
         method: `user.getTop${capitalize(type)}`,
         user: user,

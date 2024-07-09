@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Login from "./components/login";
 import crypto from "crypto";
-const { getCookies, setCookies, getSession } = require("lastfm-api-node");
+const { getCookies, setCookies, getSession } = require("./api/lib/lastfm/auth");
 
 export default function Page() {
   const [auth, setAuth] = useState<boolean>(false);

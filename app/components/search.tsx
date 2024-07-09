@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-
 export default function Search(props: any) {
   return (
     <div className="container mx-auto">

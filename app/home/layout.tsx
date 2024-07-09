@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Tabs from "../components/tabs";
-const { getUserInfo, getCookies } = require("lastfm-api-node");
+const { getUserInfo, getCookies } = require("../api/lib/lastfm/auth");
 
 export default function HomeLayout({
   children,

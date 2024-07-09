@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Recents from "../components/recents";
 import Loading from "../components/loading";
 import Search from "../components/search";
-const { getCookies, getRecentTracks } = require("lastfm-api-node");
+const { getRecentTracks } = require("../api/lib/lastfm/user");
+const { getCookies} = require('../api/lib/lastfm/auth')
 const { comparePath } = require("../paths");
 
 export default function Page() {

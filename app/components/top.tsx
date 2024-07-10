@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { getTopItems } from "../api/lib/lastfm/user";
 
 export default function Top(props: any) {
-  const [images, setImages] = useState<any[]>([]);
+  const [images, setImages] = useState<any[string]>([]);
   const [topTracks, setTopTracks] = useState<any>({
     "7day": [],
     "1month": [],
@@ -90,7 +90,7 @@ export default function Top(props: any) {
       <table className="table">
         <tbody>
           {topTracks[props.active.split("overview/tracks/")[1]].map(
-            (track: any, index: any) => (
+            (track: any, index: number) => (
               <tr
                 key={index}
                 className="hover:text-secondary cursor-pointer border-0"

@@ -26,7 +26,7 @@ export default function Page() {
       if (token) {
         //@ts-expect-error
         getSession(token, hashedSignature, process.env.NEXT_PUBLIC_API_KEY)
-          .then((response: any) => {
+          .then((response) => {
             return setCookies(
               "nextjs",
               response.data.session.key,

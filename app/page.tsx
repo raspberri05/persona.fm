@@ -24,8 +24,7 @@ export default function Page() {
         .update(signature)
         .digest("hex");
       if (token) {
-        //@ts-expect-error
-        getSession(token, hashedSignature, process.env.NEXT_PUBLIC_API_KEY)
+        getSession(token, hashedSignature, process.env.NEXT_PUBLIC_API_KEY || "")
           .then((response) => {
             return setCookies(
               "nextjs",

@@ -24,7 +24,7 @@ export default function Top(props: any) {
           api_key: process.env.NEXT_PUBLIC_API_KEY,
           format: "json",
           track: title,
-          artist: artist,
+          artist,
         },
       })
       .then((response) => {

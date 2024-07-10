@@ -26,7 +26,7 @@ function getRecentTracks(username: string, api_key: string) {
       params: {
         method: "user.getRecentTracks",
         user: username,
-        api_key: api_key,
+        api_key,
         format: "json",
       },
     })
@@ -50,11 +50,11 @@ function getTopItems(
     .get("https://ws.audioscrobbler.com/2.0/", {
       params: {
         method: `user.getTop${capitalize(type)}`,
-        user: user,
-        period: period,
-        limit: limit,
-        page: page,
-        api_key: api_key,
+        user,
+        period,
+        limit,
+        page,
+        api_key,
         format: "json",
       },
     })
@@ -76,10 +76,10 @@ function getFriends(
     .get("https://ws.audioscrobbler.com/2.0/", {
       params: {
         method: "user.getFriends",
-        user: user,
-        api_key: api_key,
-        limit: limit,
-        page: page,
+        user,
+        api_key,
+        limit,
+        page,
         recenttracks: true,
         format: "json",
       },

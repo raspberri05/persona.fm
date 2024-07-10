@@ -13,7 +13,7 @@ function getUserInfo(username: string, api_key: string) {
       params: {
         method: "user.getInfo",
         user: username,
-        api_key: api_key,
+        api_key,
         format: "json",
       },
     })
@@ -54,8 +54,8 @@ function getSession(token: string, signature: string, api_key: string) {
     .get("https://ws.audioscrobbler.com/2.0/", {
       params: {
         method: "auth.getSession",
-        api_key: api_key,
-        token: token,
+        api_key,
+        token,
         api_sig: signature,
         format: "json",
       },

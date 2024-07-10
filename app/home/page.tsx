@@ -23,7 +23,7 @@ export default function Page() {
     if (cookieList === undefined) {
       window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
     }
-    setUsername(cookieList?.[1]);
+    setUsername(cookieList?.[1] || "");
     setActive(comparePath());
   }, []);
 

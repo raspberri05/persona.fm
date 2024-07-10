@@ -84,10 +84,10 @@ export default function Recents(props: any) {
               <td className="text-end px-0">
                 <p
                   className={
-                    track?.["@attr"]?.["nowplaying"] ? "text-error" : ""
+                    track?.["@attr"]?.nowplaying ? "text-error" : ""
                   }
                 >
-                  {!track?.["@attr"]?.["nowplaying"]
+                  {!track?.["@attr"]?.nowplaying
                     ? convertUTCDateToLocal(track?.date?.["#text"])
                     : nowPlaying()}
                 </p>

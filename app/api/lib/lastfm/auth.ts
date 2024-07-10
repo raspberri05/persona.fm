@@ -27,7 +27,7 @@ function getUserInfo(username: string, api_key: string) {
 
 function getCookies(type: string) {
   if (type === "nextjs") {
-    let cookieList = [];
+    const cookieList = [];
     if (!hasCookie("session_key") || !hasCookie("username")) {
       return undefined;
     } else {

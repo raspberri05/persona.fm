@@ -59,9 +59,9 @@ export default function Recents(props: any) {
     <div className="overflow-x-auto w-full">
       <table className="table">
         <tbody>
-          {recents.map((track: any, index: number) => (
+          {recents.map((track: any) => (
             <tr
-              key={index}
+              key={track.mbid + track.name + track.artist["#text"] + track?.date?.["#text"]}
               className="hover:text-secondary cursor-pointer border-0"
               onClick={() => redirect(track.url)}
             >

@@ -4,6 +4,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getTopItems } from "../api/lib/lastfm/user";
+import { Track } from "../api/lib/interfaces/track";
 
 export default function Top(props: any) {
   const [images, setImages] = useState<any[string]>([]);
@@ -90,9 +91,9 @@ export default function Top(props: any) {
       <table className="table">
         <tbody>
           {topTracks[props.active.split("overview/tracks/")[1]].map(
-            (track: any, index: number) => (
+            (track: Track, index: number) => (
               <tr
-                key={index}
+                key={track.mbid + track.name + track.artist.name}
                 className="hover:text-secondary cursor-pointer border-0"
               >
                 <td style={{ width: "0" }} className="px-0 py-0">

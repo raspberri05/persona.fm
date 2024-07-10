@@ -229,7 +229,6 @@ export default function Tabs() {
             </svg>
           </div>
           <ul
-            tabIndex={0}
             className="dropdown-content menu bg-primary z-[1] w-206 p-2 shadow"
           >
             <li>

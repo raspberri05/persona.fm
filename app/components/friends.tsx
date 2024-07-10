@@ -18,9 +18,9 @@ export default function Friends(props: any) {
     <div className="overflow-x-auto w-full">
       <table className="table">
         <tbody>
-          {friends.map((user: any, index: number) => (
+          {friends.map((user: any) => (
             <tr
-              key={index}
+              key={user.name}
               className="hover:text-secondary cursor-pointer border-0"
             >
               <td style={{ width: "0" }} className="px-0 py-2">

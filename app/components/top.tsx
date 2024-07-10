@@ -126,9 +126,7 @@ export default function Top(props: any) {
                 </td>
                 <td className="text-end px-0">
                   <p style={{ whiteSpace: "nowrap" }}>
-                    {track.playcount +
-                      " " +
-                      (track.playcount === "1" ? "play" : "plays")}
+                    {`${track.playcount} ${track.playcount === "1" ? "play" : "plays"}`}
                   </p>
                 </td>
               </tr>

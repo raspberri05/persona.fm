@@ -1,11 +1,6 @@
 import axios from "axios";
 
-import {
-  hasCookie,
-  getCookie,
-  setCookie,
-  deleteCookie,
-} from "cookies-next";
+import { hasCookie, getCookie, setCookie, deleteCookie } from "cookies-next";
 
 function getUserInfo(username: string, api_key: string) {
   return axios

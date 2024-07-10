@@ -1,8 +1,8 @@
 export interface Track {
-    mbid: string;
+  mbid: string;
+  name: string;
+  artist: {
     name: string;
-    artist: {
-        name: string
-    },
-    playcount: string
+  };
+  playcount: string;
 }

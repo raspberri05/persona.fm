@@ -16,9 +16,7 @@ export default function Page() {
       window.location.href = "/home#overview/recents";
     }
 
-    if (isAuthenticated === false) {
-      return;
-    } else {
+    if (isAuthenticated !== false) {
       const token = queryParams.get("token");
       const signature = `api_key${process.env.NEXT_PUBLIC_API_KEY}methodauth.getSessiontoken${token}${process.env.NEXT_PUBLIC_SHARED_SECRET}`;
       const hashedSignature = crypto
@@ -35,10 +33,10 @@ export default function Page() {
               response.data.session.name,
             );
           })
-          .then((response: any) => {
+          .then((_) => {
             window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}/home#overview/recents`;
           })
-          .catch((error: any) => {
+          .catch((_) => {
             window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
           });
       }

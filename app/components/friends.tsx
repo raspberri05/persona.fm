@@ -1,15 +1,27 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { getFriends } from "../api/lib/lastfm/user";
 
 export default function Friends(props: any) {
+  const [friends, setFriends] = useState([]);
+  useEffect(() => {
+    getFriends(
+      props.username,
+      process.env.NEXT_PUBLIC_API_KEY || "",
+      50,
+      1,
+    ).then((response) => {
+      setFriends(response.user);
+    });
+  }, []);
   return (
     <div className="overflow-x-auto w-full">
       <table className="table">
         <tbody>
-          {props.data.map((user: any, index: any) => (
+          {friends.map((user: any, index: number) => (
             <tr
               key={index}
               className="hover:text-secondary cursor-pointer border-0"
-              //onClick={() => redirect(track.url)}
             >
               <td style={{ width: "0" }} className="px-0 py-2">
                 <div className="avatar">

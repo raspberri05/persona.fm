@@ -1,6 +1,12 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { getRecentTracks } from "../api/lib/lastfm/user";
 
 export default function Recents(props: any) {
+  const [recents, setRecents] = useState([]);
+
   function convertUTCDateToLocal(dateStr: string) {
     const [day, month, year, time] = dateStr.split(/[\s,]+/);
     const date = new Date(`${month} ${day}, ${year} ${time} UTC`);
@@ -39,11 +45,21 @@ export default function Recents(props: any) {
     window.open(url, "_blank");
   };
 
+  useEffect(() => {
+    getRecentTracks(props.username, process.env.NEXT_PUBLIC_API_KEY || "")
+      .then((response) => {
+        setRecents(response.data.recenttracks.track);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div className="overflow-x-auto w-full">
       <table className="table">
         <tbody>
-          {props.recentTracks.map((track: any, index: any) => (
+          {recents.map((track: any, index: number) => (
             <tr
               key={index}
               className="hover:text-secondary cursor-pointer border-0"

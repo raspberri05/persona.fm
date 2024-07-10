@@ -17,10 +17,10 @@ function getUserInfo(username: string, api_key: string) {
         format: "json",
       },
     })
-    .then((response: any) => {
+    .then((response) => {
       return response.data.user;
     })
-    .catch((error: any) => {
+    .catch((error) => {
       console.log(error);
     });
 }
@@ -60,10 +60,10 @@ function getSession(token: string, signature: string, api_key: string) {
         format: "json",
       },
     })
-    .then((response: any) => {
+    .then((response) => {
       return response;
     })
-    .catch((error: any) => {
+    .catch((error) => {
       return error;
     });
 }

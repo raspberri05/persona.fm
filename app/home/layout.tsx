@@ -11,9 +11,7 @@ export default function HomeLayout({
 }>) {
   useEffect(() => {
     const cookieList = getCookies("nextjs");
-    if (cookieList != undefined) {
-      return;
-    } else {
+    if (cookieList === undefined) {
       window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
     }
   }, []);

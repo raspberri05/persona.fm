@@ -12,7 +12,7 @@ export default function Page() {
     const queryParams = new URLSearchParams(window.location.search);
     const isAuthenticated = queryParams.get("authenticated") === "true";
     setAuth(isAuthenticated);
-    if (getCookies("nextjs") != undefined) {
+    if (getCookies("nextjs") !== undefined) {
       window.location.href = "/home#overview/recents";
     }
 

@@ -82,11 +82,7 @@ export default function Recents(props: any) {
                 <p>{track.artist["#text"]}</p>
               </td>
               <td className="text-end px-0">
-                <p
-                  className={
-                    track?.["@attr"]?.nowplaying ? "text-error" : ""
-                  }
-                >
+                <p className={track?.["@attr"]?.nowplaying ? "text-error" : ""}>
                   {!track?.["@attr"]?.nowplaying
                     ? convertUTCDateToLocal(track?.date?.["#text"])
                     : nowPlaying()}

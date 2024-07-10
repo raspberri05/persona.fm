@@ -1,4 +1,4 @@
-import * as cheerio from "cheerio";
+import { load }from "cheerio";
 import axios from "axios";
 
 function capitalize(type: string) {
@@ -11,7 +11,7 @@ function getOverallCount(username: string, cors: boolean, type: string) {
   return axios
     .get(cors ? `https://corsproxy.io/?${encodeURIComponent(url)}` : url)
     .then((response) => {
-      const data = cheerio.load(response.data);
+      const data = load(response.data);
       return data("ul.metadata-list > li:first-child > p").text().trim();
     })
     .catch((error) => {

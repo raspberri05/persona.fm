@@ -232,28 +232,28 @@ export default function Tabs() {
             className="dropdown-content menu bg-primary z-[1] w-206 p-2 shadow"
           >
             <li>
-              <a onClick={() => switchTab("overview/tracks/7day")}>7 days</a>
+              <a onClick={() => switchTab("overview/tracks/7day")} role="menuitem">7 days</a>
             </li>
             <li>
-              <a onClick={() => switchTab("overview/tracks/1month")}>1 month</a>
+              <a onClick={() => switchTab("overview/tracks/1month")} role="menuitem">1 month</a>
             </li>
             <li>
-              <a onClick={() => switchTab("overview/tracks/3month")}>
+              <a onClick={() => switchTab("overview/tracks/3month")} role="menuitem">
                 3 months
               </a>
             </li>
             <li>
-              <a onClick={() => switchTab("overview/tracks/6month")}>
+              <a onClick={() => switchTab("overview/tracks/6month")} role="menuitem">
                 6 months
               </a>
             </li>
             <li>
-              <a onClick={() => switchTab("overview/tracks/12month")}>
+              <a onClick={() => switchTab("overview/tracks/12month")} role="menuitem">
                 12 months
               </a>
             </li>
             <li>
-              <a onClick={() => switchTab("overview/tracks/overall")}>
+              <a onClick={() => switchTab("overview/tracks/overall")} role="menuitem">
                 overall
               </a>
             </li>

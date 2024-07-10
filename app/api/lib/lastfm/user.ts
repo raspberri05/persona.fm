@@ -1,4 +1,4 @@
-import { load }from "cheerio";
+import { load } from "cheerio";
 import axios from "axios";
 
 function capitalize(type: string) {

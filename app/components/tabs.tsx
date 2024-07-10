@@ -228,32 +228,52 @@ export default function Tabs() {
               <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
             </svg>
           </div>
-          <ul
-            className="dropdown-content menu bg-primary z-[1] w-206 p-2 shadow"
-          >
+          <ul className="dropdown-content menu bg-primary z-[1] w-206 p-2 shadow">
             <li>
-              <a onClick={() => switchTab("overview/tracks/7day")} role="menuitem">7 days</a>
+              <a
+                onClick={() => switchTab("overview/tracks/7day")}
+                role="menuitem"
+              >
+                7 days
+              </a>
             </li>
             <li>
-              <a onClick={() => switchTab("overview/tracks/1month")} role="menuitem">1 month</a>
+              <a
+                onClick={() => switchTab("overview/tracks/1month")}
+                role="menuitem"
+              >
+                1 month
+              </a>
             </li>
             <li>
-              <a onClick={() => switchTab("overview/tracks/3month")} role="menuitem">
+              <a
+                onClick={() => switchTab("overview/tracks/3month")}
+                role="menuitem"
+              >
                 3 months
               </a>
             </li>
             <li>
-              <a onClick={() => switchTab("overview/tracks/6month")} role="menuitem">
+              <a
+                onClick={() => switchTab("overview/tracks/6month")}
+                role="menuitem"
+              >
                 6 months
               </a>
             </li>
             <li>
-              <a onClick={() => switchTab("overview/tracks/12month")} role="menuitem">
+              <a
+                onClick={() => switchTab("overview/tracks/12month")}
+                role="menuitem"
+              >
                 12 months
               </a>
             </li>
             <li>
-              <a onClick={() => switchTab("overview/tracks/overall")} role="menuitem">
+              <a
+                onClick={() => switchTab("overview/tracks/overall")}
+                role="menuitem"
+              >
                 overall
               </a>
             </li>

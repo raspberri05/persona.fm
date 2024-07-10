@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const {
+import {
   hasCookie,
   getCookie,
   setCookie,
   deleteCookie,
-} = require("cookies-next");
+} from "cookies-next";
 
 function getUserInfo(username: string, api_key: string) {
   return axios

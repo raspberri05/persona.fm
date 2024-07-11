@@ -1,12 +1,7 @@
-"use client";
-
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { getRecentTracks } from "../api/lib/lastfm/user";
 import { Recent } from "../api/lib/interfaces/track";
 
-export default function Recents(props: any) {
-  const [recents, setRecents] = useState([]);
+export default function Recents(props: {data: Array<Recent>}) {
 
   function convertUTCDateToLocal(dateStr: string) {
     const [day, month, year, time] = dateStr.split(/[\s,]+/);
@@ -42,29 +37,19 @@ export default function Recents(props: any) {
     );
   }
 
-  const redirect = (url: string) => {
-    window.open(url, "_blank");
-  };
-
-  useEffect(() => {
-    getRecentTracks(props.username, process.env.NEXT_PUBLIC_API_KEY || "")
-      .then((response) => {
-        setRecents(response.data.recenttracks.track);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   return (
     <div className="overflow-x-auto w-full">
       <table className="table">
         <tbody>
-          {recents.map((track: Recent) => (
+          {props.data.map((track: Recent) => (
             <tr
-              key={track.mbid + track.name + track.artist["#text"] + track?.date?.["#text"]}
+              key={
+                track.mbid +
+                track.name +
+                track.artist["#text"] +
+                track?.date?.["#text"]
+              }
               className="hover:text-secondary cursor-pointer border-0"
-              onClick={() => redirect(track.url)}
             >
               <td style={{ width: "0" }} className="px-0 py-0">
                 <div className="avatar">
@@ -83,11 +68,7 @@ export default function Recents(props: any) {
                 <p>{track.artist["#text"]}</p>
               </td>
               <td className="text-end px-0">
-                <p
-                  className={
-                    track?.["@attr"]?.nowplaying ? "text-error" : ""
-                  }
-                >
+                <p className={track?.["@attr"]?.nowplaying ? "text-error" : ""}>
                   {!track?.["@attr"]?.nowplaying
                     ? convertUTCDateToLocal(track?.date?.["#text"])
                     : nowPlaying()}

@@ -1,25 +1,12 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { getFriends } from "../api/lib/lastfm/user";
 import { Friend } from "../api/lib/interfaces/friend";
 
-export default function Friends(props: {username: string}) {
-  const [friends, setFriends] = useState([]);
-  useEffect(() => {
-    getFriends(
-      props.username,
-      process.env.NEXT_PUBLIC_API_KEY || "",
-      50,
-      1,
-    ).then((response) => {
-      setFriends(response.user);
-    });
-  }, []);
+export default function Friends(props: { data: Array<Friend> }) {
   return (
     <div className="overflow-x-auto w-full">
       <table className="table">
         <tbody>
-          {friends.map((user: Friend) => (
+          {props.data.map((user: Friend) => (
             <tr
               key={user.name}
               className="hover:text-secondary cursor-pointer border-0"

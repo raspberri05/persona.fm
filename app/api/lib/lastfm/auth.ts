@@ -1,11 +1,6 @@
 import axios from "axios";
 
-import {
-  hasCookie,
-  getCookie,
-  setCookie,
-  deleteCookie,
-} from "cookies-next";
+import { hasCookie, getCookie, setCookie, deleteCookie } from "cookies-next";
 
 function getUserInfo(username: string, api_key: string) {
   return axios
@@ -21,7 +16,7 @@ function getUserInfo(username: string, api_key: string) {
       return response.data.user;
     })
     .catch((error) => {
-      console.log(error);
+      return error;
     });
 }
 
@@ -41,7 +36,6 @@ function getCookies(type: string) {
 
 function setCookies(type: string, session_key: string, username: string) {
   if (type === "nextjs") {
-    console.log("settings");
     setCookie("session_key", session_key);
     setCookie("username", username);
     return "done";

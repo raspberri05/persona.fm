@@ -16,7 +16,7 @@ export default function Page() {
       window.location.href = "/home#overview/recents";
     }
 
-    if (!isAuthenticated) {
+    if (isAuthenticated) {
       const token = queryParams.get("token");
       const signature = `api_key${process.env.NEXT_PUBLIC_API_KEY}methodauth.getSessiontoken${token}${process.env.NEXT_PUBLIC_SHARED_SECRET}`;
       const hashedSignature = crypto

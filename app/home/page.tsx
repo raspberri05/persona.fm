@@ -21,14 +21,7 @@ export default function Page() {
   };
 
   function zeroLen(data: Array<unknown>, activeItem: string) {
-    if (data.length === 0) {
-      if (active === activeItem) {
-        return true
-      }
-      return false;
-    }
-    return false;
-  
+    return data.length === 0 && active === activeItem;
   }
 
   useEffect(() => {
@@ -50,10 +43,9 @@ export default function Page() {
     }
     if (zeroLen(recents, "overview/recents")) {
       console.log("fetching recents");
-      getRecentTracks(username_local, api_key)
-      .then((response) => {
+      getRecentTracks(username_local, api_key).then((response) => {
         setRecents(response.data.recenttracks.track);
-      })
+      });
     }
   }, [active]);
 

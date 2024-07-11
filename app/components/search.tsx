@@ -1,4 +1,4 @@
-export default function Search(props: any) {
+export default function Search(props: { active: string }) {
   return (
     <div className="container mx-auto">
       <input

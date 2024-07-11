@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getRecentTracks } from "../api/lib/lastfm/user";
+import { Recent } from "../api/lib/interfaces/track";
 
 export default function Recents(props: any) {
   const [recents, setRecents] = useState([]);
@@ -59,7 +60,7 @@ export default function Recents(props: any) {
     <div className="overflow-x-auto w-full">
       <table className="table">
         <tbody>
-          {recents.map((track: any) => (
+          {recents.map((track: Recent) => (
             <tr
               key={track.mbid + track.name + track.artist["#text"] + track?.date?.["#text"]}
               className="hover:text-secondary cursor-pointer border-0"

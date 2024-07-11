@@ -53,7 +53,7 @@ export default function Top(props: any) {
           process.env.NEXT_PUBLIC_API_KEY || "",
         ).then((response) => {
           console.log(response);
-          setTopTracks((prevTracks: any) => ({
+          setTopTracks((prevTracks:object) => ({
             ...prevTracks,
             [timePeriod]: response.track,
           }));

@@ -33,7 +33,7 @@ export default function Page() {
       {active.includes("overview/tracks/") && (
         <Top username={username} active={active} />
       )}
-      {active === "friends" && <Friends username={username} active={active} />}
+      {active === "friends" && <Friends username={username} />}
       {active.includes("search") && <Search active={active} />}
       {active === "tools/settings" && <Settings />}
     </div>

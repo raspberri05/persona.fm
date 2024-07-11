@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getFriends } from "../api/lib/lastfm/user";
+import { Friend } from "../api/lib/interfaces/friend";
 
-export default function Friends(props: any) {
+export default function Friends(props: {username: string}) {
   const [friends, setFriends] = useState([]);
   useEffect(() => {
     getFriends(
@@ -18,7 +19,7 @@ export default function Friends(props: any) {
     <div className="overflow-x-auto w-full">
       <table className="table">
         <tbody>
-          {friends.map((user: any) => (
+          {friends.map((user: Friend) => (
             <tr
               key={user.name}
               className="hover:text-secondary cursor-pointer border-0"

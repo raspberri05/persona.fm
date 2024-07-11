@@ -7,6 +7,16 @@ export interface Track {
   playcount: string;
 }
 
+export interface TopTracks {
+  [key: string]: Array<Track>;
+  "7day": Array<Track>;
+  "1month": Array<Track>;
+  "3month": Array<Track>;
+  "6month": Array<Track>;
+  "12month": Array<Track>;
+  overall: Array<Track>;
+}
+
 export interface Recent {
   mbid: string;
   name: string;

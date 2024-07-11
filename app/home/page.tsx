@@ -33,7 +33,7 @@ export default function Page() {
     const username_local = cookieList?.[1] || "";
     const api_key = process.env.NEXT_PUBLIC_API_KEY || "";
     const path = comparePath();
-    setUsername(username);
+    setUsername(username_local);
     setActive(path);
     if (zeroLen(friends, "friends")) {
       console.log("fetching friends");

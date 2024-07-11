@@ -1,10 +1,6 @@
 import { load } from "cheerio";
 import axios from "axios";
 
-function capitalize(type: string) {
-  return type.charAt(0).toUpperCase() + type.slice(1);
-}
-
 function getOverallCount(username: string, cors: boolean, type: string) {
   const url = `https://www.last.fm/user/${username}/library/${type}`;
 
@@ -49,7 +45,7 @@ function getTopItems(
   return axios
     .get("https://ws.audioscrobbler.com/2.0/", {
       params: {
-        method: `user.getTop${capitalize(type)}`,
+        method: `user.getTop${type}`,
         user,
         period,
         limit,

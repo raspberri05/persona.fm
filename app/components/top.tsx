@@ -4,11 +4,11 @@ import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getTopItems } from "../api/lib/lastfm/user";
-import { Track } from "../api/lib/interfaces/track";
+import { TopTracks, Track } from "../api/lib/interfaces/track";
 
-export default function Top(props: any) {
-  const [images, setImages] = useState<any[string]>([]);
-  const [topTracks, setTopTracks] = useState<any>({
+export default function Top(props: { username: string; active: string }) {
+  const [images, setImages] = useState<Array<string>>([]);
+  const [topTracks, setTopTracks] = useState<TopTracks>({
     "7day": [],
     "1month": [],
     "3month": [],
@@ -51,12 +51,16 @@ export default function Top(props: any) {
           50,
           1,
           process.env.NEXT_PUBLIC_API_KEY || "",
-        ).then((response) => {
-          setTopTracks((prevTracks: object) => ({
-            ...prevTracks,
-            [timePeriod]: response.track,
-          }));
-        });
+        )
+          .then((response) => {
+            setTopTracks((prevTracks: TopTracks) => ({
+              ...prevTracks,
+              [timePeriod]: response.track,
+            }));
+          })
+          .catch((error) => {
+            console.error("Error fetching top tracks:", error);
+          });
       }
     }
   }, [props.active]);

@@ -1,4 +1,4 @@
-export default function Login(props: {loading: boolean}) {
+export default function Login(props: { loading: boolean }) {
   function authenticate() {
     window.location.href = `https://www.last.fm/api/auth/?api_key=${process.env.NEXT_PUBLIC_API_KEY}&cb=${process.env.NEXT_PUBLIC_CALLBACK_URL}?authenticated=true`;
   }

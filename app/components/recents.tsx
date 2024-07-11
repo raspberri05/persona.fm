@@ -1,8 +1,7 @@
 import Image from "next/image";
 import { Recent } from "../api/lib/interfaces/track";
 
-export default function Recents(props: {data: Array<Recent>}) {
-
+export default function Recents(props: { data: Array<Recent> }) {
   function convertUTCDateToLocal(dateStr: string) {
     const [day, month, year, time] = dateStr.split(/[\s,]+/);
     const date = new Date(`${month} ${day}, ${year} ${time} UTC`);

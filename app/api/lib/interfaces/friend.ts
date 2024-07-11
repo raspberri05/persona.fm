@@ -1,7 +1,7 @@
 export interface Friend {
-    name: string,
-    realname: string
-    image: {
-        "#text": string
-    }[]
+  name: string;
+  realname: string;
+  image: {
+    "#text": string;
+  }[];
 }

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getFriends } from "../api/lib/lastfm/user";
 import { Friend } from "../api/lib/interfaces/friend";
 
-export default function Friends(props: {username: string}) {
+export default function Friends(props: { username: string }) {
   const [friends, setFriends] = useState([]);
   useEffect(() => {
     getFriends(

@@ -62,7 +62,12 @@ export default function Recents(props: any) {
         <tbody>
           {recents.map((track: Recent) => (
             <tr
-              key={track.mbid + track.name + track.artist["#text"] + track?.date?.["#text"]}
+              key={
+                track.mbid +
+                track.name +
+                track.artist["#text"] +
+                track?.date?.["#text"]
+              }
               className="hover:text-secondary cursor-pointer border-0"
               onClick={() => redirect(track.url)}
             >
@@ -83,11 +88,7 @@ export default function Recents(props: any) {
                 <p>{track.artist["#text"]}</p>
               </td>
               <td className="text-end px-0">
-                <p
-                  className={
-                    track?.["@attr"]?.nowplaying ? "text-error" : ""
-                  }
-                >
+                <p className={track?.["@attr"]?.nowplaying ? "text-error" : ""}>
                   {!track?.["@attr"]?.nowplaying
                     ? convertUTCDateToLocal(track?.date?.["#text"])
                     : nowPlaying()}

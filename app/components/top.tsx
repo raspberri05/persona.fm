@@ -16,10 +16,6 @@ export default function Top(props: { username: string; active: string }) {
     overall: [],
   });
 
-  function delay(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
   useEffect(() => {
     if (props.active.includes("overview/tracks/")) {
       const timePeriod = props.active.split("overview/tracks/")[1];

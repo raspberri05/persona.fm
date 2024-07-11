@@ -1,13 +1,12 @@
 "use client";
 
-import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getTopItems } from "../api/lib/lastfm/user";
 import { TopTracks, Track } from "../api/lib/interfaces/track";
+import { getImage } from "../api/lib/lastfm/info";
 
 export default function Top(props: { username: string; active: string }) {
-  const [images, setImages] = useState<Array<string>>([]);
   const [topTracks, setTopTracks] = useState<TopTracks>({
     "7day": [],
     "1month": [],
@@ -16,25 +15,6 @@ export default function Top(props: { username: string; active: string }) {
     "12month": [],
     overall: [],
   });
-
-  function getImage(title: string, artist: string) {
-    return axios
-      .get("https://ws.audioscrobbler.com/2.0/", {
-        params: {
-          method: "track.getInfo",
-          api_key: process.env.NEXT_PUBLIC_API_KEY,
-          format: "json",
-          track: title,
-          artist,
-        },
-      })
-      .then((response) => {
-        return response.data.track.album.image[3]["#text"];
-      })
-      .catch((_) => {
-        return "/images/image.png";
-      });
-  }
 
   function delay(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -52,10 +32,23 @@ export default function Top(props: { username: string; active: string }) {
           1,
           process.env.NEXT_PUBLIC_API_KEY || "",
         )
-          .then((response) => {
+          .then(async (response) => {
+            const tracksWithImages = await Promise.all(
+              response.track.map(
+                async (track: {
+                  name: string;
+                  artist: { name: string };
+                  image?: string;
+                }) => {
+                  const image = await getImage(track.name, track.artist.name);
+                  return { ...track, image };
+                },
+              ),
+            );
+
             setTopTracks((prevTracks: TopTracks) => ({
               ...prevTracks,
-              [timePeriod]: response.track,
+              [timePeriod]: tracksWithImages,
             }));
           })
           .catch((error) => {
@@ -63,38 +56,13 @@ export default function Top(props: { username: string; active: string }) {
           });
       }
     }
-  }, [props.active]);
-
-  useEffect(() => {
-    if (
-      topTracks[props.active.split("overview/tracks/")[1]] &&
-      topTracks[props.active.split("overview/tracks/")[1]].length > 0
-    ) {
-      let delayTime = 0;
-      const imagePromises = topTracks[
-        props.active.split("overview/tracks/")[1]
-      ].map((track: { name: string; artist: { name: string } }) => {
-        delayTime += 10;
-        return delay(delayTime).then(() =>
-          getImage(track.name, track.artist.name),
-        );
-      });
-
-      Promise.all(imagePromises)
-        .then((images) => {
-          setImages(images);
-        })
-        .catch((error) => {
-          console.error("Error fetching images:", error);
-        });
-    }
-  }, [topTracks]);
+  }, [props.active, topTracks]);
   return (
     <div className="overflow-x-auto w-full">
       <table className="table">
         <tbody>
           {topTracks[props.active.split("overview/tracks/")[1]].map(
-            (track: Track, index: number) => (
+            (track: Track) => (
               <tr
                 key={track.mbid + track.name + track.artist.name}
                 className="hover:text-secondary cursor-pointer border-0"
@@ -102,11 +70,11 @@ export default function Top(props: { username: string; active: string }) {
                 <td style={{ width: "0" }} className="px-0 py-0">
                   <div className="avatar">
                     <div className="w-12">
-                      {images.length !== 0 && images[index] ? (
+                      {track.image ? (
                         <Image
                           unoptimized
                           alt="album cover"
-                          src={images[index]}
+                          src={track.image}
                           width={64}
                           height={64}
                           loading="lazy"

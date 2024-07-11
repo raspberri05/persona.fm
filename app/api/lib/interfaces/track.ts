@@ -5,6 +5,7 @@ export interface Track {
     name: string;
   };
   playcount: string;
+  image: string;
 }
 
 export interface TopTracks {

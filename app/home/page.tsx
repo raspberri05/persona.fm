@@ -26,12 +26,17 @@ export default function Page() {
   }
 
   useEffect(() => {
-    const cookieList = getCookies("nextjs");
-    if (cookieList === undefined) {
-      window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
-    }
+    const queryParams = new URLSearchParams(window.location.search);
+    const usernameFromUrl = queryParams.get('username');
+
+    // const cookieList = getCookies("nextjs");
+    // if (cookieList === undefined) {
+    //   window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
+    // }
+
     window.addEventListener("hashchange", handleHashChange, false);
-    const username_local = cookieList?.[1] || "";
+    const username_local = usernameFromUrl || "";
+    console.log(username_local);
     const api_key = process.env.NEXT_PUBLIC_API_KEY || "";
     const path = comparePath();
     setUsername(username_local);

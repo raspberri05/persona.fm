@@ -9,12 +9,12 @@ export default function HomeLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  useEffect(() => {
-    const cookieList = getCookies("nextjs");
-    if (cookieList === undefined) {
-      window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
-    }
-  }, []);
+  // useEffect(() => {
+  //   const cookieList = getCookies("nextjs");
+  //   if (cookieList === undefined) {
+  //     window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
+  //   }
+  // }, []);
 
   return (
     <html lang="en">

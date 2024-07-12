@@ -9,6 +9,7 @@ import Settings from "../components/settings";
 import Friends from "../components/friends";
 import Top from "../components/top";
 import { getFriends, getRecentTracks } from "../api/lib/lastfm/user";
+import Scrobbler from "../components/scrobbler";
 
 export default function Page() {
   const [username, setUsername] = useState("");
@@ -57,6 +58,7 @@ export default function Page() {
       )}
       {active === "friends" && <Friends data={friends} />}
       {active.includes("search") && <Search active={active} />}
+      {active.includes("scrobble") && <Scrobbler />}
       {active === "tools/settings" && <Settings />}
     </div>
   );

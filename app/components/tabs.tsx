@@ -128,7 +128,7 @@ export default function Tabs() {
         active.includes("scrobble") ||
         active.includes("tools")) && <br />}
       {active.includes("overview") && (
-        <div role="tablist" className="tabs tabs-bordered tabs-sm">
+        <div role="tablist" className="tabs tabs-bordered">
           <button
             className={`tab hover:tab-active ${active.includes("overview/recents") ? "tab-active" : ""}`}
             onClick={() => switchTab("overview/recents")}
@@ -156,7 +156,7 @@ export default function Tabs() {
         </div>
       )}
       {active.includes("search") && (
-        <div role="tablist" className="tabs tabs-bordered tabs-sm">
+        <div role="tablist" className="tabs tabs-bordered">
           <button
             className={`tab hover:tab-active ${active.includes("search/tracks") ? "tab-active" : ""}`}
             onClick={() => switchTab("search/tracks")}
@@ -178,7 +178,7 @@ export default function Tabs() {
         </div>
       )}
       {active.includes("scrobble") && (
-        <div role="tablist" className="tabs tabs-bordered tabs-sm">
+        <div role="tablist" className="tabs tabs-bordered">
           <button
             className={`tab hover:tab-active ${active.includes("scrobble/manual") ? "tab-active" : ""}`}
             onClick={() => switchTab("scrobble/manual")}
@@ -188,7 +188,7 @@ export default function Tabs() {
         </div>
       )}
       {active.includes("tools") && (
-        <div role="tablist" className="tabs tabs-bordered tabs-sm">
+        <div role="tablist" className="tabs tabs-bordered">
           <button
             role="tab"
             className={`tab hover:tab-active ${active.includes("tools/settings") ? "tab-active" : ""}`}

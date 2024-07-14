@@ -8,7 +8,11 @@ import { comparePath } from "../api/lib/paths";
 import Settings from "../components/settings";
 import Friends from "../components/friends";
 import Top from "../components/top";
-import { getFriends, getRecentTracks, getTopItems } from "../api/lib/lastfm/user";
+import {
+  getFriends,
+  getRecentTracks,
+  getTopItems,
+} from "../api/lib/lastfm/user";
 import Scrobbler from "../components/scrobbler";
 import { TopTracks } from "../api/lib/interfaces/track";
 import { getImage } from "../api/lib/lastfm/info";
@@ -26,7 +30,7 @@ export default function Page() {
     "12month": [],
     overall: [],
   });
-  
+
   const handleHashChange = () => {
     setActive(comparePath());
   };
@@ -82,7 +86,7 @@ export default function Page() {
                   },
                 ),
               );
-  
+
               setTopTracks((prevTracks: TopTracks) => ({
                 ...prevTracks,
                 [timePeriod]: tracksWithImages,
@@ -100,7 +104,7 @@ export default function Page() {
     <div>
       {active === "overview/recents" && <Recents data={recents} />}
       {active.includes("overview/tracks/") && (
-        <Top data={topTracks} active={active}/>
+        <Top data={topTracks} active={active} />
       )}
       {active === "friends" && <Friends data={friends} />}
       {active.includes("search") && <Search active={active} />}

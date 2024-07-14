@@ -2,4 +2,4 @@
 
 # tunestats
 
-All information regarding this project will be added to the wiki soon
+Information regarding this project will be added to the wiki soon

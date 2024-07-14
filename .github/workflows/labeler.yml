@@ -1,5 +1,7 @@
 name: "Issue Labeler"
 on:
+  pull_request:
+    types: [opened, edited]
   issues:
     types: [opened, edited]
 

@@ -12,7 +12,7 @@
         "bootstrap-icons": "^1.11.3",
         "cheerio": "^1.0.0-rc.12",
         "cookies-next": "^4.2.1",
-        "next": "14.2.4",
+        "next": "14.2.5",
         "react": "^18",
         "react-dom": "^18"
     },

@@ -10,7 +10,6 @@ export default function Page() {
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const isAuthenticated = queryParams.get("authenticated") === "true";
-    const hash = queryParams.get("hash");
     if (getCookies("nextjs") !== undefined) {
       if (window.opener) {
         window.opener.location.reload();

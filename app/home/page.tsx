@@ -8,15 +8,25 @@ import { comparePath } from "../api/lib/paths";
 import Settings from "../components/settings";
 import Friends from "../components/friends";
 import Top from "../components/top";
-import { getFriends, getRecentTracks } from "../api/lib/lastfm/user";
+import { getFriends, getRecentTracks, getTopItems } from "../api/lib/lastfm/user";
 import Scrobbler from "../components/scrobbler";
+import { TopTracks } from "../api/lib/interfaces/track";
+import { getImage } from "../api/lib/lastfm/info";
 
 export default function Page() {
   const [username, setUsername] = useState("");
   const [active, setActive] = useState("");
   const [friends, setFriends] = useState([]);
   const [recents, setRecents] = useState([]);
-
+  const [topTracks, setTopTracks] = useState<TopTracks>({
+    "7day": [],
+    "1month": [],
+    "3month": [],
+    "6month": [],
+    "12month": [],
+    overall: [],
+  });
+  
   const handleHashChange = () => {
     setActive(comparePath());
   };
@@ -48,14 +58,49 @@ export default function Page() {
           setRecents(response.data.recenttracks.track);
         });
       }
+      if (active.includes("overview/tracks/")) {
+        const timePeriod = active.split("overview/tracks/")[1];
+        if (topTracks[timePeriod]?.length === 0) {
+          getTopItems(
+            username,
+            "tracks",
+            timePeriod,
+            50,
+            1,
+            process.env.NEXT_PUBLIC_API_KEY || "",
+          )
+            .then(async (response) => {
+              const tracksWithImages = await Promise.all(
+                response.track.map(
+                  async (track: {
+                    name: string;
+                    artist: { name: string };
+                    image?: string;
+                  }) => {
+                    const image = await getImage(track.name, track.artist.name);
+                    return { ...track, image };
+                  },
+                ),
+              );
+  
+              setTopTracks((prevTracks: TopTracks) => ({
+                ...prevTracks,
+                [timePeriod]: tracksWithImages,
+              }));
+            })
+            .catch((error) => {
+              console.error("Error fetching top tracks:", error);
+            });
+        }
+      }
     }
-  }, [active]);
+  }, [active, topTracks]);
 
   return (
     <div>
       {active === "overview/recents" && <Recents data={recents} />}
       {active.includes("overview/tracks/") && (
-        <Top username={username} active={active} />
+        <Top data={topTracks} active={active}/>
       )}
       {active === "friends" && <Friends data={friends} />}
       {active.includes("search") && <Search active={active} />}

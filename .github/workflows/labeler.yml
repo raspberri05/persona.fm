@@ -16,6 +16,6 @@ jobs:
     - uses: github/issue-labeler@v3.3 #May not be the latest version
       with:
         configuration-path: .github/labeler.yml
-        not-before: "2020-01-15T02:54:32Z"
+        include-title: 1
         enable-versioned-regex: 0
         repo-token: ${{ github.token }}

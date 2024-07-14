@@ -5,27 +5,27 @@ import Tabs from "../components/tabs";
 import { getCookies } from "../api/lib/lastfm/auth";
 
 export default function HomeLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  // useEffect(() => {
-  //   const cookieList = getCookies("nextjs");
-  //   if (cookieList === undefined) {
-  //     window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
-  //   }
-  // }, []);
+    // useEffect(() => {
+    //   const cookieList = getCookies("nextjs");
+    //   if (cookieList === undefined) {
+    //     window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}`;
+    //   }
+    // }, []);
 
-  return (
-    <html lang="en">
-      <body suppressHydrationWarning>
-        <div className="container mx-auto px-2">
-          <Tabs />
-          <br />
-          {children}
-          <br />
-        </div>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body suppressHydrationWarning>
+                <div className="container mx-auto px-2">
+                    <Tabs />
+                    <br />
+                    {children}
+                    <br />
+                </div>
+            </body>
+        </html>
+    );
 }

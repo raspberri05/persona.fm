@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { setCookie } from "cookies-next";
 
 export default function Login() {
     const [username, setUsername] = useState("");
 
-    function login(e: any) {
+    function login(e: React.FormEvent) {
         e.preventDefault();
         setCookie("username", username);
         window.location.href = `${process.env.NEXT_PUBLIC_CALLBACK_URL}/home#overview/recents`;

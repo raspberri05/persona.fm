@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { TopTracks, Track } from "../api/lib/interfaces/track";
 
-export default function Top(props: {data: TopTracks, active: string}) {
+export default function Top(props: { data: TopTracks; active: string }) {
   return (
     <div className="overflow-x-auto w-full">
       <table className="table">

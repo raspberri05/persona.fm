@@ -1,9 +1,10 @@
-# Add/remove 'critical' label if issue contains the words 'urgent' or 'critical'
 style:
-    - '(style: format code with Prettier)'
-deepsource: 
-    - '(style: format code with Prettier)'
+    - "(style: format code with Prettier)"
+deepsource:
+    - "(style: format code with Prettier)"
 enhancement:
-    - '(functionality)'
+    - "(functionality)"
 documentation:
-    - '(documentation)'
+    - "(documentation)"
+    - changed-files:
+          - any-glob-to-any-file: "**/*.md"

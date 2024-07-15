@@ -2,4 +2,8 @@
 
 # tunestats
 
-All Information regarding this project will be added to the wiki soon
+A better last.fm client
+
+## Getting Started
+
+https://github.com/raspberri05/tunestats/wiki/Getting-Started

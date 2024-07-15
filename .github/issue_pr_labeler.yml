@@ -1,8 +1,0 @@
-style:
-    - "(style: format code with Prettier)"
-deepsource:
-    - "(style: format code with Prettier)"
-enhancement:
-    - "(functionality)"
-documentation:
-    - "(documentation)"

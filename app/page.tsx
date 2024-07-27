@@ -11,8 +11,6 @@ export default function Page() {
         const cookies = document.cookie;
         if (cookies.includes("username") && cookies.includes("session")) {
             window.location.href = "/home";
-        } else {
-            return;
         }
     }, []);
 

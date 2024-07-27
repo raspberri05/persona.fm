@@ -3,11 +3,8 @@
 import React, { useState } from "react";
 
 export default function Page() {
-    const [username, setUsername] = useState("");
-
-    function submit(e: React.FormEvent) {
-        e.preventDefault();
-        window.location.href = `/user/${username}`;
+    function submit() {
+        window.location.href = "/api/auth";
     }
 
     return (
@@ -17,7 +14,12 @@ export default function Page() {
                     <h2 className="card-title">Persona.fm</h2>
                     <p>Your last.fm persona</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Log In</button>
+                        <button
+                            className="btn btn-primary"
+                            onClick={() => submit()}
+                        >
+                            Log In
+                        </button>
                     </div>
                 </div>
             </div>

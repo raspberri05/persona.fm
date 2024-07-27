@@ -2,6 +2,7 @@ import { config } from "dotenv";
 import crypto from "crypto";
 import axios from "axios";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 config({ path: ".env" });
 
 export async function GET(request: Request) {
@@ -27,10 +28,5 @@ export async function GET(request: Request) {
             cookies().set("session", response.data.session.key);
         })
         .catch((_) => {});
-    return new Response(null, {
-        status: 302,
-        headers: {
-            Location: `${process.env.URL}/home`,
-        },
-    });
+    redirect("/home");
 }

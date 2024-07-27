@@ -1,11 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Page() {
     function submit() {
         window.location.href = "/api/auth";
     }
+
+    useEffect(() => {
+        const cookies = document.cookie;
+        if (cookies.includes("username") && cookies.includes("session")) {
+            window.location.href = "/home";
+        } else {
+            return;
+        }
+    }, []);
 
     return (
         <div className="items-center grid justify-items-center h-dvh">

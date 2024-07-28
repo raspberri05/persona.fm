@@ -1,27 +1,20 @@
-import { integer, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import { integer, pgTable, serial, text } from "drizzle-orm/pg-core";
 
-export const usersTable = pgTable("users_table", {
+export const users = pgTable("users", {
     id: serial("id").primaryKey(),
-    name: text("name").notNull(),
-    age: integer("age").notNull(),
-    email: text("email").notNull().unique(),
+    username: text("username").notNull(),
 });
 
-export const postsTable = pgTable("posts_table", {
+export const personas = pgTable("persona", {
     id: serial("id").primaryKey(),
-    title: text("title").notNull(),
-    content: text("content").notNull(),
-    userId: integer("user_id")
+    week: text("week").notNull(),
+    persona: text("persona").notNull(),
+    user_id: integer("user_id")
         .notNull()
-        .references(() => usersTable.id, { onDelete: "cascade" }),
-    createdAt: timestamp("created_at").notNull().defaultNow(),
-    updatedAt: timestamp("updated_at")
-        .notNull()
-        .$onUpdate(() => new Date()),
+        .references(() => users.id, { onDelete: "cascade" }),
 });
 
-export type InsertUser = typeof usersTable.$inferInsert;
-export type SelectUser = typeof usersTable.$inferSelect;
+export type InsertUser = typeof users.$inferInsert;
+export type SelectUser = typeof users.$inferSelect;
 
-export type InsertPost = typeof postsTable.$inferInsert;
-export type SelectPost = typeof postsTable.$inferSelect;
+export type InsertPersona = typeof personas.$inferInsert;

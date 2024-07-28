@@ -1,17 +1,18 @@
-# Contributing to tunestats
+# Contributing Guide
 
-This project uses NextJS. If you are unfamiliar with it. you can learn more at their website
+Thank you for considering contributing to our project! Here are some guidelines to help you get started.
 
-https://nextjs.org/
+## How to Contribute
 
-## Contributing happens via issues or pull requests
+### Issues
+- If you find a bug or have a feature request, please create an issue on our GitHub repository.
+- Provide as much detail as possible to help us understand and address the issue.
 
-You can choose to work on any issue and open your changes as a pull request.
-
-You can also open a new issue if there is a change you want to see.
-
-## Code Format
-
-Please try to format your changes in a way that is consistent with the current code. Also please ensure you have no errors in your code before opening a PR. If there is an error that you are unable to fix, please let me know.
-
-This repository will soon have a CI action that automatically formats all code with prettier, so no need to format with prettier before opening a PR.
+### Pull Requests
+- Fork the repository and create your branch from `main`.
+- Ensure that your code follows the project's coding standards.
+- Please verify that the code runs and no errors exist before opening a PR with your changes
+- Provide a clear description of the changes and the problem they solve.
+- 
+## Running Tests
+Github Actions will run tests on pull requests. Please ensure all tests pass on your pull requests. If you are unable to troubleshoot to fix failing tests, please let me know in a pull request comment

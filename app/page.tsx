@@ -15,8 +15,8 @@ export default function Page() {
     }, []);
 
     return (
-        <div className="items-center grid justify-items-center h-dvh">
-            <div className="card bg-neutral text-neutral-content w-96">
+        <div className="flex items-center justify-center min-h-screen">
+            <div className="card bg-neutral text-neutral-content w-96 max-w-full mx-4">
                 <div className="card-body items-center">
                     <h2 className="card-title">Persona.fm</h2>
                     <p>Your last.fm persona</p>

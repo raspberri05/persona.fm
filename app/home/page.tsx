@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Page() {
     const hasFetched = useRef(false);
@@ -13,7 +14,6 @@ export default function Page() {
             .then((res) => {
                 const data = JSON.parse(res.data);
                 setPersona(data);
-                console.log(data);
             })
             .catch((err) => {
                 console.error(err);
@@ -33,20 +33,31 @@ export default function Page() {
     }, []);
 
     return (
-        <div className="container mx-auto px-2 py-2">
+        <div className="container mx-auto px-2">
+            <br />
             {persona.length === 0 && (
-                <span className="loading loading-spinner loading-md"></span>
+                <div className="text-center items-center">
+                    <p className="text-3xl font-bold">
+                        Analyzing your listening habits{" "}
+                    </p>
+                    <p className="text-lg">(this will take 30-60 seconds)</p>
+                    <span className="loading loading-spinner loading-lg"></span>
+                </div>
             )}
             {persona.length !== 0 && (
-                <div>
-                    <h1 className="text-3xl font-bold">{persona.vibe}</h1>
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <p className="text-3xl font-bold">{persona.vibe}</p>
                     <br />
-                    <p className="text-lg">{`${persona.mainstream?.percent}% mainstream`}</p>
+                    <p className="text-xl">{`${persona.mainstream?.percent}% mainstream`}</p>
                     <p className="text-lg">{persona.mainstream?.description}</p>
                     <br />
-                    <p className="text-lg">{`${persona.energetic?.percent}% energetic`}</p>
+                    <p className="text-xl">{`${persona.energetic?.percent}% energetic`}</p>
                     <p className="text-lg">{persona.energetic?.description}</p>
-                </div>
+                </motion.div>
             )}
         </div>
     );

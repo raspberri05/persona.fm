@@ -15,9 +15,6 @@ export function GET() {
                         .catch((error) => {
                             return new Response(error);
                         });
-                    // return new Response(JSON.stringify(response), {
-                    //     headers: { "Content-Type": "application/json" },
-                    // });
                 })
                 .catch((error) => {
                     return new Response(error);

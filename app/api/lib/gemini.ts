@@ -1,12 +1,28 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 import { config } from "dotenv";
+import { HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
 
 config({ path: ".env" });
 const genAI = new GoogleGenerativeAI(process.env.GEMINI);
 import jsonData from "./gemini.json";
 
 export async function generate(data: any) {
-    const model = genAI.getGenerativeModel(jsonData);
+    const safetySetting = [
+        {
+            category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold: HarmBlockThreshold.BLOCK_NONE,
+        },
+        {
+            category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold: HarmBlockThreshold.BLOCK_NONE,
+        },
+    ];
+    const model = genAI.getGenerativeModel({
+        model: jsonData.model,
+        generationConfig: jsonData.generationConfig,
+        safetySetting: safetySetting,
+        systemInstruction: jsonData.systemInstruction,
+    });
 
     const prompt = JSON.stringify(data);
 

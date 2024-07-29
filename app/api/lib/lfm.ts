@@ -38,7 +38,7 @@ export async function getTracks() {
 
 export async function getTrackInfo(tracks: Array<any>) {
     const trackData = [];
-    const test = tracks.slice(0, 5);
+    const test = tracks.slice(0, 25);
     for (const item of test) {
         const response = await axios.get("https://ws.audioscrobbler.com/2.0/", {
             params: {
@@ -51,11 +51,8 @@ export async function getTrackInfo(tracks: Array<any>) {
         });
         const track = response.data.track;
         const cleanData = {
-            //name: track.name,
             duration: track.duration,
-            //artist: track.artist.name,
-            //album: track.album?.title,
-            genres: track.toptags?.tag.map((tag: any) => tag.name), // Extract all tag names
+            genres: track.toptags?.tag.map((tag: any) => tag.name),
             playcount: item.playcount,
         };
 

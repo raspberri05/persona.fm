@@ -3,6 +3,9 @@ import crypto from "crypto";
 import axios from "axios";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { db } from "../db";
+import { InsertUser, users } from "../db/schema";
+
 config({ path: ".env" });
 
 export async function GET(request: Request) {
@@ -26,6 +29,10 @@ export async function GET(request: Request) {
         .then((response) => {
             cookies().set("username", response.data.session.name);
             cookies().set("session", response.data.session.key);
+            const userData: InsertUser = {
+                username: response.data.session.name,
+            };
+            return db.insert(users).values(userData);
         })
         .catch((_) => {});
     redirect("/home");

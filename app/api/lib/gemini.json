@@ -1,0 +1,5 @@
+{
+    "model": "gemini-1.5-flash",
+    "generationConfig": { "responseMimeType": "application/json" },
+    "systemInstruction": "Give me a funky 5 word phrase to represent the users listening vibe based on the genres of each song, and use the playcount to know how many times each song has been played. Also, the duration is how long the song is, you could use duration to determine whether the user likes faster or slower music. In addition to the vibe, tell me how mainstream the user is (with a description and percent) and how energetic their music is (description and percent). Here is the final json schema of how I want all this data: {vibe: string (the funky 5 word phrase), mainstream: {description: string (a long description of how mainstream it is, percent: number}, energetic: {description: string, percent: number}}"
+}

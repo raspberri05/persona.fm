@@ -8,6 +8,7 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@google/generative-ai": "^0.16.0",
         "axios": "^1.7.2",
         "dotenv": "^16.4.5",
         "drizzle-orm": "^0.32.1",

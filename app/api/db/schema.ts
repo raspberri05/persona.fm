@@ -1,17 +1,16 @@
-import { integer, pgTable, serial, text } from "drizzle-orm/pg-core";
+import { pgTable, serial, text } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
-    id: serial("id").primaryKey(),
-    username: text("username").notNull(),
+    username: text("username").primaryKey(),
 });
 
 export const personas = pgTable("persona", {
     id: serial("id").primaryKey(),
     week: text("week").notNull(),
     persona: text("persona").notNull(),
-    user_id: integer("user_id")
+    username: text("username")
         .notNull()
-        .references(() => users.id, { onDelete: "cascade" }),
+        .references(() => users.username, { onDelete: "cascade" }),
 });
 
 export type InsertUser = typeof users.$inferInsert;

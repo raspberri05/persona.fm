@@ -8,7 +8,7 @@ Your last.fm persona
 
 ## Setting up this project for local development
 
-*This project is being developed on Node version 20.16.0. other node versions may work but there is no guarantee*
+_This project is being developed on Node version 20.16.0. other node versions may work but there is no guarantee_
 
 ### Getting a last.fm api key
 
@@ -21,8 +21,8 @@ Go to the offical last.fm api website and create an API account [here](https://w
 
 ### Setting up environment variables
 
-1. Create ```.env``` at the root of the repository
-2. Add the following variables to ```.env```
+1. Create `.env` at the root of the repository
+2. Add the following variables to `.env`
 
 ```bash
 DATABASE_URL=your_supabase_db_connection_url # make sure to replace the password placeholder with your actual password
@@ -43,11 +43,12 @@ npm install
 npm run dev
 ```
 
-*The dev server will automatically reload if changes are made. You may need to manually restart the server upon changes to any configuration files.*
+_The dev server will automatically reload if changes are made. You may need to manually restart the server upon changes to any configuration files._
 
-# Project Structure 
+# Project Structure
 
 ## Project Flow
+
 ```mermaid
 %%{init: {'themeVariables': { 'fontSize': '24px', 'primaryColor': '#d3d3d3'}}}%%
 graph TD
@@ -101,21 +102,25 @@ linkStyle 11 stroke:#ffa500,stroke-width:2px
 linkStyle 12 stroke:#008000,stroke-width:2px
 linkStyle 13 stroke:#ffa500,stroke-width:2px
 ```
+
 ## Project Tools
-- Next JS
-- Last FM API
-- Supabase
-- PostgreSQL
-- Drizzle ORM
-- Gemini AI
+
+-   Next JS
+-   Last FM API
+-   Supabase
+-   PostgreSQL
+-   Drizzle ORM
+-   Gemini AI
 
 ## Development Tools
-- Prettier
-- Deepsource
-- Code QL
-- Git Guardian
-- Visual Studio Code
-- Github Copilot
 
-## Deploying 
+-   Prettier
+-   Deepsource
+-   Code QL
+-   Git Guardian
+-   Visual Studio Code
+-   Github Copilot
+
+## Deploying
+
 Github Actions is used to continously deploy this web application to Vercel

@@ -1,18 +1,16 @@
 "use client";
 
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Page() {
-    const [vibe, setVibe] = useState<any>();
     const hasFetched = useRef(false);
 
-    async function getMain() {
+    function getMain() {
         return axios
             .get("/api/main")
             .then((res) => {
-                const data = JSON.parse(res.data); // Ensure data is in JSON format
-                setVibe(data);
+                const data = JSON.parse(res.data);
                 console.log(data.vibe);
             })
             .catch((err) => {
@@ -27,7 +25,7 @@ export default function Page() {
         }
 
         if (!hasFetched.current) {
-            //getMain();
+            getMain();
             hasFetched.current = true;
         }
     }, []);

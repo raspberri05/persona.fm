@@ -34,6 +34,8 @@ export async function GET(request: Request) {
             };
             return db.insert(users).values(userData);
         })
-        .catch((_) => {});
+        .catch((error) => {
+            console.log(error)
+        });
     redirect("/home");
 }

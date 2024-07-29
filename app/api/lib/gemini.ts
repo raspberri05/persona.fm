@@ -3,7 +3,7 @@ import { config } from "dotenv";
 
 config({ path: ".env" });
 const genAI = new GoogleGenerativeAI(process.env.GEMINI);
-const jsonData = require("./gemini.json");
+import jsonData from "./gemini.json";
 
 export async function generate(data: any) {
     const model = genAI.getGenerativeModel(jsonData);

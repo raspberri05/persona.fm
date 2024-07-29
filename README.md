@@ -8,7 +8,7 @@ Your last.fm persona
 
 ## Setting up this project for local development
 
-_This project is being developed on Node version 20.16.0. other node versions may work but there is no guarantee_
+_This project is being developed on Node version 20.16.0. other node versions may work but there is no guarantee. If you need to manage multiple node versions, we reccomend using [Volta](https://volta.sh)_
 
 ### Getting a last.fm api key
 
@@ -16,12 +16,12 @@ Go to the offical last.fm api website and create an API account [here](https://w
 
 ### Provisioning a Supabase PostgreSQL Database
 
-1. Create a new Supabase project
-2. find your database connection string
+1. Create a new [Supabase](https://supabase.com/) project
+2. Find your database connection string
 
 ### Setting up Gemini AI API
 
-Go to Google Gemini AI Studio and create a new api key
+Go to [Google Gemini AI Studio](https://ai.google.dev/aistudio) and create a new api key
 
 ### Setting up environment variables
 

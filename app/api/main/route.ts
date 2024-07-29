@@ -1,7 +1,7 @@
 import { generate } from "../lib/gemini";
 import { getTrackInfo, getTracks } from "../lib/lfm";
 
-export async function GET() {
+export function GET() {
     return getTracks()
         .then((tracks) => {
             return getTrackInfo(tracks)

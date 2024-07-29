@@ -19,6 +19,10 @@ Go to the offical last.fm api website and create an API account [here](https://w
 1. Create a new Supabase project
 2. find your database connection string
 
+### Setting up Gemini AI API
+
+Go to Google Gemini AI Studio and create a new api key
+
 ### Setting up environment variables
 
 1. Create `.env` at the root of the repository
@@ -28,6 +32,7 @@ Go to the offical last.fm api website and create an API account [here](https://w
 DATABASE_URL=your_supabase_db_connection_url # make sure to replace the password placeholder with your actual password
 LFM_API_KEY=your_last_fm_api_key
 LFM_SECRET=your_last_fm_shared_secret
+GEMINI=your_gemini_api_key
 URL=http://localhost:3000
 ```
 

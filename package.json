@@ -9,7 +9,7 @@
     },
     "dependencies": {
         "@google/generative-ai": "^0.16.0",
-        "axios": "^1.7.2",
+        "axios": "^1.7.3",
         "dotenv": "^16.4.5",
         "drizzle-orm": "^0.32.1",
         "framer-motion": "^11.3.19",

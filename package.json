@@ -12,7 +12,7 @@
         "axios": "^1.7.2",
         "dotenv": "^16.4.5",
         "drizzle-orm": "^0.32.1",
-        "framer-motion": "^11.3.19",
+        "framer-motion": "^11.3.21",
         "next": "14.2.5",
         "postgres": "^3.4.4",
         "react": "^18",

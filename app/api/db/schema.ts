@@ -1,15 +1,15 @@
-import { pgTable, serial, text } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
     username: text("username").primaryKey(),
 });
 
-export const personas = pgTable("persona", {
-    id: serial("id").primaryKey(),
-    week: text("week").notNull(),
-    persona: text("persona").notNull(),
+export const personas = pgTable("personas", {
+    timestamp: timestamp('timestamp', { precision: 6, withTimezone: true }).primaryKey(),
+    energetic: text("energetic").notNull(),
+    mainstream: text("mainstream").notNull(),
+    vibe: text("vibe").notNull(),
     username: text("username")
-        .notNull()
         .references(() => users.username, { onDelete: "cascade" }),
 });
 

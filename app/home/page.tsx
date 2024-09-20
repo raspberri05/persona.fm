@@ -14,10 +14,24 @@ export default function Page() {
             .then((res) => {
                 const data = JSON.parse(res.data);
                 setPersona(data);
+                console.log(data)
+                save(data);
+
             })
             .catch((err) => {
                 console.error(err);
             });
+    }
+
+    function save(data:any) {
+        return axios
+        .post("/api/db", data)
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
     }
 
     useEffect(() => {

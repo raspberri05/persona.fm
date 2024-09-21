@@ -54,7 +54,7 @@ export default function Page() {
                         Analyzing your listening habits{" "}
                     </p>
                     <p className="text-lg">(this will take 30-60 seconds)</p>
-                    <span className="loading loading-spinner loading-lg"></span>
+                    <span className="loading loading-spinner loading-lg" />
                 </div>
             )}
             {persona.length !== 0 && (

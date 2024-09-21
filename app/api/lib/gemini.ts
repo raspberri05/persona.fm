@@ -20,7 +20,7 @@ export async function generate(data: any) {
     const model = genAI.getGenerativeModel({
         model: jsonData.model,
         generationConfig: jsonData.generationConfig,
-        safetySetting: safetySetting,
+        safetySetting,
         systemInstruction: jsonData.systemInstruction,
     });
 

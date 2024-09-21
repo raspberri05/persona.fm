@@ -6,11 +6,9 @@ export async function POST(request: Request) {
     const data: InsertPersona = {
         timestamp: new Date(),
         energetic:
-            res.energetic.percent.toString() + "#" + res.energetic.description,
+            `${res.energetic.percent.toString()}#${res.energetic.description}`,
         mainstream:
-            res.mainstream.percent.toString() +
-            "#" +
-            res.mainstream.description,
+            `${res.mainstream.percent.toString()}#${res.mainstream.description}`,
         vibe: res.vibe,
         username: "raspberri05",
     };

@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { Persona } from "../types";
 
 export default function Page() {
     const hasFetched = useRef(false);
@@ -22,7 +23,7 @@ export default function Page() {
             });
     }
 
-    function save(data: any) {
+    function save(data: Persona) {
         return axios
             .post("/api/db", data)
             .then((res) => {

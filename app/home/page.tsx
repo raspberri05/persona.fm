@@ -33,7 +33,7 @@ export default function Page() {
                     console.error(err);
                 });
         }
-        return;
+        return null;
     }
 
     function save(data: Persona) {

@@ -20,7 +20,6 @@ export default function Page() {
             .then((res) => {
                 const data = JSON.parse(res.data);
                 setPersona(data);
-                console;
                 save(data);
             })
             .catch((err) => {
@@ -29,12 +28,9 @@ export default function Page() {
     }
 
     function save(data: Persona) {
-        return axios
-            .post("/api/db", data)
-            .then((_) => {})
-            .catch((err) => {
-                console.error(err);
-            });
+        return axios.post("/api/db", data).catch((err) => {
+            console.error(err);
+        });
     }
 
     function seePrevious() {
@@ -57,7 +53,7 @@ export default function Page() {
         <div className="container mx-auto px-2">
             <br />
             {persona.vibe === "" && <Loading />}
-            {persona.vibe != "" && (
+            {persona.vibe !== "" && (
                 <div>
                     <PersonaDisplay persona={persona} />
                     <br />

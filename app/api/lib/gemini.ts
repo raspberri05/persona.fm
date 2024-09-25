@@ -5,8 +5,9 @@ import { HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
 config({ path: ".env" });
 const genAI = new GoogleGenerativeAI(process.env.GEMINI);
 import jsonData from "./gemini.json";
+import { rawData } from "@/app/types";
 
-export async function generate(data: any) {
+export async function generate(data: rawData[]) {
     const safetySetting = [
         {
             category: HarmCategory.HARM_CATEGORY_HARASSMENT,

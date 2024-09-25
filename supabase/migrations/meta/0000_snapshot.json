@@ -1,86 +1,82 @@
 {
-  "id": "61f56081-dc93-4de3-bda5-0df31b14b93b",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "7",
-  "dialect": "postgresql",
-  "tables": {
-    "public.personas": {
-      "name": "personas",
-      "schema": "",
-      "columns": {
-        "timestamp": {
-          "name": "timestamp",
-          "type": "timestamp (6) with time zone",
-          "primaryKey": true,
-          "notNull": true
+    "id": "61f56081-dc93-4de3-bda5-0df31b14b93b",
+    "prevId": "00000000-0000-0000-0000-000000000000",
+    "version": "7",
+    "dialect": "postgresql",
+    "tables": {
+        "public.personas": {
+            "name": "personas",
+            "schema": "",
+            "columns": {
+                "timestamp": {
+                    "name": "timestamp",
+                    "type": "timestamp (6) with time zone",
+                    "primaryKey": true,
+                    "notNull": true
+                },
+                "energetic": {
+                    "name": "energetic",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "mainstream": {
+                    "name": "mainstream",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "vibe": {
+                    "name": "vibe",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "username": {
+                    "name": "username",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {
+                "personas_username_users_username_fk": {
+                    "name": "personas_username_users_username_fk",
+                    "tableFrom": "personas",
+                    "tableTo": "users",
+                    "columnsFrom": ["username"],
+                    "columnsTo": ["username"],
+                    "onDelete": "cascade",
+                    "onUpdate": "no action"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {}
         },
-        "energetic": {
-          "name": "energetic",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "mainstream": {
-          "name": "mainstream",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "vibe": {
-          "name": "vibe",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "username": {
-          "name": "username",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
+        "public.users": {
+            "name": "users",
+            "schema": "",
+            "columns": {
+                "username": {
+                    "name": "username",
+                    "type": "text",
+                    "primaryKey": true,
+                    "notNull": true
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {},
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {}
         }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "personas_username_users_username_fk": {
-          "name": "personas_username_users_username_fk",
-          "tableFrom": "personas",
-          "tableTo": "users",
-          "columnsFrom": [
-            "username"
-          ],
-          "columnsTo": [
-            "username"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
     },
-    "public.users": {
-      "name": "users",
-      "schema": "",
-      "columns": {
-        "username": {
-          "name": "username",
-          "type": "text",
-          "primaryKey": true,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    }
-  },
-  "enums": {},
-  "schemas": {},
-  "sequences": {},
-  "_meta": {
-    "columns": {},
+    "enums": {},
     "schemas": {},
-    "tables": {}
-  }
+    "sequences": {},
+    "_meta": {
+        "columns": {},
+        "schemas": {},
+        "tables": {}
+    }
 }

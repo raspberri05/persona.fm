@@ -6,7 +6,8 @@ const roboto = Roboto({ weight: "700", subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Persona FM",
-    description: "Your Last FM music persona generated with Artificial Intelligence",
+    description:
+        "Your Last FM music persona generated with Artificial Intelligence",
 };
 
 export default function RootLayout({

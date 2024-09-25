@@ -2,12 +2,17 @@
 
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { Persona } from "../types";
+import { Persona } from "@/app/types";
+import Loading from "@/app/components/loading";
+import PersonaDisplay from "@/app/components/personadisplay";
 
 export default function Page() {
     const hasFetched = useRef(false);
-    const [persona, setPersona] = useState<any>([]);
+    const [persona, setPersona] = useState<Persona>({
+        energetic: { description: "", percent: 0 },
+        mainstream: { description: "", percent: 0 },
+        vibe: "",
+    });
 
     function getMain() {
         return axios
@@ -15,7 +20,7 @@ export default function Page() {
             .then((res) => {
                 const data = JSON.parse(res.data);
                 setPersona(data);
-                console.log(data);
+                console;
                 save(data);
             })
             .catch((err) => {
@@ -26,12 +31,14 @@ export default function Page() {
     function save(data: Persona) {
         return axios
             .post("/api/db", data)
-            .then((res) => {
-                console.log(res);
-            })
+            .then((_) => {})
             .catch((err) => {
                 console.error(err);
             });
+    }
+
+    function seePrevious() {
+        window.location.href = "/previous";
     }
 
     useEffect(() => {
@@ -49,29 +56,15 @@ export default function Page() {
     return (
         <div className="container mx-auto px-2">
             <br />
-            {persona.length === 0 && (
-                <div className="text-center items-center">
-                    <p className="text-3xl font-bold">
-                        Analyzing your listening habits{" "}
-                    </p>
-                    <p className="text-lg">(this will take 30-60 seconds)</p>
-                    <span className="loading loading-spinner loading-lg" />
+            {persona.vibe === "" && <Loading />}
+            {persona.vibe != "" && (
+                <div>
+                    <PersonaDisplay persona={persona} />
+                    <br />
+                    <button className="btn glass" onClick={seePrevious}>
+                        See previous personas
+                    </button>
                 </div>
-            )}
-            {persona.length !== 0 && (
-                <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <p className="text-3xl font-bold">{persona.vibe}</p>
-                    <br />
-                    <p className="text-xl">{`${persona.mainstream?.percent}% mainstream`}</p>
-                    <p className="text-lg">{persona.mainstream?.description}</p>
-                    <br />
-                    <p className="text-xl">{`${persona.energetic?.percent}% energetic`}</p>
-                    <p className="text-lg">{persona.energetic?.description}</p>
-                </motion.div>
             )}
         </div>
     );

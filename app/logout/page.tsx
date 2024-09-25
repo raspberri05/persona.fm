@@ -1,5 +1,5 @@
 import BackTitle from "@/app/components/backtitle";
 
 export default function Page() {
-    return <BackTitle title={"Previous Personas"} />;
+    return <BackTitle title={"Logout"} />;
 }

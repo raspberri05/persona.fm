@@ -5,9 +5,13 @@ import { useEffect, useRef, useState } from "react";
 import { Persona } from "@/app/types";
 import Loading from "@/app/components/loading";
 import PersonaDisplay from "@/app/components/personadisplay";
+import FloatNav from "@/app/components/floatnav";
+import PersonaFloat from "@/app/components/personafloat";
+import { authFail } from "@/app/helper";
 
 export default function Page() {
     const hasFetched = useRef(false);
+    const [generating, setGenerating] = useState(false);
     const [persona, setPersona] = useState<Persona>({
         energetic: { description: "", percent: 0 },
         mainstream: { description: "", percent: 0 },
@@ -15,16 +19,20 @@ export default function Page() {
     });
 
     function getMain() {
-        return axios
-            .get("/api/main")
-            .then((res) => {
-                const data = JSON.parse(res.data);
-                setPersona(data);
-                save(data);
-            })
-            .catch((err) => {
-                console.error(err);
-            });
+        if (!hasFetched.current) {
+            setGenerating(true);
+            return axios
+                .get("/api/main")
+                .then((res) => {
+                    const data = JSON.parse(res.data);
+                    setPersona(data);
+                    save(data);
+                    hasFetched.current = true;
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+        }
     }
 
     function save(data: Persona) {
@@ -33,35 +41,20 @@ export default function Page() {
         });
     }
 
-    function seePrevious() {
-        window.location.href = "/previous";
-    }
-
     useEffect(() => {
-        const cookies = document.cookie;
-        if (!cookies.includes("username") || !cookies.includes("session")) {
-            window.location.href = "/";
-        }
-
-        if (!hasFetched.current) {
-            getMain();
-            hasFetched.current = true;
-        }
+        authFail();
     }, []);
 
     return (
         <div className="container mx-auto px-2">
             <br />
-            {persona.vibe === "" && <Loading />}
-            {persona.vibe !== "" && (
-                <div>
-                    <PersonaDisplay persona={persona} />
-                    <br />
-                    <button className="btn glass" onClick={seePrevious}>
-                        See previous personas
-                    </button>
-                </div>
-            )}
+            <FloatNav />
+            <br />
+            <PersonaFloat generating={generating} getMain={getMain} />
+            <br />
+            <br />
+            {persona.vibe === "" && generating && <Loading />}
+            {persona.vibe !== "" && <PersonaDisplay persona={persona} />}
         </div>
     );
 }

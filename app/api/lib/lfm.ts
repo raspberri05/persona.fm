@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import axios from "axios";
 import { config } from "dotenv";
+import { Tag, Track, TrackInfo } from "@/app/types";
 config({ path: ".env" });
 
 const key = process.env.LFM_API_KEY || "";
@@ -24,7 +25,7 @@ export async function getTracks() {
             },
         });
         const data = response.data;
-        const cleanData = data.toptracks.track.map((track: any) => ({
+        const cleanData = data.toptracks.track.map((track: Track) => ({
             name: track.name,
             artist: track.artist.name,
             playcount: track.playcount,
@@ -36,10 +37,11 @@ export async function getTracks() {
     return tracks;
 }
 
-export async function getTrackInfo(tracks: Array<any>) {
+export async function getTrackInfo(tracks: Array<TrackInfo>) {
     const trackData = [];
     const test = tracks.slice(0, 25);
     for (const item of test) {
+        console.log(item);
         const response = await axios.get("https://ws.audioscrobbler.com/2.0/", {
             params: {
                 method: "track.getInfo",
@@ -52,10 +54,9 @@ export async function getTrackInfo(tracks: Array<any>) {
         const track = response.data.track;
         const cleanData = {
             duration: track.duration,
-            genres: track.toptags?.tag.map((tag: any) => tag.name),
+            genres: track.toptags?.tag.map((tag: Tag) => tag.name),
             playcount: item.playcount,
         };
-
         trackData.push(cleanData);
     }
     return trackData;

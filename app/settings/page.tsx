@@ -18,7 +18,7 @@ export default function Page() {
     return (
         <div>
             <p className="text-2xl">{`Username: ${getUsername()}`}</p>
-            <p>This can only be changed directly on last.fm's website</p>
+            <p>This can only be changed directly on last.fm&apos;s website</p>
             <br />
             <button className="btn btn-error" onClick={openModal}>
                 Delete Account

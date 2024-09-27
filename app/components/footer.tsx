@@ -14,7 +14,7 @@ export default function Footer() {
             </nav>
             <nav>
                 <div className="grid grid-flow-col gap-4">
-                    <a>
+                    <a href="https://github.com/raspberri05/persona.fm">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"

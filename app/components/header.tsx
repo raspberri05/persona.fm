@@ -47,7 +47,9 @@ export default function Header() {
                         </ul>
                     )}
                 </div>
-                <a className="btn btn-ghost text-xl">Persona.fm</a>
+                <a className="btn btn-ghost text-xl" href="/">
+                    Persona.fm
+                </a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 {isClient && checkAuth() && (
@@ -63,9 +65,9 @@ export default function Header() {
             </div>
             <div className="navbar-end">
                 {isClient && checkAuth() ? (
-                    <a className="btn" onClick={deleteCookies}>
+                    <button className="btn" onClick={deleteCookies}>
                         Log Out
-                    </a>
+                    </button>
                 ) : (
                     <a className="btn" href="api/auth">
                         Log In

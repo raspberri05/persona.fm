@@ -22,7 +22,7 @@ export function authPass() {
 }
 
 export function checkAuth() {
-    return (hasCookie("username") && hasCookie("session"));
+    return hasCookie("username") && hasCookie("session");
 }
 
 export function getUsername() {

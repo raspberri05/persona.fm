@@ -56,61 +56,7 @@ _The dev server will automatically reload if changes are made. You may need to m
 
 ## Project Structure
 
-### Project Flow
-
-```mermaid
-%%{init: {'themeVariables': { 'fontSize': '24px', 'primaryColor': '#d3d3d3'}}}%%
-graph TD
-    subgraph Next JS
-        A[Client]
-        B[Server]
-        C[Drizzle ORM]
-    end
-    subgraph Supabase
-        D[PostgreSQL Database]
-        G[User Table]
-        I[Data Table]
-    end
-    subgraph Last FM API
-        E[Server]
-        F[User Info]
-        H[Public User Data]
-    end
-    subgraph Gemini AI
-        J[Custom AI Engine]
-    end
-    A --> B
-    B --> |🔒 Last FM API Key| E
-    C --> |🔒 Database Password| D
-    E --> |🔒 User Authentication| F
-    D --> |🔒 Row Level Security| G
-    F --> C
-    E --> H
-    D --> |🔒 Row Level Security| I
-    H --> |🔒 Gemini AI API Key| J
-    J --> C
-    I --> B
-    G --> B
-    B --> A
-    B --> A
-    C --> |🔒 Database Password| D
-
-linkStyle 9 stroke:#ff0000,stroke-width:2px
-linkStyle 7 stroke:#ff0000,stroke-width:2px
-linkStyle 6 stroke:#ff0000,stroke-width:2px
-linkStyle 8 stroke:#ff0000,stroke-width:2px
-linkStyle 2 stroke:#ff0000,stroke-width:2px
-
-linkStyle 5 stroke:#0000ff,stroke-width:2px
-linkStyle 4 stroke:#0000ff,stroke-width:2px
-linkStyle 3 stroke:#0000ff,stroke-width:2px
-linkStyle 14 stroke:#0000ff,stroke-width:2px
-
-linkStyle 10 stroke:#008000,stroke-width:2px
-linkStyle 11 stroke:#ffa500,stroke-width:2px
-linkStyle 12 stroke:#008000,stroke-width:2px
-linkStyle 13 stroke:#ffa500,stroke-width:2px
-```
+[[Project Structure Diagram]]
 
 ### Project Tools
 

@@ -7,7 +7,7 @@ export default function Page() {
             <br />
             <p>Log In with your last.fm account to get started</p>
             <br />
-            <p>Don't have a last.fm account? Create one here</p>
+            <p>Don&apos;t have a last.fm account? Create one here</p>
         </div>
     );
 }

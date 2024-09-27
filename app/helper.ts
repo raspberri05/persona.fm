@@ -1,4 +1,4 @@
-import { hasCookie, getCookie } from "cookies-next";
+import { hasCookie, getCookie, deleteCookie } from "cookies-next";
 
 export function nav(location: string) {
     window.location.href = `/${location}`;
@@ -33,9 +33,7 @@ export function getUsername() {
 }
 
 export function deleteCookies() {
-    document.cookie =
-        "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-        "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    deleteCookie("username");
+    deleteCookie("session");
     window.location.href = "/";
 }

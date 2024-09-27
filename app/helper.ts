@@ -1,9 +1,7 @@
-import { hasCookie } from "cookies-next";
+import { hasCookie, getCookie } from "cookies-next";
 
 export function nav(location: string) {
-    if (typeof window !== "undefined") {
-        window.location.href = `/${location}`;
-    }
+    window.location.href = `/${location}`;
 }
 
 export function capitalize(str: string): string {
@@ -12,20 +10,14 @@ export function capitalize(str: string): string {
 }
 
 export function authFail() {
-    if (typeof document !== "undefined") {
-        const cookies = document.cookie;
-        if (!cookies.includes("username") || !cookies.includes("session")) {
-            window.location.href = "/";
-        }
+    if (!hasCookie("username") || !hasCookie("session")) {
+        window.location.href = "/";
     }
 }
 
 export function authPass() {
-    if (typeof document !== "undefined") {
-        const cookies = document.cookie;
-        if (cookies.includes("username") && cookies.includes("session")) {
-            window.location.href = "/home";
-        }
+    if (hasCookie("username") && hasCookie("session")) {
+        window.location.href = "/home";
     }
 }
 
@@ -37,11 +29,7 @@ export function checkAuth() {
 }
 
 export function getUsername() {
-    const cookies = document.cookie;
-    const username = cookies
-        .split(";")
-        .find((cookie) => cookie.includes("username"));
-    return username?.split("=")[1];
+    return getCookie("username");
 }
 
 export function deleteCookies() {

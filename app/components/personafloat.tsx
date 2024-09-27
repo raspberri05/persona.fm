@@ -1,5 +1,3 @@
-import PrevButton from "@/app/components/prevbutton";
-
 export default function PersonaFloat(props: {
     generating: boolean;
     getMain: () => void;
@@ -11,7 +9,6 @@ export default function PersonaFloat(props: {
                     Generate Persona
                 </button>
             )}
-            <PrevButton />
         </div>
     );
 }

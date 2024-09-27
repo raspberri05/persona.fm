@@ -1,3 +1,5 @@
+import { hasCookie, getCookie, deleteCookie } from "cookies-next";
+
 export function nav(location: string) {
     window.location.href = `/${location}`;
 }
@@ -8,15 +10,27 @@ export function capitalize(str: string): string {
 }
 
 export function authFail() {
-    const cookies = document.cookie;
-    if (!cookies.includes("username") || !cookies.includes("session")) {
+    if (!hasCookie("username") || !hasCookie("session")) {
         window.location.href = "/";
     }
 }
 
 export function authPass() {
-    const cookies = document.cookie;
-    if (cookies.includes("username") && cookies.includes("session")) {
+    if (hasCookie("username") && hasCookie("session")) {
         window.location.href = "/home";
     }
+}
+
+export function checkAuth() {
+    return hasCookie("username") && hasCookie("session");
+}
+
+export function getUsername() {
+    return getCookie("username");
+}
+
+export function deleteCookies() {
+    deleteCookie("username");
+    deleteCookie("session");
+    window.location.href = "/";
 }

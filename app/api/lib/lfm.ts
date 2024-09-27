@@ -39,8 +39,11 @@ export async function getTracks() {
 
 export async function getTrackInfo(tracks: Array<TrackInfo>) {
     const trackData = [];
-    const test = tracks.slice(0, 25);
-    for (const item of test) {
+    let data = tracks;
+    if (process.env.NODE_ENV === "development") {
+        data = data.slice(0, 25);
+    }
+    for (const item of data) {
         const response = await axios.get("https://ws.audioscrobbler.com/2.0/", {
             params: {
                 method: "track.getInfo",

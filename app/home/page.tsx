@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import { Persona } from "@/app/types";
 import Loading from "@/app/components/loading";
 import PersonaDisplay from "@/app/components/personadisplay";
-import FloatNav from "@/app/components/floatnav";
 import PersonaFloat from "@/app/components/personafloat";
 import { authFail } from "@/app/helper";
 
@@ -47,12 +46,8 @@ export default function Page() {
     }, []);
 
     return (
-        <div className="container mx-auto px-2">
-            <br />
-            <FloatNav />
-            <br />
+        <div>
             <PersonaFloat generating={generating} getMain={getMain} />
-            <br />
             <br />
             {persona.vibe === "" && generating && <Loading />}
             {persona.vibe !== "" && <PersonaDisplay persona={persona} />}

@@ -7,6 +7,7 @@ import Loading from "@/app/components/loading";
 import PersonaDisplay from "@/app/components/personadisplay";
 import PersonaFloat from "@/app/components/personafloat";
 import { authFail } from "@/app/helper";
+import Previous from "../components/previous";
 
 export default function Page() {
     const hasFetched = useRef(false);
@@ -51,6 +52,7 @@ export default function Page() {
             <br />
             {persona.vibe === "" && generating && <Loading />}
             {persona.vibe !== "" && <PersonaDisplay persona={persona} />}
+            <Previous />
         </div>
     );
 }

@@ -1,14 +1,11 @@
 export default function Footer() {
     return (
-        <footer className="footer footer-center bg-base-200 text-base-content rounded p-10">
+        <footer className="footer footer-center bg-base-200 text-base-content rounded p-10 bg-transparent">
             <nav className="grid grid-flow-col gap-4">
                 <a className="link link-hover" href="/">
                     About
                 </a>
-                <a
-                    className="link link-hover"
-                    href="mailto:naya.singhania@gmail.com"
-                >
+                <a className="link link-hover" href="contact">
                     Contact Us
                 </a>
             </nav>
@@ -29,7 +26,7 @@ export default function Footer() {
                 </div>
             </nav>
             <aside>
-                <p>Copyright © {new Date().getFullYear()} Naya Singhania</p>
+                <p>Copyright {new Date().getFullYear()} Naya Singhania</p>
             </aside>
         </footer>
     );

@@ -22,10 +22,15 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={roboto.className}>
+            <body className={`${roboto.className} flex flex-col min-h-screen`}>
                 <Header />
                 <br />
-                <div className="container mx-auto px-2 h-dvh">{children}</div>
+                <br />
+                <br />
+                <br />
+                <main className="flex-grow container mx-auto px-2">
+                    {children}
+                </main>
                 <Footer />
             </body>
         </html>

@@ -34,3 +34,11 @@ export interface TrackInfo {
     artist: string;
     playcount: string;
 }
+
+export interface Prev {
+    timestamp: string;
+    vibe: string;
+    mainstream: string;
+    energetic: string;
+    username: string;
+}

@@ -1,9 +1,11 @@
 "use client";
 
 import { authFail, getUsername } from "@/app/helper";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Page() {
+    const [username, setUsername] = useState<string | null>(null);
+
     const openModal = () => {
         const modal = document.getElementById(
             "my_modal_1",
@@ -13,11 +15,13 @@ export default function Page() {
 
     useEffect(() => {
         authFail();
+        const username = getUsername();
+        setUsername(username ?? null);
     }, []);
 
     return (
         <div>
-            <p className="text-2xl">{`Username: ${getUsername()}`}</p>
+            <p className="text-2xl">{`Username: ${username ?? ""}`}</p>
             <p>This can only be changed directly on last.fm&apos;s website</p>
             <br />
             <button className="btn btn-error" onClick={openModal}>

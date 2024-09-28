@@ -12,7 +12,7 @@ Please check out our [wiki](https://github.com/raspberri05/persona.fm/wiki) to l
 
 ### Setting up this project for local development
 
-_This project is being developed on Node version 20.16.0. other node versions may work but there is no guarantee. If you need to manage multiple node versions, we reccomend using [Volta](https://volta.sh)_
+_This project is being developed on Node version 20.17.0. other node versions may work but there is no guarantee. If you need to manage multiple node versions, we reccomend using [Volta](https://volta.sh)_
 
 #### Getting a last.fm api key
 

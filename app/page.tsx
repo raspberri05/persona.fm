@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Page() {
     return (
         <div className="text-center">
@@ -18,6 +16,7 @@ export default function Page() {
                     className="link"
                     href="https://www.last.fm/join"
                     target="_blank"
+                    rel="noopener noreferrer"
                 >
                     here
                 </a>

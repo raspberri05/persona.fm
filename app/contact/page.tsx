@@ -8,8 +8,11 @@ export default function Contact() {
             <br />
             <p className="text-xl">The contact box is under development</p>
             <p className="text-xl ">
-                Please email me at <a>naya.singhania@gmail.com</a> to leave
-                feedback
+                Please email me at{" "}
+                <a href="mailto:naya.singhania@gmail.com">
+                    naya.singhania@gmail.com
+                </a>{" "}
+                to leave feedback
             </p>
             <br />
             <label className="w-80  input input-bordered flex items-center gap-2">
@@ -20,7 +23,7 @@ export default function Contact() {
                 disabled
                 className="textarea textarea-bordered w-80 h-32"
                 placeholder="Message"
-            ></textarea>
+            />
         </div>
     );
 }

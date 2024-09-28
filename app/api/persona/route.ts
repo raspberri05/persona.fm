@@ -16,7 +16,6 @@ export function GET() {
         .from(personas)
         .where(eq(personas.username, username))
         .then((data) => {
-            console.log(data);
             return new Response(JSON.stringify(data), {
                 status: 200,
                 headers: {

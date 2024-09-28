@@ -1,16 +1,15 @@
 import axios from "axios";
-import { utimesSync } from "fs";
 import { useEffect, useState } from "react";
+import { Prev } from "../types";
 
 export default function Previous() {
-    const [data, setData] = useState<any>([]);
+    const [data, setData] = useState<Prev[]>([]);
     const [expandedRow, setExpandedRow] = useState<number | null>(null);
 
     useEffect(() => {
         axios
             .get("/api/persona")
             .then((response) => {
-                console.log(response.data);
                 setData(response.data);
             })
             .catch((error) => {
@@ -36,8 +35,8 @@ export default function Previous() {
                     {data
                         .slice()
                         .reverse()
-                        .map((item: any, index: number) => (
-                            <tr key={index}>
+                        .map((item: Prev, index: number) => (
+                            <tr key={item.timestamp}>
                                 <td>
                                     <div className="collapse bg-base-200">
                                         <input

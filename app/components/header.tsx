@@ -10,7 +10,7 @@ export default function Header() {
         setIsClient(true);
     }, []);
     return (
-        <div className="navbar bg-base-100 fixed top-0 left-0 w-full z-50">
+        <div className="navbar bg-primary fixed top-0 left-0 w-full z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div
@@ -20,7 +20,7 @@ export default function Header() {
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
+                            className="h-5 w-5 text-secondary"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -36,41 +36,48 @@ export default function Header() {
                     {isClient && checkAuth() && (
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                            className="menu menu-sm dropdown-content bg-primary text-secondary rounded-box z-[1] mt-3 w-52 p-2 shadow"
                         >
                             <li>
-                                <a href="settings">Settings</a>
+                                <a href="settings">settings</a>
                             </li>
                             <li>
-                                <a href="home">Home</a>
+                                <a href="home">home</a>
                             </li>
                         </ul>
                     )}
                 </div>
-                <a className="btn btn-ghost text-xl" href="/">
-                    Persona.fm
+                <a className="btn btn-ghost text-2xl text-secondary" href="/">
+                    persona.fm
                 </a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 {isClient && checkAuth() && (
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu menu-horizontal gap-2">
                         <li>
-                            <a href="settings">Settings</a>
+                            <a href="settings" className="btn btn-secondary">
+                                settings
+                            </a>
                         </li>
                         <li>
-                            <a href="home">Home</a>
+                            <a href="home" className="btn btn-secondary">
+                                home
+                            </a>
                         </li>
                     </ul>
                 )}
             </div>
             <div className="navbar-end">
                 {isClient && checkAuth() ? (
-                    <button className="btn" onClick={deleteCookies}>
-                        Log Out
+                    <button
+                        className="btn btn-secondary"
+                        onClick={deleteCookies}
+                    >
+                        log out
                     </button>
                 ) : (
-                    <a className="btn" href="api/auth">
-                        Log In
+                    <a className="btn btn-secondary" href="api/auth">
+                        log in
                     </a>
                 )}
             </div>

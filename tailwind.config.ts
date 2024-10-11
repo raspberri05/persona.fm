@@ -8,7 +8,17 @@ const config: Config = {
     ],
     plugins: [require("daisyui")],
     daisyui: {
-        themes: ["dark"],
+        themes: [
+            {
+                mytheme: {
+                    primary: "#312F2F",
+                    secondary: "#D3D0CB",
+                    tertiary: "#276FBF",
+                    error: "#BA2C73",
+                    success: "#339989",
+                },
+            },
+        ],
     },
 };
 export default config;

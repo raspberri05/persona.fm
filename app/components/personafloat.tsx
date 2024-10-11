@@ -3,9 +3,9 @@ export default function PersonaFloat(props: {
     getMain: () => void;
 }) {
     return (
-        <div className="join flex justify-center">
+        <div className="flex justify-center">
             {!props.generating && (
-                <button className="btn join-item" onClick={props.getMain}>
+                <button className="btn btn-primary" onClick={props.getMain}>
                     Generate Persona
                 </button>
             )}

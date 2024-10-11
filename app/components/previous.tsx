@@ -29,7 +29,7 @@ export default function Previous() {
     return (
         <div>
             <br />
-            <p className="text-2xl">Previous Personas</p>
+            <p className="text-2xl ml-4">Previous Personas</p>
             <div className="overflow-x-auto">
                 <table className="table">
                     {data
@@ -38,7 +38,7 @@ export default function Previous() {
                         .map((item: Prev, index: number) => (
                             <tr key={item.timestamp}>
                                 <td>
-                                    <div className="collapse bg-base-200">
+                                    <div className="collapse bg-primary">
                                         <input
                                             type="checkbox"
                                             checked={expandedRow === index}
@@ -46,10 +46,10 @@ export default function Previous() {
                                                 handleRowClick(index)
                                             }
                                         />
-                                        <div className="collapse-title text-xl font-medium">
+                                        <div className="collapse-title text-xl text-secondary font-medium">
                                             {formatDate(item.timestamp)}
                                         </div>
-                                        <div className="collapse-content">
+                                        <div className="collapse-content text-secondary">
                                             <p className="text-xl">
                                                 {item.vibe}
                                             </p>

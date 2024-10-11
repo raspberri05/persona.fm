@@ -21,14 +21,14 @@ export default function Page() {
 
     return (
         <div>
-            <p className="text-2xl">{`Username: ${username ?? ""}`}</p>
-            <p>This can only be changed directly on last.fm&apos;s website</p>
+            <br />
+            <p className="text-2xl">{username ?? ""}</p>
             <br />
             <button className="btn btn-error" onClick={openModal}>
                 Delete Account
             </button>
             <dialog id="my_modal_1" className="modal">
-                <div className="modal-box">
+                <div className="modal-box bg-primary text-secondary">
                     <h3 className="font-bold text-lg">
                         Confirm Account Deletion
                     </h3>
@@ -41,7 +41,9 @@ export default function Page() {
                             Delete My Account
                         </button>
                         <form method="dialog">
-                            <button className="btn btn-primary">Cancel</button>
+                            <button className="btn btn-secondary">
+                                Cancel
+                            </button>
                         </form>
                     </div>
                 </div>

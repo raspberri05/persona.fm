@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
         <footer className="footer footer-center bg-base-200 text-base-content rounded p-10 bg-transparent">
-            <nav className="grid grid-flow-col gap-4">
+            <nav className="grid grid-flow-col gap-4 mb-[-1rem]">
                 <a className="link link-hover" href="/">
                     About
                 </a>
@@ -10,7 +10,7 @@ export default function Footer() {
                 </a>
             </nav>
             <nav>
-                <div className="grid grid-flow-col gap-4">
+                <div className="grid grid-flow-col gap-4 mb-[-1rem]">
                     <a href="https://github.com/raspberri05/persona.fm">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,9 @@ export default function Footer() {
                 </div>
             </nav>
             <aside>
-                <p>Copyright {new Date().getFullYear()} Naya Singhania</p>
+                <p className="mb-[-1rem]">
+                    Copyright {new Date().getFullYear()} Naya Singhania
+                </p>
             </aside>
         </footer>
     );

@@ -48,8 +48,8 @@ export default function Page() {
 
     return (
         <div>
-            <PersonaFloat generating={generating} getMain={getMain} />
             <br />
+            <PersonaFloat generating={generating} getMain={getMain} />
             {persona.vibe === "" && generating && <Loading />}
             {persona.vibe !== "" && <PersonaDisplay persona={persona} />}
             <Previous />

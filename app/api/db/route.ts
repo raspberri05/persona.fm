@@ -8,7 +8,7 @@ export async function POST(request: Request) {
         energetic: `${res.energetic.percent.toString()}#${res.energetic.description}`,
         mainstream: `${res.mainstream.percent.toString()}#${res.mainstream.description}`,
         vibe: res.vibe,
-        username: "raspberri05",
+        username: res.username,
     };
     await db.insert(personas).values(data);
     return new Response(JSON.stringify(data), {

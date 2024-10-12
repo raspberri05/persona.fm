@@ -30,48 +30,37 @@ export default function Previous() {
         <div>
             <br />
             <p className="text-2xl ml-4">Previous Personas</p>
-            <div className="overflow-x-auto">
-                <table className="table">
-                    {data
-                        .slice()
-                        .reverse()
-                        .map((item: Prev, index: number) => (
-                            <tr key={item.timestamp}>
-                                <td>
-                                    <div className="collapse bg-primary">
-                                        <input
-                                            type="checkbox"
-                                            checked={expandedRow === index}
-                                            onChange={() =>
-                                                handleRowClick(index)
-                                            }
-                                        />
-                                        <div className="collapse-title text-xl text-secondary font-medium">
-                                            {formatDate(item.timestamp)}
-                                        </div>
-                                        <div className="collapse-content text-secondary">
-                                            <p className="text-xl">
-                                                {item.vibe}
-                                            </p>
-                                            <br />
-                                            <p>
-                                                {item.mainstream.split("#")[0]}%
-                                                mainstream:{" "}
-                                                {item.mainstream.split("#")[1]}
-                                            </p>
-                                            <br />
-                                            <p>
-                                                {item.mainstream.split("#")[0]}%
-                                                energetic:{" "}
-                                                {item.energetic.split("#")[1]}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                </table>
-            </div>
+            {data
+                .slice()
+                .reverse()
+                .map((item: Prev, index: number) => (
+                    <div
+                        key={item.timestamp}
+                        className="collapse bg-primary my-4"
+                    >
+                        <input
+                            type="checkbox"
+                            checked={expandedRow === index}
+                            onChange={() => handleRowClick(index)}
+                        />
+                        <div className="collapse-title text-xl text-secondary font-medium">
+                            {formatDate(item.timestamp)}
+                        </div>
+                        <div className="collapse-content text-secondary">
+                            <p className="text-xl">{item.vibe}</p>
+                            <br />
+                            <p>
+                                {item.mainstream.split("#")[0]}% mainstream:{" "}
+                                {item.mainstream.split("#")[1]}
+                            </p>
+                            <br />
+                            <p>
+                                {item.mainstream.split("#")[0]}% energetic:{" "}
+                                {item.energetic.split("#")[1]}
+                            </p>
+                        </div>
+                    </div>
+                ))}
         </div>
     );
 }

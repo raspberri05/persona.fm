@@ -8,27 +8,33 @@ import jsonData from "./gemini.json";
 import { rawData } from "@/app/types";
 
 export async function generate(data: rawData[]) {
-    const safetySetting = [
-        {
-            category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-            threshold: HarmBlockThreshold.BLOCK_NONE,
-        },
-        {
-            category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-            threshold: HarmBlockThreshold.BLOCK_NONE,
-        },
-    ];
-    const model = genAI.getGenerativeModel({
-        model: jsonData.model,
-        generationConfig: jsonData.generationConfig,
-        safetySetting,
-        systemInstruction: jsonData.systemInstruction,
-    });
+    try {
+        const safetySetting = [
+            {
+                category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+                threshold: HarmBlockThreshold.BLOCK_NONE,
+            },
+            {
+                category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+                threshold: HarmBlockThreshold.BLOCK_NONE,
+            },
+        ];
+        const model = genAI.getGenerativeModel({
+            model: jsonData.model,
+            generationConfig: jsonData.generationConfig,
+            safetySetting,
+            systemInstruction: jsonData.systemInstruction,
+        });
 
-    const prompt = JSON.stringify(data);
+        const prompt = JSON.stringify(data);
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
-    return text;
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const text = await response.text();
+        console.log("gemini console: " + text);
+        return text;
+    } catch (error) {
+        console.error("Error generating content:", error);
+        throw error;
+    }
 }

@@ -6,7 +6,7 @@ import { Persona } from "@/app/types";
 import Loading from "@/app/components/loading";
 import PersonaDisplay from "@/app/components/personadisplay";
 import PersonaFloat from "@/app/components/personafloat";
-import { authFail } from "@/app/helper";
+import { authFail, getUsername } from "@/app/helper";
 import Previous from "../components/previous";
 
 export default function Page() {
@@ -37,7 +37,8 @@ export default function Page() {
     }
 
     function save(data: Persona) {
-        return axios.post("/api/db", data).catch((err) => {
+        const username = getUsername();
+        return axios.post("/api/db", { ...data, username }).catch((err) => {
             console.error(err);
         });
     }

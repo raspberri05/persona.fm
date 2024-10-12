@@ -31,7 +31,7 @@ export async function generate(data: rawData[]) {
         const result = await model.generateContent(prompt);
         const response = await result.response;
         const text = await response.text();
-        console.log("gemini console: " + text);
+        console.log(`gemini console: ${text}`);
         return text;
     } catch (error) {
         console.error("Error generating content:", error);

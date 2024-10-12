@@ -32,7 +32,9 @@ export default function Page() {
                 })
                 .catch((err) => {
                     console.error(err);
-                    setError("Error fetching data. Please reload the page and try again.");
+                    setError(
+                        "Error fetching data. Please reload the page and try again.",
+                    );
                 });
         }
         return null;

@@ -17,6 +17,7 @@ export default function Page() {
         mainstream: { description: "", percent: 0 },
         vibe: "",
     });
+    const [error, setError] = useState("");
 
     function getMain() {
         if (!hasFetched.current) {
@@ -31,6 +32,7 @@ export default function Page() {
                 })
                 .catch((err) => {
                     console.error(err);
+                    setError("Error fetching data. Please reload the page and try again.");
                 });
         }
         return null;
@@ -50,6 +52,7 @@ export default function Page() {
     return (
         <div>
             <br />
+            <p>{error}</p>
             <PersonaFloat generating={generating} getMain={getMain} />
             {persona.vibe === "" && generating && <Loading />}
             {persona.vibe !== "" && <PersonaDisplay persona={persona} />}

@@ -1,12 +1,12 @@
 "use client";
 
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Persona } from "@/app/types";
 import Loading from "@/app/components/loading";
 import PersonaDisplay from "@/app/components/personadisplay";
 import PersonaFloat from "@/app/components/personafloat";
-import { authFail, getUsername } from "@/app/helper";
+import { getUsername } from "@/app/helper";
 import Previous from "../components/previous";
 
 export default function Page() {
@@ -46,10 +46,6 @@ export default function Page() {
             console.error(err);
         });
     }
-
-    useEffect(() => {
-        authFail();
-    }, []);
 
     return (
         <div>

@@ -17,7 +17,9 @@ export default function Header() {
     }
 
     useEffect(() => {
-        client();
+        client().then((_) => {
+            console.log("User logged in");
+        });
     });
 
     return (

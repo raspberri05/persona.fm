@@ -34,20 +34,11 @@ export default function Page() {
                     </p>
                     <br />
                     <p className="text-xl">
-                        Log In with your last.fm account to get started
+                        <a href="/login" className="underline">
+                            Log In
+                        </a>{" "}
+                        to get started
                     </p>
-                    <br />
-                    <p className="text-xl">
-                        Don&apos;t have a last.fm account? Create one{" "}
-                        <a
-                            className="link"
-                            href="https://www.last.fm/join"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            here
-                        </a>
-                    </p>{" "}
                 </>
             )}
             {redirected && <p>Successfully logged in! Redirecting you now</p>}

@@ -48,6 +48,13 @@ export default function Page() {
     return (
         <div>
             <br />
+            <h2 className="text-center mb-4 text-xl">
+                Make sure to set your last.fm username in{" "}
+                <a href="/settings" className="underline">
+                    settings
+                </a>{" "}
+                if you haven&apos;t yet
+            </h2>
             <p>{error}</p>
             <PersonaFloat generating={generating} getMain={getMain} />
             {error === "" && persona.vibe === "" && generating && <Loading />}

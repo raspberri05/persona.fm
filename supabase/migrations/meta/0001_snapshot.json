@@ -1,6 +1,6 @@
 {
-    "id": "2ba292b7-dde4-4e2b-b547-80044bb56a89",
-    "prevId": "00000000-0000-0000-0000-000000000000",
+    "id": "d3dcd4cb-4e42-472c-835d-67d52e3868fc",
+    "prevId": "2ba292b7-dde4-4e2b-b547-80044bb56a89",
     "version": "7",
     "dialect": "postgresql",
     "tables": {
@@ -80,11 +80,11 @@
                     "primaryKey": true,
                     "notNull": true
                 },
-                "active_profile": {
-                    "name": "active_profile",
+                "provider": {
+                    "name": "provider",
                     "type": "text",
                     "primaryKey": false,
-                    "notNull": true
+                    "notNull": false
                 },
                 "email": {
                     "name": "email",
@@ -109,15 +109,21 @@
                     "type": "text",
                     "primaryKey": false,
                     "notNull": true
+                },
+                "provider_username": {
+                    "name": "provider_username",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false
                 }
             },
             "indexes": {},
             "foreignKeys": {
-                "users_active_profile_providers_name_fk": {
-                    "name": "users_active_profile_providers_name_fk",
+                "users_provider_providers_name_fk": {
+                    "name": "users_provider_providers_name_fk",
                     "tableFrom": "users",
                     "tableTo": "providers",
-                    "columnsFrom": ["active_profile"],
+                    "columnsFrom": ["provider"],
                     "columnsTo": ["name"],
                     "onDelete": "no action",
                     "onUpdate": "no action"

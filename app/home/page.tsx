@@ -1,12 +1,11 @@
 "use client";
 
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Persona } from "@/app/types";
 import Loading from "@/app/components/loading";
 import PersonaDisplay from "@/app/components/personadisplay";
 import PersonaFloat from "@/app/components/personafloat";
-import { authFail, getUsername } from "@/app/helper";
 import Previous from "../components/previous";
 
 export default function Page() {
@@ -41,22 +40,24 @@ export default function Page() {
     }
 
     function save(data: Persona) {
-        const username = getUsername();
-        return axios.post("/api/db", { ...data, username }).catch((err) => {
+        return axios.post("/api/db", { data }).catch((err) => {
             console.error(err);
         });
     }
 
-    useEffect(() => {
-        authFail();
-    }, []);
-
     return (
         <div>
             <br />
+            <h2 className="text-center mb-4 text-xl">
+                Make sure to set your last.fm username in{" "}
+                <a href="/settings" className="underline">
+                    settings
+                </a>{" "}
+                if you haven&apos;t yet
+            </h2>
             <p>{error}</p>
             <PersonaFloat generating={generating} getMain={getMain} />
-            {persona.vibe === "" && generating && <Loading />}
+            {error === "" && persona.vibe === "" && generating && <Loading />}
             {persona.vibe !== "" && <PersonaDisplay persona={persona} />}
             <Previous />
         </div>

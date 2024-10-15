@@ -8,7 +8,7 @@ const key = process.env.LFM_API_KEY || "";
 
 export async function getTracks() {
     const cookieStore = cookies();
-    const username = cookieStore.get("username")?.value;
+    const username = cookieStore.get("provider_username")?.value;
 
     const response = await axios.get("https://ws.audioscrobbler.com/2.0/", {
         params: {

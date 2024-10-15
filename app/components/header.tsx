@@ -1,14 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { checkAuth, deleteCookies } from "../helper";
+import { createClient } from "@/utils/supabase/client";
+import { use, useEffect, useState } from "react";
 
 export default function Header() {
-    const [isClient, setIsClient] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(false);
+    const supabase = createClient();
+
+    async function client() {
+        const {
+            data: { user },
+        } = await supabase.auth.getUser();
+        if (user?.id) {
+            setLoggedIn(true);
+        }
+    }
 
     useEffect(() => {
-        setIsClient(true);
-    }, []);
+        client();
+    });
+
     return (
         <div className="navbar bg-primary fixed top-0 left-0 w-full z-50">
             <div className="navbar-start">
@@ -33,51 +44,45 @@ export default function Header() {
                             />
                         </svg>
                     </div>
-                    {isClient && checkAuth() && (
-                        <ul
-                            tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-primary text-secondary rounded-box z-[1] mt-3 w-52 p-2 shadow"
-                        >
-                            <li>
-                                <a href="settings">settings</a>
-                            </li>
-                            <li>
-                                <a href="home">home</a>
-                            </li>
-                        </ul>
-                    )}
+                    <ul
+                        tabIndex={0}
+                        className="menu menu-sm dropdown-content bg-primary text-secondary rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                    >
+                        <li>
+                            <a href="settings">settings</a>
+                        </li>
+                        <li>
+                            <a href="home">home</a>
+                        </li>
+                    </ul>
                 </div>
                 <a className="btn btn-ghost text-2xl text-secondary" href="/">
                     persona.fm
                 </a>
             </div>
             <div className="navbar-center hidden lg:flex">
-                {isClient && checkAuth() && (
-                    <ul className="menu menu-horizontal gap-2">
-                        <li>
-                            <a href="settings" className="btn btn-secondary">
-                                settings
-                            </a>
-                        </li>
-                        <li>
-                            <a href="home" className="btn btn-secondary">
-                                home
-                            </a>
-                        </li>
-                    </ul>
-                )}
+                <ul className="menu menu-horizontal gap-2">
+                    <li>
+                        <a href="settings" className="btn btn-secondary">
+                            settings
+                        </a>
+                    </li>
+                    <li>
+                        <a href="home" className="btn btn-secondary">
+                            home
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div className="navbar-end">
-                {isClient && checkAuth() ? (
-                    <button
-                        className="btn btn-secondary"
-                        onClick={deleteCookies}
-                    >
-                        log out
-                    </button>
-                ) : (
-                    <a className="btn btn-secondary" href="api/auth">
+                {!loggedIn && (
+                    <a className="btn btn-secondary" href="/login">
                         log in
+                    </a>
+                )}
+                {loggedIn && (
+                    <a className="btn btn-secondary" href="/auth/logout">
+                        log out
                     </a>
                 )}
             </div>

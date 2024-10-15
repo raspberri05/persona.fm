@@ -1,20 +1,17 @@
-import { cookies } from "next/headers";
 import { db } from "../db";
 import { personas } from "../db/schema";
 import { eq } from "drizzle-orm";
+import { createClient } from "@/utils/supabase/server";
 
-export function GET() {
-    const cookieStore = cookies();
-    const username = cookieStore.get("username")?.value;
-
-    if (!username) {
-        return new Response("Unauthorized", { status: 401 });
-    }
-
+export async function GET() {
+    const supabase = createClient();
+    const {
+        data: { user },
+    } = await supabase.auth.getUser();
     return db
         .select()
         .from(personas)
-        .where(eq(personas.username, username))
+        .where(eq(personas.uid, user?.id || ""))
         .then((data) => {
             return new Response(JSON.stringify(data), {
                 status: 200,

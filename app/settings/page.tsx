@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { addUsername } from "./actions";
 import { getCookie } from "cookies-next";
 import Image from "next/image";
-import UserProfile from "@/app/components/user-profile";
+import { UserProfile } from "@/app/components/user-profile";
 
 export default function Page() {
     const [username, setUsername] = useState("");

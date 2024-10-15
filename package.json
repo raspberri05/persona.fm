@@ -9,7 +9,6 @@
         "style": "prettier --write ."
     },
     "dependencies": {
-        "@google-cloud/vertexai": "^1.8.1",
         "@google/generative-ai": "^0.21.0",
         "@supabase/ssr": "^0.5.1",
         "@supabase/supabase-js": "^2.45.4",

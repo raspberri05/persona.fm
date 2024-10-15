@@ -5,8 +5,22 @@
         {
             "idx": 0,
             "version": "7",
-            "when": 1726791789638,
-            "tag": "0000_windy_triathlon",
+            "when": 1728949255440,
+            "tag": "0000_skinny_dark_beast",
+            "breakpoints": true
+        },
+        {
+            "idx": 1,
+            "version": "7",
+            "when": 1728951098282,
+            "tag": "0001_lonely_thaddeus_ross",
+            "breakpoints": true
+        },
+        {
+            "idx": 2,
+            "version": "7",
+            "when": 1728951113516,
+            "tag": "0002_absurd_the_order",
             "breakpoints": true
         }
     ]

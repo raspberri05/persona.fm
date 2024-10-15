@@ -6,7 +6,6 @@ import { Persona } from "@/app/types";
 import Loading from "@/app/components/loading";
 import PersonaDisplay from "@/app/components/personadisplay";
 import PersonaFloat from "@/app/components/personafloat";
-import { getUsername } from "@/app/helper";
 import Previous from "../components/previous";
 
 export default function Page() {
@@ -41,8 +40,7 @@ export default function Page() {
     }
 
     function save(data: Persona) {
-        const username = getUsername();
-        return axios.post("/api/db", { ...data, username }).catch((err) => {
+        return axios.post("/api/db", { data }).catch((err) => {
             console.error(err);
         });
     }
@@ -52,7 +50,7 @@ export default function Page() {
             <br />
             <p>{error}</p>
             <PersonaFloat generating={generating} getMain={getMain} />
-            {persona.vibe === "" && generating && <Loading />}
+            {error === "" && persona.vibe === "" && generating && <Loading />}
             {persona.vibe !== "" && <PersonaDisplay persona={persona} />}
             <Previous />
         </div>

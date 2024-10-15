@@ -1,6 +1,25 @@
 "use client";
 
+import { createClient } from "@/utils/supabase/client";
+import { use, useEffect, useState } from "react";
+
 export default function Header() {
+    const [loggedIn, setLoggedIn] = useState(false);
+    const supabase = createClient();
+
+    async function client() {
+        const {
+            data: { user },
+        } = await supabase.auth.getUser();
+        if (user?.id) {
+            setLoggedIn(true);
+        }
+    }
+
+    useEffect(() => {
+        client();
+    });
+
     return (
         <div className="navbar bg-primary fixed top-0 left-0 w-full z-50">
             <div className="navbar-start">
@@ -56,9 +75,16 @@ export default function Header() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn btn-secondary" href="/login">
-                    log in
-                </a>
+                {!loggedIn && (
+                    <a className="btn btn-secondary" href="/login">
+                        log in
+                    </a>
+                )}
+                {loggedIn && (
+                    <a className="btn btn-secondary" href="/auth/logout">
+                        log out
+                    </a>
+                )}
             </div>
         </div>
     );

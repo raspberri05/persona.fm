@@ -1,7 +1,13 @@
-import { pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
-    username: text("username").primaryKey(),
+    uid: uuid("uid").primaryKey().notNull(),
+    provider_type: text("provider_type").references(() => providers.name),
+    email: text("email").notNull(),
+    full_name: text("full_name").notNull(),
+    name: text("name").notNull(),
+    picture: text("picture").notNull(),
+    provider_username: text("provider_username"),
 });
 
 export const personas = pgTable("personas", {
@@ -12,9 +18,11 @@ export const personas = pgTable("personas", {
     energetic: text("energetic").notNull(),
     mainstream: text("mainstream").notNull(),
     vibe: text("vibe").notNull(),
-    username: text("username").references(() => users.username, {
-        onDelete: "cascade",
-    }),
+    uid: uuid("uid").references(() => users.uid),
+});
+
+export const providers = pgTable("providers", {
+    name: text("name").primaryKey(),
 });
 
 export type InsertUser = typeof users.$inferInsert;

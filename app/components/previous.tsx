@@ -55,7 +55,7 @@ export default function Previous() {
                             </p>
                             <br />
                             <p>
-                                {item.mainstream.split("#")[0]}% energetic:{" "}
+                                {item.energetic.split("#")[0]}% energetic:{" "}
                                 {item.energetic.split("#")[1]}
                             </p>
                         </div>

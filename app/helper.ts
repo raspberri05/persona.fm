@@ -1,4 +1,4 @@
-import { getCookie, deleteCookie } from "cookies-next";
+import { getCookie } from "cookies-next";
 
 export function nav(location: string) {
     window.location.href = `/${location}`;

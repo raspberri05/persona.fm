@@ -1,5 +1,9 @@
 import { pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 
+export const providers = pgTable("providers", {
+    name: text("name").primaryKey(),
+});
+
 export const users = pgTable("users", {
     uid: uuid("uid").primaryKey().notNull(),
     provider_type: text("provider_type").references(() => providers.name),
@@ -19,10 +23,6 @@ export const personas = pgTable("personas", {
     mainstream: text("mainstream").notNull(),
     vibe: text("vibe").notNull(),
     uid: uuid("uid").references(() => users.uid),
-});
-
-export const providers = pgTable("providers", {
-    name: text("name").primaryKey(),
 });
 
 export type InsertUser = typeof users.$inferInsert;

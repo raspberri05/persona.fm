@@ -20,3 +20,20 @@ export async function addUsername(formData: FormData) {
         .set({ provider_type: "lastfm", provider_username: username })
         .where(eq(users.uid, uid));
 }
+
+export async function getData() {
+    const supabase = createClient();
+    let data = {};
+    const {
+        data: { user },
+    } = await supabase.auth.getUser();
+    const id = user?.id || "";
+    await db
+        .select()
+        .from(users)
+        .where(eq(users.uid, id))
+        .then((a) => {
+            data = a[0];
+        });
+    return data;
+}

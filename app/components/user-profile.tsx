@@ -1,8 +1,7 @@
 "ues client";
 
 import { getData } from "@/app/settings/actions";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export function UserProfile() {
     const [displayName, setDisplayName] = useState("");

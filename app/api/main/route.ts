@@ -1,4 +1,4 @@
-import { generate } from "../lib/gemini";
+import { generate } from "../lib/openai";
 import { getTrackInfo, getTracks } from "../lib/lfm";
 
 export function GET() {

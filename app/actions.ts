@@ -12,17 +12,6 @@ export async function createUser() {
         data: { user },
     } = await supabase.auth.getUser();
 
-    let existing = false;
-    await db
-        .select()
-        .from(users)
-        .where(eq(users.uid, user?.id || ""))
-        .then((data) => {
-            if (data[0].uid === user?.id) {
-                existing = true;
-            }
-        });
-
     await db
         .insert(users)
         .values({

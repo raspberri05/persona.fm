@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import { createUser } from "./actions";
 
 export default function Page() {
@@ -10,7 +10,7 @@ export default function Page() {
         const redirected = searchParams.get("redirected") === "true";
         if (redirected) {
             createUser()
-                .then((user) => {
+                .then((_) => {
                     console.log("User creation process completed.");
                     window.location.href = "/home";
                 })

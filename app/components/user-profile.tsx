@@ -22,6 +22,7 @@ export function UserProfile() {
 
         fetchData();
     }, []);
+export default function UserProfile() {
     return (
         <div className="card bg-primary w-80 text-secondary mt-10">
             <div className="card-body">
@@ -38,6 +39,10 @@ export function UserProfile() {
                 <p>Display name: {displayName}</p>
                 <p>Full Name: {fullName}</p>
                 <p>Email: {email}</p>
+                <p>Display name: </p>
+                <p>Full Name: </p>
+                <p>Email: </p>
+                <p>Profile photo: </p>
             </div>
         </div>
     );

@@ -38,6 +38,8 @@ LFM_API_KEY=your_last_fm_api_key
 LFM_SECRET=your_last_fm_shared_secret
 GEMINI=your_gemini_api_key
 URL=http://localhost:3000
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY="your_supabase_anon_key
 ```
 
 #### Additional setup

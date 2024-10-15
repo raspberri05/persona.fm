@@ -16,7 +16,7 @@ Thank you for considering contributing to our project! Here are some guidelines 
 -   Please verify that the code runs and no errors exist before opening a PR with your changes
 -   Provide a clear description of the changes and the problem they solve.
 
-*Make sure the code passes linting checks and is styled properly by running ```npm run lint``` and ```npm run dev```*
+_Make sure the code passes linting checks and is styled properly by running `npm run lint` and `npm run dev`_
 
 ## Running Tests
 

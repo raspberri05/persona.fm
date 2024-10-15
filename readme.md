@@ -23,9 +23,9 @@ Go to the offical last.fm api website and create an API account [here](https://w
 1. Create a new [Supabase](https://supabase.com/) project
 2. Find your database connection string, Supabase url, and Supabase anon key
 
-#### Setting up Gemini AI API
+#### Setting up OpenAI API
 
-Go to [Google Gemini AI Studio](https://ai.google.dev/aistudio) and create a new api key
+Go to [OpenAI](https://platform.openai.com/apps) and create a new project api key. If you do not have an openai account with api credit to use, please open an issue to get access to a temporary key
 
 #### Setting up Google OAuth
 
@@ -39,13 +39,12 @@ Go to [Google Gemini AI Studio](https://ai.google.dev/aistudio) and create a new
 ```bash
 # make sure to replace the password placeholder of the databse url value copied from Supabase with your actual password for the database
 
-DATABASE_URL=your_supabase_db_connection_url 
+DATABASE_URL=your_supabase_db_connection_url
 LFM_API_KEY=your_last_fm_api_key
-LFM_SECRET=your_last_fm_shared_secret
-GEMINI=your_gemini_api_key
 URL=http://localhost:3000
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY="your_supabase_anon_key
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+OPENAI_API_KEY=your_openai_api_key
 ```
 
 #### Additional setup
@@ -69,7 +68,7 @@ _The dev server will automatically reload if changes are made. You may need to m
 -   Supabase
 -   PostgreSQL
 -   Drizzle ORM
--   Gemini AI
+-   Open AI API
 -   Google OAuth
 
 ### Development Tools
@@ -81,6 +80,7 @@ _The dev server will automatically reload if changes are made. You may need to m
 -   Visual Studio Code
 -   Github Copilot
 
-### Deploying
+### CI/CD
 
-Github Actions is used to continously deploy this web application to Vercel
+-   Github Actions
+-   Vercel Deploy

@@ -20,7 +20,7 @@ _This project is being developed on Node version 20.17.0. other node versions ma
 
 Go to the offical last.fm api website and create an API account [here](https://www.last.fm/api/account/create), and take note of the api key and shared secret
 
-#### Provisioning a Supabase PostgreSQL Database
+#### Provisioning a Supabase PostgreSQL Database / Setting up authentication
 
 1. Create a new [Supabase](https://supabase.com/) project
 2. Find your database connection string, Supabase url, and Supabase anon key
@@ -32,6 +32,7 @@ Go to [OpenAI](https://platform.openai.com/apps) and create a new project api ke
 #### Setting up Google OAuth
 
 1. Follow the instructions in the Application Code Configuration section of [this article](https://supabase.com/docs/guides/auth/social-login/auth-google?queryGroups=environment&environment=server#application-code-configuration)
+2. Make sure to add `http://localhost:3000/**` and `http://localhost:3000` to authorized Callback Urls in Supabase (look in settings -> URL configuration
 
 #### Setting up environment variables
 

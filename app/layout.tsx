@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/footer";
 import Header from "./components/header";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const roboto = Roboto({ weight: "700", subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default function RootLayout({
                 </main>
                 <Footer />
             </body>
+            <GoogleAnalytics gaId="G-5C6EN7BR23" />
         </html>
     );
 }

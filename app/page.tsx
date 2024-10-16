@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
-import { createUser } from "./actions";
+import { createUser } from "@/app/api/actions/actions";
 
 export default function Page() {
     function Check() {

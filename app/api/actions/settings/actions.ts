@@ -1,7 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
-import { db } from "../api/db";
+import { db } from "@/app/api/db";
 import { createClient } from "@/utils/supabase/server";
 import { users } from "@/app/api/db/schema";
 import { eq } from "drizzle-orm";

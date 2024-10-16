@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { addUsername } from "./actions";
+import { addUsername } from "../api/actions/settings/actions";
 import { getCookie } from "cookies-next";
 import Image from "next/image";
 import { UserProfile } from "@/app/components/user-profile";
+import Button from "@/app/components/atoms/button";
 
 export default function Page() {
     const [username, setUsername] = useState("");
@@ -41,9 +42,11 @@ export default function Page() {
                         />
 
                         <br />
-                        <button formAction={addUsername}>
-                            Add/Change Last.fm Username
-                        </button>
+                        <Button
+                            variant="ghost"
+                            formAction={addUsername}
+                            text="Add/Change Last.fm Username"
+                        />
                     </form>
                 </div>
             </div>

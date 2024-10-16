@@ -83,7 +83,7 @@ export default function Header() {
                     </a>
                 )}
                 {loggedIn && (
-                    <a className="btn btn-secondary" href="/auth/logout">
+                    <a className="btn btn-secondary" href="/api/auth/logout">
                         log out
                     </a>
                 )}

@@ -2,12 +2,12 @@
 
 import axios from "axios";
 import { useRef, useState } from "react";
-import { Persona } from "@/app/types";
+import { Persona } from "@/utils/types";
 import Loading from "@/app/components/loading";
 import PersonaDisplay from "@/app/components/personadisplay";
 import PersonaFloat from "@/app/components/personafloat";
 import Previous from "../components/previous";
-import { getCookie } from "cookies-next";
+import { getCookie, hasCookie } from "cookies-next";
 
 export default function Page() {
     const hasFetched = useRef(false);
@@ -49,7 +49,8 @@ export default function Page() {
     return (
         <div>
             <br />
-            {getCookie("username") === "" && (
+            {(!hasCookie("provider_username") ||
+                getCookie("provider_username") === "") && (
                 <h2 className="text-center mb-4 text-xl">
                     Make sure to set your last.fm username in{" "}
                     <a href="/settings" className="underline">
@@ -59,7 +60,10 @@ export default function Page() {
                 </h2>
             )}
             <p>{error}</p>
-            <PersonaFloat generating={generating} getMain={getMain} />
+            {!(
+                !hasCookie("provider_username") ||
+                getCookie("provider_username") === ""
+            ) && <PersonaFloat generating={generating} getMain={getMain} />}
             {error === "" && persona.vibe === "" && generating && <Loading />}
             {persona.vibe !== "" && <PersonaDisplay persona={persona} />}
             <Previous />

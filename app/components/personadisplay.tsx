@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Persona } from "@/app/types";
+import { Persona } from "@/utils/types";
 
 export default function PersonaDisplay(props: { persona: Persona }) {
     return (

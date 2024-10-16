@@ -1,6 +1,6 @@
 "ues client";
 
-import { getData } from "@/app/settings/actions";
+import { getData } from "@/app/api/actions/settings/actions";
 import { useEffect, useState } from "react";
 
 export function UserProfile() {

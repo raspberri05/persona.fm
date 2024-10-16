@@ -2,7 +2,7 @@ import { config } from "dotenv";
 
 config({ path: ".env" });
 import jsonData from "./openai.json";
-import { rawData } from "@/app/types";
+import { rawData } from "@/utils/types";
 import OpenAI from "openai";
 const openai = new OpenAI();
 import { zodResponseFormat } from "openai/helpers/zod";

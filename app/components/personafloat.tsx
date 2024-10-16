@@ -1,3 +1,5 @@
+import Button from "@/app/components/atoms/button";
+
 export default function PersonaFloat(props: {
     generating: boolean;
     getMain: () => void;
@@ -5,9 +7,11 @@ export default function PersonaFloat(props: {
     return (
         <div className="flex justify-center">
             {!props.generating && (
-                <button className="btn btn-primary" onClick={props.getMain}>
-                    Generate Persona
-                </button>
+                <Button
+                    variant="primary"
+                    text="Generate Persona"
+                    onClick={props.getMain}
+                />
             )}
         </div>
     );

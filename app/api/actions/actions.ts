@@ -16,7 +16,7 @@ export async function createUser() {
         .insert(users)
         .values({
             uid: user?.id || "",
-            provider_type: "",
+            provider_type: "lastfm",
             email: user?.user_metadata.email || "",
             full_name: user?.user_metadata.full_name || "",
             name: user?.user_metadata.name || "",

@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import axios from "axios";
 import { config } from "dotenv";
-import { Tag, Track, TrackInfo } from "@/app/types";
+import { Tag, Track, TrackInfo } from "@/utils/types";
 config({ path: ".env" });
 
 const key = process.env.LFM_API_KEY || "";

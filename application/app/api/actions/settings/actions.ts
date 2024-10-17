@@ -5,6 +5,7 @@ import { db } from "@/app/api/db";
 import { createClient } from "@/utils/supabase/server";
 import { users } from "@/app/api/db/schema";
 import { eq } from "drizzle-orm";
+import { User } from "@/utils/types";
 
 export async function addUsername(formData: FormData) {
     const supabase = createClient();
@@ -21,9 +22,17 @@ export async function addUsername(formData: FormData) {
         .where(eq(users.uid, uid));
 }
 
-export async function getData() {
+export async function getData(): Promise<User> {
     const supabase = createClient();
-    let data = {};
+    let data: User = {
+        uid: "",
+        name: "",
+        full_name: "",
+        email: "",
+        picture: "",
+        provider_type: "",
+        provider_username: "",
+    };
     const {
         data: { user },
     } = await supabase.auth.getUser();

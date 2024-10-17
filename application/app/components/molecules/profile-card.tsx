@@ -3,6 +3,7 @@
 import { getData } from "@/app/api/actions/settings/actions";
 import { useEffect, useState } from "react";
 import Card from "@/app/components/atoms/card";
+import { User } from "@/utils/types";
 
 export default function ProfileCard() {
     const [displayName, setDisplayName] = useState("");
@@ -11,7 +12,7 @@ export default function ProfileCard() {
     const [profilePhoto, setProfilePhoto] = useState("");
     useEffect(() => {
         const fetchData = async () => {
-            await getData().then((a: any) => {
+            await getData().then((a: User) => {
                 console.log(a);
                 setDisplayName(a?.name);
                 setFullName(a?.full_name);

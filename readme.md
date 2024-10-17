@@ -25,6 +25,14 @@ Go to the offical last.fm api website and create an API account [here](https://w
 1. Create a new [Supabase](https://supabase.com/) project
 2. Find your database connection string, Supabase url, and Supabase anon key
 
+#### Setting up your Supabase Database
+
+1. `npx drizzle-kit generate`
+2. `npx drizzle-kit migrate`
+3. `npx drizzle-kit push`
+
+_Make sure to rerun steps 2 and 3 upon any changes to the database schema_
+
 #### Setting up OpenAI API
 
 Go to [OpenAI](https://platform.openai.com/apps) and create a new project api key. If you do not have an openai account with api credit to use, please open an issue to get access to a temporary key
@@ -67,16 +75,20 @@ _The dev server will automatically reload if changes are made. You may need to m
 ### Project Tools
 
 -   Next JS
+-   React
+-   Tailwind CSS
 -   Last FM API
--   Supabase
+-   Supabase (Database and Authentication)
 -   PostgreSQL
 -   Drizzle ORM
 -   Open AI API
--   Google OAuth
+-   Google Cloud OAuth
+-   Figma
 
 ### Development Tools
 
 -   Prettier
+-   ESLint
 -   Deepsource
 -   Code QL
 -   Git Guardian

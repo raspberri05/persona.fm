@@ -26,11 +26,12 @@ Go to the offical last.fm api website and create an API account [here](https://w
 2. Find your database connection string, Supabase url, and Supabase anon key
 
 #### Setting up your Supabase Database
+
 1. `npx drizzle-kit generate`
 2. `npx drizzle-kit migrate`
 3. `npx drizzle-kit push`
 
-*Make sure to rerun steps 2 and 3 upon any changes to the database schema*
+_Make sure to rerun steps 2 and 3 upon any changes to the database schema_
 
 #### Setting up OpenAI API
 

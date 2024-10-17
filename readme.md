@@ -75,16 +75,19 @@ _The dev server will automatically reload if changes are made. You may need to m
 ### Project Tools
 
 -   Next JS
+-   React
+-   Tailwind CSS
 -   Last FM API
--   Supabase
+-   Supabase (Database and Authentication)
 -   PostgreSQL
 -   Drizzle ORM
 -   Open AI API
--   Google OAuth
+-   Google Cloud OAuth
 
 ### Development Tools
 
 -   Prettier
+-   ESLint
 -   Deepsource
 -   Code QL
 -   Git Guardian

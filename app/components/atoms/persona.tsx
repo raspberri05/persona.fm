@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { Persona } from "@/utils/types";
+import { Persona as Pers } from "@/utils/types";
 
-export default function PersonaDisplay(props: { persona: Persona }) {
+export default function Persona(props: { persona: Pers }) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 50 }}

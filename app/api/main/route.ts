@@ -1,5 +1,5 @@
-import { generate } from "../lib/openai";
-import { getTrackInfo, getTracks } from "../lib/lfm";
+import { generate } from "@/app/api/lib/openai";
+import { getTrackInfo, getTracks } from "@/app/api/lib/lfm";
 
 export function GET() {
     return getTracks()

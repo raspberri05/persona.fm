@@ -2,17 +2,17 @@
 
 import axios from "axios";
 import { useRef, useState } from "react";
-import { Persona } from "@/utils/types";
-import Loading from "@/app/components/loading";
-import PersonaDisplay from "@/app/components/personadisplay";
-import PersonaFloat from "@/app/components/personafloat";
-import Previous from "../components/previous";
+import { Persona as Pers } from "@/utils/types";
+import DisplayLoading from "@/app/components/molecules/display-loading";
+import Persona from "@/app/components/atoms/persona";
+import GenerateButton from "@/app/components/molecules/generate-button";
+import Previous from "@/app/components/atoms/previous";
 import { getCookie, hasCookie } from "cookies-next";
 
 export default function Page() {
     const hasFetched = useRef(false);
     const [generating, setGenerating] = useState(false);
-    const [persona, setPersona] = useState<Persona>({
+    const [persona, setPersona] = useState<Pers>({
         energetic: { description: "", percent: 0 },
         mainstream: { description: "", percent: 0 },
         vibe: "",
@@ -40,7 +40,7 @@ export default function Page() {
         return null;
     }
 
-    function save(data: Persona) {
+    function save(data: Pers) {
         return axios.post("/api/db", { data }).catch((err) => {
             console.error(err);
         });
@@ -63,9 +63,11 @@ export default function Page() {
             {!(
                 !hasCookie("provider_username") ||
                 getCookie("provider_username") === ""
-            ) && <PersonaFloat generating={generating} getMain={getMain} />}
-            {error === "" && persona.vibe === "" && generating && <Loading />}
-            {persona.vibe !== "" && <PersonaDisplay persona={persona} />}
+            ) && <GenerateButton generating={generating} getMain={getMain} />}
+            {error === "" && persona.vibe === "" && generating && (
+                <DisplayLoading />
+            )}
+            {persona.vibe !== "" && <Persona persona={persona} />}
             <Previous />
         </div>
     );

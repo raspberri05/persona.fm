@@ -3,11 +3,15 @@ import LinkButton from "@/app/components/molecules/link-button";
 export default function Footer() {
     return (
         <footer className="footer footer-center bg-base-200 text-base-content rounded p-10 bg-transparent">
-            <nav className="grid grid-flow-col gap-4 mb-[-1rem]">
-                <LinkButton variant="ghost" text="About" href="/" />
-                <LinkButton variant="ghost" text="Contact" href="/contact" />
-                <LinkButton variant="ghost" text="Privacy" href="/privacy" />
-                <LinkButton variant="ghost" text="Terms" href="/terms" />
+            <nav className="grid grid-flow-row gap-2 mb-[-0.5rem]">
+                <div className="grid grid-flow-col gap-4">
+                    <LinkButton variant="ghost" text="About" href="/" />
+                    <LinkButton variant="ghost" text="Contact" href="/contact" />
+                </div>
+                <div className="grid grid-flow-col gap-4">
+                    <LinkButton variant="ghost" text="Privacy" href="/privacy" />
+                    <LinkButton variant="ghost" text="Terms" href="/terms" />
+                </div>
             </nav>
             <nav>
                 <div className="grid grid-flow-col gap-4 mb-[-1rem]">

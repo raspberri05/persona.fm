@@ -2,6 +2,8 @@
 
 [Figma Designs](https://www.figma.com/design/LLVawiL7F4SP9rlDuyGAtH/persona.fm?node-id=0-1&t=xhFhQpHwxTzcHNZl-1)
 
+[Wiki](http://docs.personafm.com/)
+
 # persona.fm
 
 Your last.fm persona

@@ -4,6 +4,7 @@ import { getData } from "@/app/api/actions/settings/actions";
 import { useEffect, useState } from "react";
 import Card from "@/app/components/atoms/card";
 import { User } from "@/utils/types";
+import { Image } from 'next/image';
 
 export default function ProfileCard() {
     const [displayName, setDisplayName] = useState("");
@@ -31,7 +32,7 @@ export default function ProfileCard() {
     }, []);
     return (
         <Card title="Your profile">
-            <img
+            <Image
                 src={profilePhoto}
                 alt="google pfp"
                 width={100}

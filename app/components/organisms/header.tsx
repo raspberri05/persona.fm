@@ -102,7 +102,7 @@ export default function Header() {
                     <LinkButton
                         variant="secondary"
                         text="log out"
-                        href="logout"
+                        href="/api/auth/logout"
                     />
                 )}
             </div>

@@ -83,6 +83,7 @@ _The dev server will automatically reload if changes are made. You may need to m
 -   Drizzle ORM
 -   Open AI API
 -   Google Cloud OAuth
+-   Figma
 
 ### Development Tools
 

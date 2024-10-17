@@ -13,6 +13,7 @@
         "@supabase/ssr": "^0.5.1",
         "@supabase/supabase-js": "^2.45.4",
         "axios": "^1.7.7",
+        "clsx": "^2.1.1",
         "cookies-next": "^4.3.0",
         "dotenv": "^16.4.5",
         "drizzle-orm": "^0.33.0",

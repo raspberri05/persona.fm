@@ -1,16 +1,27 @@
-export default function Button(props: {
+import React, { FC } from "react";
+import clsx from "clsx";
+
+interface ButtonProps {
     variant: string;
     text: string;
     onClick?: () => void;
     formAction?: any;
-}) {
+}
+
+const Button: FC<ButtonProps> = ({ variant, text, onClick, formAction }) => {
     return (
         <button
-            className={`btn btn-${props.variant} hover:opacity-80`}
-            onClick={props.onClick}
-            formAction={props.formAction}
+            className={clsx("btn hover:opacity-80", {
+                "btn-primary": variant === "primary",
+                "btn-secondary": variant === "secondary",
+                "btn-ghost": variant === "ghost",
+            })}
+            onClick={onClick}
+            formAction={formAction}
         >
-            {props.text}
+            {text}
         </button>
     );
-}
+};
+
+export default Button;

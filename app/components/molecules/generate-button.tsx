@@ -1,6 +1,6 @@
 import Button from "@/app/components/atoms/button";
 
-export default function PersonaFloat(props: {
+export default function GenerateButton(props: {
     generating: boolean;
     getMain: () => void;
 }) {

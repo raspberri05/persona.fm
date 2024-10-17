@@ -1,13 +1,11 @@
+import LinkButton from "@/app/components/molecules/link-button";
+
 export default function Footer() {
     return (
         <footer className="footer footer-center bg-base-200 text-base-content rounded p-10 bg-transparent">
             <nav className="grid grid-flow-col gap-4 mb-[-1rem]">
-                <a className="link link-hover" href="/">
-                    About
-                </a>
-                <a className="link link-hover" href="contact">
-                    Contact Us
-                </a>
+                <LinkButton variant="ghost" text="About" href="/" />
+                <LinkButton variant="ghost" text="Contact" href="/contact" />
             </nav>
             <nav>
                 <div className="grid grid-flow-col gap-4 mb-[-1rem]">

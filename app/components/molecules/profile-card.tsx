@@ -2,8 +2,9 @@
 
 import { getData } from "@/app/api/actions/settings/actions";
 import { useEffect, useState } from "react";
+import Card from "@/app/components/atoms/card";
 
-export function UserProfile() {
+export default function ProfileCard() {
     const [displayName, setDisplayName] = useState("");
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
@@ -22,22 +23,17 @@ export function UserProfile() {
         fetchData();
     }, []);
     return (
-        <div className="card bg-primary w-80 text-secondary mt-10">
-            <div className="card-body">
-                <div className="flex justify-center">
-                    <h2 className="card-title">Your profile</h2>
-                </div>
-                <img
-                    src={profilePhoto}
-                    alt="google pfp"
-                    width={100}
-                    height={100}
-                    className="rounded-lg"
-                />
-                <p>Display name: {displayName}</p>
-                <p>Full Name: {fullName}</p>
-                <p>Email: {email}</p>
-            </div>
-        </div>
+        <Card title="Your profile">
+            <img
+                src={profilePhoto}
+                alt="google pfp"
+                width={100}
+                height={100}
+                className="rounded-lg"
+            />
+            <p>Display name: {displayName}</p>
+            <p>Full Name: {fullName}</p>
+            <p>Email: {email}</p>
+        </Card>
     );
 }

@@ -1,5 +1,5 @@
-import { db } from "../db";
-import { personas } from "../db/schema";
+import { db } from "@/app/api/db";
+import { personas } from "@/app/api/db/schema";
 import { eq } from "drizzle-orm";
 import { createClient } from "@/utils/supabase/server";
 

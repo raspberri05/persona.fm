@@ -2,6 +2,7 @@
 
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
+import LinkButton from "@/app/components//molecules/link-button";
 
 export default function Header() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -17,13 +18,17 @@ export default function Header() {
     }
 
     useEffect(() => {
-        client().then((_) => {
-            console.log("User logged in");
-        });
+        client()
+            .then((_) => {
+                console.log("User logged in");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     });
 
     return (
-        <div className="navbar bg-primary fixed top-0 left-0 w-full z-50">
+        <div className="navbar bg-primary fixed top-0 left-0 w-full z-50 py-3">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div
@@ -46,15 +51,20 @@ export default function Header() {
                             />
                         </svg>
                     </div>
-                    <ul
-                        tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-primary text-secondary rounded-box z-[1] mt-3 w-52 p-2 shadow"
-                    >
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content">
                         <li>
-                            <a href="settings">settings</a>
+                            <LinkButton
+                                variant="primary"
+                                text="home"
+                                href="home"
+                            />
                         </li>
                         <li>
-                            <a href="home">home</a>
+                            <LinkButton
+                                variant="primary"
+                                text="settings"
+                                href="settings"
+                            />
                         </li>
                     </ul>
                 </div>
@@ -63,29 +73,37 @@ export default function Header() {
                 </a>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal gap-2">
+                <ul className="gap-2 menu-horizontal">
                     <li>
-                        <a href="settings" className="btn btn-secondary">
-                            settings
-                        </a>
+                        <LinkButton
+                            variant="secondary"
+                            text="home"
+                            href="home"
+                        />
                     </li>
                     <li>
-                        <a href="home" className="btn btn-secondary">
-                            home
-                        </a>
+                        <LinkButton
+                            variant="secondary"
+                            text="settings"
+                            href="settings"
+                        />
                     </li>
                 </ul>
             </div>
             <div className="navbar-end">
                 {!loggedIn && (
-                    <a className="btn btn-secondary" href="/login">
-                        log in
-                    </a>
+                    <LinkButton
+                        variant="secondary"
+                        text="log in"
+                        href="login"
+                    />
                 )}
                 {loggedIn && (
-                    <a className="btn btn-secondary" href="/api/auth/logout">
-                        log out
-                    </a>
+                    <LinkButton
+                        variant="secondary"
+                        text="log out"
+                        href="logout"
+                    />
                 )}
             </div>
         </div>

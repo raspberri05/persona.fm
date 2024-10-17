@@ -22,6 +22,8 @@ _This project is being developed on Node version 20.17.0. other node versions ma
 
 Go to the offical last.fm api website and create an API account [here](https://www.last.fm/api/account/create), and take note of the api key and shared secret
 
+*Only needed if you're working on a feature that uses the last.fm api*
+
 #### Provisioning a Supabase PostgreSQL Database / Setting up authentication
 
 1. Create a new [Supabase](https://supabase.com/) project
@@ -39,6 +41,8 @@ _Make sure to rerun steps 2 and 3 upon any changes to the database schema_
 
 Go to [OpenAI](https://platform.openai.com/apps) and create a new project api key. If you do not have an openai account with api credit to use, please open an issue to get access to a temporary key
 
+*Only needed if you're working on a feature that uses the openai api*
+
 #### Setting up Google OAuth
 
 1. Follow the instructions in the Application Code Configuration section of [this article](https://supabase.com/docs/guides/auth/social-login/auth-google?queryGroups=environment&environment=server#application-code-configuration)
@@ -53,11 +57,11 @@ Go to [OpenAI](https://platform.openai.com/apps) and create a new project api ke
 # make sure to replace the password placeholder of the databse url value copied from Supabase with your actual password for the database
 
 DATABASE_URL=your_supabase_db_connection_url
-LFM_API_KEY=your_last_fm_api_key
+LFM_API_KEY=your_last_fm_api_key_if_applicable
 URL=http://localhost:3000
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-OPENAI_API_KEY=your_openai_api_key
+OPENAI_API_KEY=your_openai_api_key_if_applicable
 ```
 
 #### Additional setup

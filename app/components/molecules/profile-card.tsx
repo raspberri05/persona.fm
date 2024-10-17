@@ -3,6 +3,7 @@
 import { getData } from "@/app/api/actions/settings/actions";
 import { useEffect, useState } from "react";
 import Card from "@/app/components/atoms/card";
+import { User } from "@/utils/types";
 
 export default function ProfileCard() {
     const [displayName, setDisplayName] = useState("");
@@ -20,7 +21,13 @@ export default function ProfileCard() {
             });
         };
 
-        fetchData();
+        fetchData()
+            .then((_) => {
+                console.log("done");
+            })
+            .catch((e) => {
+                console.error(e);
+            });
     }, []);
     return (
         <Card title="Your profile">

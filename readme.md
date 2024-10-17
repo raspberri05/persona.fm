@@ -13,7 +13,7 @@ Your last.fm persona
 Please check out our [wiki](https://github.com/raspberri05/persona.fm/wiki) to learn more about Persona FM and to get help if you have any issues
 
 ## Getting Started
-
+***Make sure all commands are run in the `application` subdirectory***
 ### Setting up this project for local development
 
 _This project is being developed on Node version 20.17.0. other node versions may work but there is no guarantee. If you need to manage multiple node versions, we reccomend using [Volta](https://volta.sh)_

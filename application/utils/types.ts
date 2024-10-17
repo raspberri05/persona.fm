@@ -48,4 +48,8 @@ export interface User {
     full_name: string;
     email: string;
     picture: string;
+    uid: string;
+    provider_type: string | null;
+    provider_username: string | null;
 }
+

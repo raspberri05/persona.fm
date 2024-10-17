@@ -5,7 +5,7 @@ interface ButtonProps {
     variant: string;
     text: string;
     onClick?: () => void;
-    formAction?: any;
+    formAction?: (formData: FormData) => Promise<void>;
 }
 
 const Button: FC<ButtonProps> = ({ variant, text, onClick, formAction }) => {

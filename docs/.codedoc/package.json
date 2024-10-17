@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "codedoc build",
+    "serve": "codedoc serve"
+  },
+  "dependencies": {
+    "@codedoc/core": "^0.3.1"
+  }
+}

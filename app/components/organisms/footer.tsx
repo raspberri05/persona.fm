@@ -6,6 +6,9 @@ export default function Footer() {
             <nav className="grid grid-flow-col gap-4 mb-[-1rem]">
                 <LinkButton variant="ghost" text="About" href="/" />
                 <LinkButton variant="ghost" text="Contact" href="/contact" />
+                <LinkButton variant="ghost" text="Privacy" href="/privacy" />
+                <LinkButton variant="ghost" text="Terms" href="/terms" />
+
             </nav>
             <nav>
                 <div className="grid grid-flow-col gap-4 mb-[-1rem]">

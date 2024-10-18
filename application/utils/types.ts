@@ -52,4 +52,3 @@ export interface User {
     provider_type: string | null;
     provider_username: string | null;
 }
-

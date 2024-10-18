@@ -38,6 +38,7 @@ export default function ProfileCard() {
                 width={100}
                 height={100}
                 className="rounded-lg"
+                unoptimized
             />
             <p>Display name: {displayName}</p>
             <p>Full Name: {fullName}</p>

@@ -10,4 +10,4 @@ Your last.fm persona
 
 ## About
 
-Please check out our [documentation](https://docs.personafm.com) to learn more about Persona FM, set up the project for local development, learn how to contribute, and raise any questions or concerns
+Please check out our [documentation](https://docs.personafm.com) to learn more about persona.fm, set up the project for local development, learn how to contribute, and raise any questions or concerns

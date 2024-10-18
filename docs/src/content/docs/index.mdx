@@ -15,3 +15,22 @@ hero:
       icon: external
       variant: minimal
 ---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+## Next steps
+
+<CardGrid>
+  <Card title="Get Started" icon="pencil">
+    <a href="setup/installation">See how to set up this project locally</a>
+  </Card>
+  <Card title="Background" icon="add-document">
+    <a href="background/about">Learn more about persona.fm</a>
+  </Card>
+  <Card title="Submit A Bug" icon="setting">
+    <a href="usage/bugs">Submit an issue or bug</a>
+  </Card>
+  <Card title="Visit Us on Github" icon="open-book">
+    <a href="https://github.com/raspberri05/persona.fm">Github link</a>
+  </Card>
+</CardGrid>

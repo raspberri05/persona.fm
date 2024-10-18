@@ -10,7 +10,6 @@ export default defineConfig({
     starlight({
       title: "persona.fm",
       customCss: [
-        // Path to your Tailwind base styles:
         "./src/tailwind.css",
       ],
       social: {
@@ -18,9 +17,15 @@ export default defineConfig({
       },
       sidebar: [
         {
+          label: "Background",
+          items: [
+            { label: "About", slug: "background/about" },
+
+          ],
+        },
+        {
           label: "Usage",
           items: [
-            // Each item here is one entry in the navigation menu.
             { label: "Usage", slug: "usage/usage" },
             { label: "Known Bugs", slug: "usage/bugs" },
 
@@ -29,7 +34,6 @@ export default defineConfig({
         {
           label: "Project Structure",
           items: [
-            // Each item here is one entry in the navigation menu.
             { label: "Directory Structure", slug: "structure/directory" },
             { label: "Code Flow", slug: "structure/flow" },
 
@@ -38,10 +42,21 @@ export default defineConfig({
         {
           label: "Local Setup",
           items: [
-            // Each item here is one entry in the navigation menu.
             { label: "Installation", slug: "setup/installation" },
             { label: "Web Dependencies", slug: "setup/web-dependencies" },
             { label: "Running the Project", slug: "setup/running-project" },
+          ],
+        },
+        {
+          label: "Editing Documentation",
+          items: [
+            { label: "Info", slug: "docs/info" },
+          ],
+        },
+        {
+          label: "What's Next?",
+          items: [
+            { label: "Roadmap", slug: "next/roadmap" },
           ],
         },
       ],

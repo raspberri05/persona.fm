@@ -1,3 +1,3 @@
 # persona.fm documentation
 
-Created using Starlight
+Created using Starlight and Astro

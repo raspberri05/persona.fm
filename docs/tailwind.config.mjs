@@ -16,7 +16,7 @@ export default {
         // Your preferred text font. Starlight uses a system font stack by default.
         sans: ['"Roboto"'],
         // Your preferred code font. Starlight uses system monospace fonts by default.
-        mono: ['"IBM Plex Mono"'],
+        mono: ['"Source Code Pro"'],
       },
     },
   },

@@ -18,7 +18,9 @@ export default function Footer() {
             </aside>
             <nav>
                 <h6 className="footer-title">Learn More</h6>
-                <a className="link link-hover" href="/">About</a>
+                <a className="link link-hover" href="/">
+                    About
+                </a>
             </nav>
             <nav>
                 <h6 className="footer-title">Community</h6>

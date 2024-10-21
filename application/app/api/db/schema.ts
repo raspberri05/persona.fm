@@ -26,22 +26,24 @@ export const personas = pgTable("personas", {
 });
 
 export const groups = pgTable("groups", {
-    id: uuid("id").primaryKey().defaultRandom(),
-    name: text("name").notNull().unique(),
+    uid: uuid("uid").primaryKey().notNull(),
+    name: text("name").notNull(),
 });
 
-export const groupMemberships = pgTable("group_memberships", {
-    userId: uuid("user_id").references(() => users.uid).notNull(),
-    groupId: uuid("group_id").references(() => groups.id).notNull(),
-}, (table: { userId: any; groupId: any; }) => ({
-    pk: primaryKey(table.userId, table.groupId),
-}));
+export const memberships = pgTable("memberships", {
+    uid: uuid("uid").primaryKey().notNull(),
+    user_id: uuid("user_id").references(() => users.uid).notNull(),
+    group_id: uuid("group_id").references(() => groups.uid).notNull(),
+});
 
 export type InsertUser = typeof users.$inferInsert;
 export type SelectUser = typeof users.$inferSelect;
 
 export type InsertPersona = typeof personas.$inferInsert;
-function primaryKey(userId: any, groupId: any) {
-    throw new Error("Function not implemented.");
-}
+export type SelectPersona = typeof personas.$inferSelect;
 
+export type InsertGroup = typeof groups.$inferInsert;
+export type SelectGroup = typeof groups.$inferSelect;
+
+export type InsertMembership = typeof memberships.$inferSelect;
+export type SelectMembership = typeof memberships.$inferInsert;

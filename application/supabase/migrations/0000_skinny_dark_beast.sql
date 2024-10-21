@@ -18,18 +18,7 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"name" text NOT NULL,
 	"picture" text NOT NULL
 );
---> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "groups" (
-  "id" uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  "name" text NOT NULL UNIQUE
-);
---> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "group_memberships" (
-  "user_id" uuid REFERENCES "users"("uid") ON DELETE CASCADE,
-  "group_id" uuid REFERENCES "groups"("id") ON DELETE CASCADE,
-  PRIMARY KEY ("user_id", "group_id")
-);
---> statement-breakpoint
+
 DO $$ BEGIN
  ALTER TABLE "personas" ADD CONSTRAINT "personas_uid_users_uid_fk" FOREIGN KEY ("uid") REFERENCES "public"."users"("uid") ON DELETE no action ON UPDATE no action;
 EXCEPTION

@@ -32,8 +32,12 @@ export const groups = pgTable("groups", {
 
 export const memberships = pgTable("memberships", {
     uid: uuid("uid").primaryKey().notNull(),
-    user_id: uuid("user_id").references(() => users.uid).notNull(),
-    group_id: uuid("group_id").references(() => groups.uid).notNull(),
+    user_id: uuid("user_id")
+        .references(() => users.uid)
+        .notNull(),
+    group_id: uuid("group_id")
+        .references(() => groups.uid)
+        .notNull(),
 });
 
 export type InsertUser = typeof users.$inferInsert;

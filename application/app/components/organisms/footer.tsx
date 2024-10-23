@@ -21,6 +21,12 @@ export default function Footer() {
                 <a className="link link-hover" href="/">
                     About
                 </a>
+                <a
+                    className="link link-hover"
+                    href="https://github.com/raspberri05/persona.fm"
+                >
+                    Github
+                </a>
             </nav>
             <nav>
                 <h6 className="footer-title">Community</h6>

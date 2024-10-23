@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Persona as Pers } from "@/utils/types";
 import DisplayLoading from "@/app/components/molecules/display-loading";
 import Persona from "@/app/components/atoms/persona";
@@ -11,6 +11,9 @@ import { getCookie, hasCookie } from "cookies-next";
 
 export default function Page() {
     const hasFetched = useRef(false);
+    const [providerUsername, setProviderUsername] = useState<string | null>(
+        null,
+    );
     const [generating, setGenerating] = useState(false);
     const [persona, setPersona] = useState<Pers>({
         energetic: { description: "", percent: 0 },
@@ -46,11 +49,15 @@ export default function Page() {
         });
     }
 
+    useEffect(() => {
+        const username = getCookie("provider_username");
+        setProviderUsername(username ? username.toString() : null);
+    }, []);
+
     return (
         <div>
             <br />
-            {(!hasCookie("provider_username") ||
-                getCookie("provider_username") === "") && (
+            {(!providerUsername || providerUsername === "") && (
                 <h2 className="text-center mb-4 text-xl">
                     Make sure to set your last.fm username in{" "}
                     <a href="/settings" className="underline">
@@ -59,11 +66,10 @@ export default function Page() {
                     if you haven&apos;t yet
                 </h2>
             )}
-            <p>{error}</p>
-            {!(
-                !hasCookie("provider_username") ||
-                getCookie("provider_username") === ""
-            ) && <GenerateButton generating={generating} getMain={getMain} />}
+            {error && <p>{error}</p>}
+            {!(!providerUsername || providerUsername === "") && (
+                <GenerateButton generating={generating} getMain={getMain} />
+            )}
             {error === "" && persona.vibe === "" && generating && (
                 <DisplayLoading />
             )}

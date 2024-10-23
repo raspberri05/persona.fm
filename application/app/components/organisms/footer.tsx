@@ -24,6 +24,7 @@ export default function Footer() {
                 <a
                     className="link link-hover"
                     href="https://github.com/raspberri05/persona.fm"
+                    target="_blank"
                 >
                     Github
                 </a>
@@ -33,6 +34,7 @@ export default function Footer() {
                 <a
                     className="link link-hover"
                     href="https://docs.personafm.com"
+                    target="_blank"
                 >
                     Documentation
                 </a>

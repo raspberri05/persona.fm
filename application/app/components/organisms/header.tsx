@@ -51,20 +51,16 @@ export default function Header() {
                             />
                         </svg>
                     </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content">
-                        <li>
-                            <LinkButton
-                                variant="primary"
-                                text="home"
-                                href="home"
-                            />
+                    <ul
+                        tabIndex={0}
+                        className="menu menu-sm dropdown-content bg-primary text-secondary rounded-box z-[1] mt-5 w-24 p-2 shadow"
+                    >
+                        <li className="hover:opacity-80">
+                            <a href="/home">home</a>
                         </li>
-                        <li>
-                            <LinkButton
-                                variant="primary"
-                                text="settings"
-                                href="settings"
-                            />
+                        <hr className="opacity-30" />
+                        <li className="hover:opacity-80">
+                            <a href="/settings">settings</a>
                         </li>
                     </ul>
                 </div>

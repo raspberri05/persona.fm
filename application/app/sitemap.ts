@@ -15,6 +15,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.8,
         },
         {
+            url: "https://personafm.com/contact",
+            lastModified: new Date(),
+            changeFrequency: "monthly",
+            priority: 0.5,
+        },
+        {
             url: "https://personafm.com/terms",
             lastModified: new Date(),
             changeFrequency: "monthly",

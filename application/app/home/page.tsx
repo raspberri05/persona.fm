@@ -7,7 +7,7 @@ import DisplayLoading from "@/app/components/molecules/display-loading";
 import Persona from "@/app/components/atoms/persona";
 import GenerateButton from "@/app/components/molecules/generate-button";
 import Previous from "@/app/components/atoms/previous";
-import { getCookie, hasCookie } from "cookies-next";
+import { getCookie } from "cookies-next";
 
 export default function Page() {
     const hasFetched = useRef(false);

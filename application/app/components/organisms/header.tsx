@@ -3,10 +3,10 @@
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 import LinkButton from "@/app/components//molecules/link-button";
-import Button from "../atoms/button";
 
 export default function Header() {
     const [loggedIn, setLoggedIn] = useState(false);
+    const [image, setImage] = useState("");
     const supabase = createClient();
 
     async function client() {
@@ -14,7 +14,9 @@ export default function Header() {
             data: { user },
         } = await supabase.auth.getUser();
         if (user?.id) {
+            console.log(user);
             setLoggedIn(true);
+            setImage(user.user_metadata.picture);
         }
     }
 
@@ -54,7 +56,7 @@ export default function Header() {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-primary text-secondary rounded-box z-[1] mt-5 w-24 p-2 shadow"
+                        className="menu menu-sm dropdown-content bg-primary text-secondary rounded-box z-[1] mt-5 w-18 p-2 shadow items-center"
                     >
                         <li className="hover:opacity-80">
                             <a href="/home">home</a>
@@ -84,19 +86,19 @@ export default function Header() {
                         <div tabIndex={0} role="button" className="">
                             {" "}
                             <img
-                                src="https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png"
+                                src={image}
                                 alt="logo"
                                 className="h-12 rounded-full mr-2"
                             />
                         </div>
                         <ul
                             tabIndex={0}
-                            className="dropdown-content menu bg-base-100 rounded-box z-[1] w-24 p-2 mt-6 shadow items-center"
+                            className="menu menu-sm dropdown-content bg-primary text-secondary rounded-box z-[1] mt-5 w-18 p-2 shadow items-center"
                         >
-                            <li>
+                            <li className="hover:opacity-80">
                                 <a href="/settings">settings</a>
                             </li>
-                            <li>
+                            <li className="hover:opacity-80">
                                 <a href="/api/auth/logout">log out</a>
                             </li>
                         </ul>

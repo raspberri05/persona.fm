@@ -3,6 +3,7 @@
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 import LinkButton from "@/app/components//molecules/link-button";
+import Button from "../atoms/button";
 
 export default function Header() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -58,10 +59,6 @@ export default function Header() {
                         <li className="hover:opacity-80">
                             <a href="/home">home</a>
                         </li>
-                        <hr className="opacity-30" />
-                        <li className="hover:opacity-80">
-                            <a href="/settings">settings</a>
-                        </li>
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-2xl text-secondary" href="/">
@@ -69,36 +66,48 @@ export default function Header() {
                 </a>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="gap-2 menu-horizontal">
-                    <li>
-                        <LinkButton
-                            variant="secondary"
-                            text="home"
-                            href="home"
-                        />
-                    </li>
-                    <li>
-                        <LinkButton
-                            variant="secondary"
-                            text="settings"
-                            href="settings"
-                        />
-                    </li>
-                </ul>
+                {loggedIn && (
+                    <ul className="menu-horizontal">
+                        <li>
+                            <LinkButton
+                                variant="secondary"
+                                text="home"
+                                href="home"
+                            />
+                        </li>
+                    </ul>
+                )}
             </div>
             <div className="navbar-end">
+                {loggedIn && (
+                    <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="">
+                            {" "}
+                            <img
+                                src="https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png"
+                                alt="logo"
+                                className="h-12 rounded-full mr-2"
+                            />
+                        </div>
+                        <ul
+                            tabIndex={0}
+                            className="dropdown-content menu bg-base-100 rounded-box z-[1] w-24 p-2 mt-6 shadow items-center"
+                        >
+                            <li>
+                                <a href="/settings">settings</a>
+                            </li>
+                            <li>
+                                <a href="/api/auth/logout">log out</a>
+                            </li>
+                        </ul>
+                    </div>
+                )}
+
                 {!loggedIn && (
                     <LinkButton
                         variant="secondary"
                         text="log in"
                         href="login"
-                    />
-                )}
-                {loggedIn && (
-                    <LinkButton
-                        variant="secondary"
-                        text="log out"
-                        href="/api/auth/logout"
                     />
                 )}
             </div>

@@ -35,7 +35,7 @@ export default defineConfig({
           label: "Project Structure",
           items: [
             { label: "Directory Structure", slug: "structure/directory" },
-            { label: "Code Flow", slug: "structure/flow" },
+            { label: "Tech Stack", slug: "structure/tech-stack" },
 
           ],
         },
@@ -50,7 +50,7 @@ export default defineConfig({
         {
           label: "Editing Documentation",
           items: [
-            { label: "Info", slug: "docs/info" },
+            { label: "Information", slug: "docs/information" },
           ],
         },
         {

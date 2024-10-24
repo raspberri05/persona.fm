@@ -2,7 +2,6 @@
 title: Running the code
 description: Running the local code
 ---
-import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 ## One last thing
 
@@ -14,23 +13,10 @@ URL=http://localhost:3000
 
 ## Running the development server
 
-<Tabs>
-  <TabItem label="npm">
-    ```bash
-    cd application/ && npm run dev
-    ```
-  </TabItem>
-  <TabItem label="pnpm">
-    ```bash
-    cd application/ && pnpm run dev
-    ```
-  </TabItem>
-  <TabItem label="bun">
-    ```bash
-    cd application/ && bun run dev
-    ```
-  </TabItem>
-</Tabs>
+
+```bash
+cd application/ && npm run dev
+```
 
 The development server should reload upon any file changes. You may need to stop and restart the server upon changes to any configuration files
 

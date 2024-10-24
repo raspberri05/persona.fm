@@ -34,7 +34,7 @@ This project uses Supabase both to host the PostgreSQL database and to handle au
     DATABASE_URL=your_supabase_db_connection_url
     ```
 
-2. Find your Supabase url and anon public key (Project Settings -> API) and add it to your code.
+3. Find your Supabase url and anon public key (Project Settings -> API) and add it to your code.
 
     In the existing `.env` file you created in the previous step, add the url and anon public key. Your `.env` file should now look like this
 
@@ -44,7 +44,14 @@ This project uses Supabase both to host the PostgreSQL database and to handle au
     NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
     ```
 
-3. Set up Google OAuth Integration
+4. Setup the database schema
+
+    run the following command
+    ```bash
+    npx drizzle-kit push
+    ```
+
+5. Set up Google OAuth Integration
 
     You've completed Supabase setup for now. Move on to the next section to learn how to set up Google OAuth
 

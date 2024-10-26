@@ -35,7 +35,7 @@ h2 {
 
 @-moz-document url-prefix() {
     /* CSS Code */
-   main { 
-    margin-top: 6rem;
-   }
- }
+    main {
+        margin-top: 6rem;
+    }
+}

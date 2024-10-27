@@ -32,7 +32,7 @@ export default function ProfileCard() {
     }, []);
     return (
         <Card title="Your profile">
-            {profilePhoto === "" && <div className="h-[100px]"></div>}
+            {profilePhoto === "" && <div className="h-[100px]" />}
             {profilePhoto !== "" && (
                 <Image
                     src={profilePhoto}

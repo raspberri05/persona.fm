@@ -72,7 +72,7 @@ export default function Page() {
             {!(!providerUsername || providerUsername === "") && !loading && (
                 <GenerateButton generating={generating} getMain={getMain} />
             )}
-            {loading && <div className="h-12"></div>}
+            {loading && <div className="h-12" />}
             {error === "" && persona.vibe === "" && generating && (
                 <DisplayLoading />
             )}

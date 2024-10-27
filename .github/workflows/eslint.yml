@@ -4,13 +4,9 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'application/**'
   pull_request:
     branches:
       - main
-    paths:
-      - 'application/**'
 
 jobs:
   check:
@@ -27,9 +23,7 @@ jobs:
           node-version: "20"
 
       - name: Install dependencies
-        working-directory: ./application
         run: npm install
 
       - name: Run eslint
-        working-directory: ./application
         run: npm run lint

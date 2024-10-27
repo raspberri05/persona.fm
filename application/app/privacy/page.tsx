@@ -16,10 +16,12 @@ export default function Page() {
             <p>
                 We collect information that you provide to us directly, such as
                 when you create an account, fill out a form, or communicate with
-                us. This may include your name, email address, display name,
-                profile photo, and generated persona data, and other contact
-                information. We also collect analytics information automatically
-                as you use our app, such as usage data and device information.
+                us. We collect your name, email address, display name, and
+                profile photo via Google sign in, and generated persona data
+                based on public data from your Last.fm profile. We also collect
+                analytics information automatically as you use our app via
+                Google Analyticsz, such as usage data, device information, and
+                what country you are in.
             </p>
 
             <br />
@@ -35,15 +37,15 @@ export default function Page() {
                 <li>
                     Communicate with you, including for customer service and to
                     provide you with updates and other information relating to
-                    the app
+                    the app.
                 </li>
             </ul>
 
             <br />
             <h2>Sharing of Information</h2>
             <p>
-                We may share your information to comply with legal obligations,
-                protect our rights, or prevent fraud.
+                We will only share your information when needed to comply with
+                legal obligations, protect our rights, or prevent fraud.
             </p>
 
             <br />
@@ -68,9 +70,8 @@ export default function Page() {
             <br />
             <h2>Cookies and Tracking Technologies</h2>
             <p>
-                We use cookies and similar tracking technologies to ensure app
-                functionality (storing authentication/session data) and to
-                collect analytics data
+                We use cookies to ensure app functionality (storing
+                authentication/session data) and to collect analytics data.
             </p>
 
             <br />

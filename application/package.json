@@ -6,7 +6,8 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "style": "prettier --write ."
+        "style": "prettier --write .",
+        "test": "playwright test"
     },
     "dependencies": {
         "@next/third-parties": "^14.2.15",

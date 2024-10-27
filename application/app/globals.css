@@ -35,7 +35,20 @@ h2 {
 
 @-moz-document url-prefix() {
     /* CSS Code */
-   main { 
-    margin-top: 6rem;
-   }
- }
+    main {
+        margin-top: 6rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}

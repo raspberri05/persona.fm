@@ -21,6 +21,7 @@ export default function Page() {
         vibe: "",
     });
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(true);
 
     function getMain() {
         if (!hasFetched.current) {
@@ -52,12 +53,13 @@ export default function Page() {
     useEffect(() => {
         const username = getCookie("provider_username");
         setProviderUsername(username ? username.toString() : null);
+        setLoading(false);
     }, []);
 
     return (
         <div>
             <br />
-            {(!providerUsername || providerUsername === "") && (
+            {(!providerUsername || providerUsername === "") && !loading && (
                 <h2 className="text-center mb-4 text-xl">
                     Make sure to set your last.fm username in{" "}
                     <a href="/settings" className="underline">
@@ -67,9 +69,10 @@ export default function Page() {
                 </h2>
             )}
             {error && <p>{error}</p>}
-            {!(!providerUsername || providerUsername === "") && (
+            {!(!providerUsername || providerUsername === "") && !loading && (
                 <GenerateButton generating={generating} getMain={getMain} />
             )}
+            {loading && <div className="h-12"></div>}
             {error === "" && persona.vibe === "" && generating && (
                 <DisplayLoading />
             )}

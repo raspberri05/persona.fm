@@ -8,7 +8,8 @@ export function GET() {
     allCookies.forEach((cookie) => {
         if (
             cookie.name.startsWith("sb-") ||
-            cookie.name === "provider_username"
+            cookie.name === "provider_username" ||
+            cookie.name.startsWith("_ga")
         ) {
             cookieStore.set(cookie.name, "", {
                 maxAge: -1, // This effectively deletes the cookie

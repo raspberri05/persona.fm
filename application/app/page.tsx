@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function Page() {
     const [loggedIn, setLoggedIn] = useState(false);
+    const [loading, setLoading] = useState(true);
     const supabase = createClient();
 
     async function client() {
@@ -20,29 +21,30 @@ export default function Page() {
     useEffect(() => {
         client()
             .then((_) => {
-                console.log("User logged in");
+                console.log("checked user");
+                setLoading(false);
             })
             .catch((error) => {
                 console.log(error);
             });
     });
     return (
-        <div className="text-center">
+        <div className="text-center fade-in">
             <br />
-            <p className="text-6xl">Welcome to Persona.fm!</p>
+            <h1 className="text-6xl">Welcome to Persona.fm!</h1>
             <br />
             <p className="text-3xl">Your AI-Generated Last.fm music persona</p>
             <br />
-            {!loggedIn && (
-                <p className="text-xl">
+            {!loggedIn && !loading && (
+                <p className="text-xl fade-in">
                     <a href="/login" className="underline">
                         Log In
                     </a>{" "}
                     to get started
                 </p>
             )}
-            {loggedIn && (
-                <p className="text-xl">
+            {loggedIn && !loading && (
+                <p className="text-xl fade-in">
                     Go to{" "}
                     <a href="/home" className="underline">
                         home

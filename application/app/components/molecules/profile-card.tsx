@@ -32,18 +32,23 @@ export default function ProfileCard() {
     }, []);
     return (
         <Card title="Your profile">
-            <Image
-                src={profilePhoto}
-                alt="google pfp"
-                width={100}
-                height={100}
-                className="rounded-lg"
-                unoptimized
-                loading="eager"
-            />
-            <p>Display name: {displayName}</p>
-            <p>Full Name: {fullName}</p>
-            <p>Email: {email}</p>
+            {profilePhoto === "" && <div className="h-[100px]"></div>}
+            {profilePhoto !== "" && (
+                <Image
+                    src={profilePhoto}
+                    alt="google pfp"
+                    width={100}
+                    height={100}
+                    className="rounded-full fade-in"
+                    unoptimized
+                    loading="eager"
+                />
+            )}
+            <div className="fade-in">
+                <p className="py-2">Display name: {displayName}</p>
+                <p>Full Name: {fullName}</p>
+                <p className="pt-2">Email: {email}</p>
+            </div>
         </Card>
     );
 }

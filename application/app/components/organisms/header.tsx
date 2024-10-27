@@ -3,10 +3,12 @@
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 import LinkButton from "@/app/components//molecules/link-button";
+import { deleteCookie } from "cookies-next";
 
 export default function Header() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [image, setImage] = useState("");
+    const [loading, setLoading] = useState(true);
     const supabase = createClient();
 
     async function client() {
@@ -20,10 +22,18 @@ export default function Header() {
         }
     }
 
+    async function signOut() {
+        deleteCookie("provider_username");
+        await supabase.auth.signOut().then(() => {
+            window.location.href = "/";
+        });
+    }
+
     useEffect(() => {
         client()
             .then((_) => {
-                console.log("User logged in");
+                console.log("checked user");
+                setLoading(false);
             })
             .catch((error) => {
                 console.log(error);
@@ -31,7 +41,7 @@ export default function Header() {
     });
 
     return (
-        <div className="navbar bg-primary fixed top-0 left-0 w-full z-50 py-3">
+        <div className="navbar bg-primary fixed top-0 left-0 w-full z-50 py-3 h-[72px]">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div
@@ -63,7 +73,7 @@ export default function Header() {
                         </li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-2xl text-secondary" href="/">
+                <a className="pl-4 text-2xl text-secondary" href="/">
                     persona.fm
                 </a>
             </div>
@@ -80,8 +90,8 @@ export default function Header() {
                     </ul>
                 )}
             </div>
-            <div className="navbar-end">
-                {loggedIn && (
+            <div className="navbar-end fade-in">
+                {loggedIn && !loading && (
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="">
                             {" "}
@@ -99,13 +109,17 @@ export default function Header() {
                                 <a href="/settings">settings</a>
                             </li>
                             <li className="hover:opacity-80">
-                                <a href="/api/auth/logout">log out</a>
+                                <a>
+                                    <button onClick={() => signOut()}>
+                                        logout
+                                    </button>
+                                </a>
                             </li>
                         </ul>
                     </div>
                 )}
 
-                {!loggedIn && (
+                {!loggedIn && !loading && (
                     <LinkButton
                         variant="secondary"
                         text="log in"

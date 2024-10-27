@@ -7,7 +7,8 @@ export default function Page() {
             <p>
                 Welcome to persona.fm. By accessing or using our app, you agree
                 to be bound by these Terms of Use. If you do not agree with any
-                part of these terms, you may not use our app.
+                part of these terms, you are not permitted to use this
+                application.
             </p>
 
             <br />
@@ -18,7 +19,7 @@ export default function Page() {
                 anyone else&apos;s use and enjoyment of the app. Prohibited
                 behavior includes harassing or causing distress or inconvenience
                 to any other user, transmitting obscene or offensive content, or
-                disrupting the normal flow of dialogue within our app.
+                disrupting the functions of this application.
             </p>
 
             <br />
@@ -28,16 +29,18 @@ export default function Page() {
                 images, and software, is the property of persona.fm or its
                 content suppliers and is protected by international copyright
                 laws. Unauthorized use of any content may violate copyright,
-                trademark, and other laws.
+                trademark, and other laws. The source code of this application
+                is open=sourced and bound by the appropriate open source
+                license, which can be found on our Github project page.
             </p>
 
             <br />
             <h2>Limitation of Liability</h2>
             <p>
-                persona.fm will not be liable for any damages arising from the
-                use of or inability to use the app, including but not limited to
-                direct, indirect, incidental, punitive, and consequential
-                damages.
+                Persona.fm will not be liable for any damages or loss of data
+                arising from the use of or inability to use the app, including
+                but not limited to direct, indirect, incidental, punitive, and
+                consequential damages.
             </p>
 
             <br />

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { createUser } from "@/app/api/actions/actions";
+import Loading from "@/app/components/atoms/loading";
 
 export default function Page() {
     useEffect(() => {
@@ -15,8 +16,9 @@ export default function Page() {
             });
     }, []);
     return (
-        <div>
-            <p>Successfully logged in! Redirecting you now</p>
+        <div className="text-center">
+            <h1>Successfully logged in! Redirecting you now</h1>
+            <Loading />
         </div>
     );
 }

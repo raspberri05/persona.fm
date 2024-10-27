@@ -25,6 +25,7 @@ export default function Footer() {
                     className="link link-hover"
                     href="https://github.com/raspberri05/persona.fm"
                     target="_blank"
+                    rel="noreferrer"
                 >
                     Github
                 </a>
@@ -35,6 +36,7 @@ export default function Footer() {
                     className="link link-hover"
                     href="https://docs.personafm.com"
                     target="_blank"
+                    rel="noreferrer"
                 >
                     Documentation
                 </a>

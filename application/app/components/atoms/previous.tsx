@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Prev } from "@/utils/types";
-import Loading from "./loading";
 
 export default function Previous() {
     const [data, setData] = useState<Prev[]>([]);

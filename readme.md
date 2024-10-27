@@ -1,4 +1,4 @@
-[![DeepSource](https://app.deepsource.com/gh/raspberri05/persona.fm:application.svg/?label=active+issues&show_trend=true&token=fXU6_wgo1tckK-9i1LyA7GoJ)](https://app.deepsource.com/gh/raspberri05/persona.fm:application/)
+[![DeepSource](https://app.deepsource.com/gh/personafm/persona.fm.svg/?label=active+issues&show_trend=true&token=tgIMoNNWRSugrm1CLxp54e00)](https://app.deepsource.com/gh/personafm/persona.fm/)
 ![Playwright](https://github.com/raspberri05/persona.fm/actions/workflows/playwright.yml/badge.svg)
 ![ESLint](https://github.com/raspberri05/persona.fm/actions/workflows/eslint.yml/badge.svg)
 

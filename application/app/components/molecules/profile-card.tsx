@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Card from "@/app/components/atoms/card";
 import { User } from "@/utils/types";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ProfileCard() {
     const [displayName, setDisplayName] = useState("");
@@ -47,7 +48,14 @@ export default function ProfileCard() {
             <div className="fade-in">
                 <p className="py-2">Display name: {displayName}</p>
                 <p>Full Name: {fullName}</p>
-                <p className="pt-2">Email: {email}</p>
+                <p className="py-2">Email: {email}</p>
+                <Link
+                    href="https://docs.personafm.com/usage/faq"
+                    target="_blank"
+                    className="text-xs underline"
+                >
+                    Why can&apos;t I change this information?
+                </Link>
             </div>
         </Card>
     );

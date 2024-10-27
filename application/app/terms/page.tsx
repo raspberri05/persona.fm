@@ -59,7 +59,7 @@ export default function Page() {
                 contact us at:
             </p>
             <ul>
-                <li>Email: naya.singhania@gmail.com</li>
+                <li>Email: support@personafm.com</li>
             </ul>
 
             <p>Thank you for using persona.fm!</p>

@@ -8,6 +8,10 @@ export default function Page() {
         <div>
             <ProfileCard />
             <LastfmCard />
+            <br />
+            <a href="https://docs.personafm.com/usage/faq" target="_blank">
+                <button className="btn btn-error">Delete Account</button>
+            </a>
         </div>
     );
 }

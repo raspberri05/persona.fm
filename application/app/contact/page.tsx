@@ -9,9 +9,7 @@ export default function Contact() {
             <p className="text-xl">The contact box is under development</p>
             <p className="text-xl ">
                 Please email me at{" "}
-                <a href="mailto:naya.singhania@gmail.com">
-                    naya.singhania@gmail.com
-                </a>{" "}
+                <a href="mailto:support@personafm.com">support@personafm.com</a>{" "}
                 to leave feedback
             </p>
             <br />

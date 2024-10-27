@@ -27,6 +27,7 @@ export default defineConfig({
           label: "Usage",
           items: [
             { label: "Usage", slug: "usage/usage" },
+            {label: "FAQ", slug: "usage/faq"},
             { label: "Known Bugs", slug: "usage/bugs" },
 
           ],

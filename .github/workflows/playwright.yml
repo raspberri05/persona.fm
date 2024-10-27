@@ -14,13 +14,10 @@ jobs:
       with:
         node-version: lts/*
     - name: Install dependencies
-      working-directory: ./application
       run: npm ci
     - name: Install Playwright Browsers
-      working-directory: ./application
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      working-directory: ./application
       env: 
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         URL: ${{ secrets.URL }}
@@ -32,5 +29,5 @@ jobs:
       if: ${{ !cancelled() }}
       with:
         name: playwright-report
-        path: application/playwright-report/
+        path: playwright-report/
         retention-days: 30

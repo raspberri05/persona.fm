@@ -3,7 +3,6 @@
 ![Playwright](https://github.com/raspberri05/persona.fm/actions/workflows/playwright.yml/badge.svg)
 ![ESLint](https://github.com/raspberri05/persona.fm/actions/workflows/eslint.yml/badge.svg)
 
-
 # persona.fm
 
 Your AI-generated Last.fm persona

@@ -7,14 +7,12 @@ export default function Footer() {
                 <Image
                     src="icon.svg"
                     alt="persona.fm logo"
-                    width="40"
-                    height="40"
+                    width="28"
+                    height="28"
                 />
-                <p>
-                    Persona.fm
-                    <br />
-                    Copyright 2024 Naya Singhania
-                </p>
+                <p>Copyright 2024 Persona.fm </p>
+
+                <a href="https://netlify.com" className="underline" target="_blank" rel="noopener">This site is powered by Netlify</a>
             </aside>
             <nav>
                 <h6 className="footer-title">Learn More</h6>

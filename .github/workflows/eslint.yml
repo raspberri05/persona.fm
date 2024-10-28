@@ -1,29 +1,29 @@
 name: eslint
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
+    check:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4.2.1
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4.2.1
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4.0.4
+            - name: Setup Node.js environment
+              uses: actions/setup-node@v4.0.4
 
-        with:
-          node-version: "20"
+              with:
+                  node-version: "20"
 
-      - name: Install dependencies
-        run: npm install
+            - name: Install dependencies
+              run: npm install
 
-      - name: Run eslint
-        run: npm run lint
+            - name: Run eslint
+              run: npm run lint

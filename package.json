@@ -20,14 +20,14 @@
         "drizzle-orm": "^0.33.0",
         "framer-motion": "^11.11.8",
         "next": "^14.2.15",
-        "openai": "^4.67.3",
-        "postgres": "^3.4.4",
+        "openai": "^4.68.4",
+        "postgres": "^3.4.5",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "zod": "^3.23.8"
     },
     "devDependencies": {
-        "@playwright/test": "^1.48.1",
+        "@playwright/test": "^1.48.2",
         "@types/node": "^22",
         "@types/react": "^18",
         "@types/react-dom": "^18",

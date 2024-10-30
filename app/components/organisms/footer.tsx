@@ -16,7 +16,7 @@ export default function Footer() {
                     href="https://netlify.com"
                     className="underline"
                     target="_blank"
-                    rel="noopener"
+                    rel="noreferrer"
                 >
                     This site is powered by Netlify
                 </a>

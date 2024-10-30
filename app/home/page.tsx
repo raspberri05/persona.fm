@@ -77,7 +77,7 @@ export default function Page() {
                             className="underline"
                             href="https://last.fm"
                             target="_blank"
-                            rel="noopener"
+                            rel="noreferrer"
                         >
                             here!
                         </a>

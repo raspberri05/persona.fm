@@ -47,6 +47,7 @@ export default function Page() {
                 console.log(error);
                 setLoading(false);
             });
+
         const interval = setInterval(() => {
             setFade(false);
             setTimeout(() => {

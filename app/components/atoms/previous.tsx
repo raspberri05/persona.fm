@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Prev } from "@/utils/types";
-import { Fira_Sans_Extra_Condensed } from "next/font/google";
 
 export default function Previous(props: { first: any }) {
     const [data, setData] = useState<Prev[]>([]);
@@ -14,7 +13,7 @@ export default function Previous(props: { first: any }) {
             .then((response) => {
                 setData(response.data);
                 setLoading(false);
-                if (response.data.length == 0) {
+                if (response.data.length === 0) {
                     props.first(true);
                 }
             })

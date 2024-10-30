@@ -27,14 +27,19 @@ export default function RootLayout({
             <head>
                 <link
                     rel="preconnect"
+                    href="https://www.googletagmanager.com"
+                />
+                <link
+                    rel="preconnect"
                     href="https://www.google-analytics.com"
                 />
             </head>
             <Script
                 async
                 src="https://www.googletagmanager.com/gtag/js?id=G-5C6EN7BR23"
+                strategy="lazyOnload"
             ></Script>
-            <Script id="google-analytics">
+            <Script id="google-analytics" strategy="lazyOnload">
                 {`
                         window.dataLayer = window.dataLayer || [];
                         function gtag(){dataLayer.push(arguments);}
@@ -54,7 +59,6 @@ export default function RootLayout({
                 </main>
                 <Footer />
             </body>
-            <GoogleAnalytics gaId="G-5C6EN7BR23" />
         </html>
     );
 }

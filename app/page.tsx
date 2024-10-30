@@ -100,6 +100,7 @@ export default function Page() {
                     width="1050"
                     alt={alt}
                     className="rounded-lg shadow-xl"
+                    loading="eager"
                 />
                 <div className="text-sm md:text-md absolute top-[2px] md:top-6 bg-black bg-opacity-50 text-white px-2 py-1 md:py-2 md:px-4 rounded-lg">
                     <p>{description}</p>

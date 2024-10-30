@@ -18,7 +18,6 @@
         "cookies-next": "^4.3.0",
         "dotenv": "^16.4.5",
         "drizzle-orm": "^0.33.0",
-        "framer-motion": "^11.11.8",
         "next": "^14.2.15",
         "openai": "^4.68.4",
         "postgres": "^3.4.5",

@@ -4,6 +4,8 @@ import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 import LinkButton from "@/app/components//molecules/link-button";
 import { deleteCookie } from "cookies-next";
+import { login } from "@/app/api/actions/login/actions";
+import Button from "@/app/components/atoms/button";
 
 export default function Header() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -37,11 +39,12 @@ export default function Header() {
             })
             .catch((error) => {
                 console.log(error);
+                setLoading(false);
             });
     });
 
     return (
-        <div className="navbar bg-primary fixed top-0 left-0 w-full z-50 py-3 h-[72px]">
+        <div className="navbar bg-primary fixed top-0 left-0 w-full z-50 py-3 h-12">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div
@@ -69,12 +72,12 @@ export default function Header() {
                         className="menu menu-sm dropdown-content bg-primary text-secondary rounded-box z-[1] mt-5 w-18 p-2 shadow items-center"
                     >
                         <li className="hover:opacity-80">
-                            <a href="/home">home</a>
+                            <a href="/home">Home</a>
                         </li>
                     </ul>
                 </div>
                 <a className="pl-4 text-2xl text-secondary" href="/">
-                    persona.fm
+                    Persona.fm
                 </a>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -82,8 +85,8 @@ export default function Header() {
                     <ul className="menu-horizontal">
                         <li>
                             <LinkButton
-                                variant="secondary"
-                                text="home"
+                                variant="primary"
+                                text="Home"
                                 href="home"
                             />
                         </li>
@@ -99,6 +102,7 @@ export default function Header() {
                                 src={image}
                                 alt="logo"
                                 className="h-12 rounded-full mr-2"
+                                loading="eager"
                             />
                         </div>
                         <ul
@@ -106,12 +110,12 @@ export default function Header() {
                             className="menu menu-sm dropdown-content bg-primary text-secondary rounded-box z-[1] mt-5 w-18 p-2 shadow items-center"
                         >
                             <li className="hover:opacity-80">
-                                <a href="/settings">settings</a>
+                                <a href="/settings">Settings</a>
                             </li>
                             <li className="hover:opacity-80">
                                 <a>
                                     <button onClick={() => signOut()}>
-                                        logout
+                                        Log Out
                                     </button>
                                 </a>
                             </li>
@@ -120,11 +124,14 @@ export default function Header() {
                 )}
 
                 {!loggedIn && !loading && (
-                    <LinkButton
-                        variant="secondary"
-                        text="log in"
-                        href="login"
-                    />
+                    <form>
+                        <Button
+                            variant="secondary"
+                            text="Log In"
+                            formAction={login}
+                            className="mr-4"
+                        />
+                    </form>
                 )}
             </div>
         </div>

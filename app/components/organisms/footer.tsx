@@ -12,7 +12,14 @@ export default function Footer() {
                 />
                 <p>Copyright 2024 Persona.fm </p>
 
-                <a href="https://netlify.com" className="underline" target="_blank" rel="noopener">This site is powered by Netlify</a>
+                <a
+                    href="https://netlify.com"
+                    className="underline"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    This site is powered by Netlify
+                </a>
             </aside>
             <nav>
                 <h6 className="footer-title">Learn More</h6>

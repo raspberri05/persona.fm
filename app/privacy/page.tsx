@@ -87,13 +87,8 @@ export default function Page() {
             <h2>Contact Information</h2>
             <p>
                 If you have any questions about this Privacy Policy, please
-                contact us at:
+                contact us at support@personafm.com
             </p>
-            <ul>
-                <li>Email: support@personafm.com</li>
-            </ul>
-
-            <p>Thank you for using persona.fm!.</p>
         </div>
     );
 }

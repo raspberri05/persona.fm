@@ -4,6 +4,7 @@ import "@/app/globals.css";
 import Footer from "@/app/components/organisms/footer";
 import Header from "@/app/components/organisms/header";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 
 const roboto = Roboto({ weight: "700", subsets: ["latin"] });
 
@@ -23,6 +24,25 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <head>
+                <link
+                    rel="preconnect"
+                    href="https://www.google-analytics.com"
+                />
+            </head>
+            <Script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-5C6EN7BR23"
+            ></Script>
+            <Script id="google-analytics">
+                {`
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+
+                        gtag('config', 'G-5C6EN7BR23');
+                    `}
+            </Script>
             <body className={`${roboto.className} flex flex-col min-h-screen`}>
                 <Header />
                 <br />

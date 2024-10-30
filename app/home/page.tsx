@@ -22,10 +22,13 @@ export default function Page() {
     });
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
+    const [first, setFirst] = useState(false);
+    const [cancel, setCancel] = useState(false);
 
     function getMain() {
         if (!hasFetched.current) {
             setGenerating(true);
+            setCancel(true);
             return axios
                 .get("/api/main")
                 .then((res) => {
@@ -60,24 +63,48 @@ export default function Page() {
         <div>
             <br />
             {(!providerUsername || providerUsername === "") && !loading && (
-                <h2 className="text-center mb-4 text-xl">
-                    Make sure to set your last.fm username in{" "}
-                    <a href="/settings" className="underline">
-                        settings
-                    </a>{" "}
-                    if you haven&apos;t yet
-                </h2>
+                <>
+                    <h2 className="mb-4 text-xl">
+                        Set your last.fm username in{" "}
+                        <a href="/settings" className="underline">
+                            settings
+                        </a>{" "}
+                        to discover your unique listener persona!
+                    </h2>
+                    <h3 className="mb-4 text-lg">
+                        Don&apos;t have a last.fm account? Create one{" "}
+                        <a
+                            className="underline"
+                            href="https://last.fm"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            here!
+                        </a>
+                    </h3>
+                    <i>
+                        Note: Support for other music services will be added in
+                        future updates!
+                    </i>
+                </>
+            )}
+            {first && !cancel && (
+                <div className="text-center">
+                    <p>Click below to generate your first persona!</p>
+                    <br />
+                </div>
             )}
             {error && <p>{error}</p>}
             {!(!providerUsername || providerUsername === "") && !loading && (
                 <GenerateButton generating={generating} getMain={getMain} />
             )}
+            <br />
             {loading && <div className="h-12" />}
             {error === "" && persona.vibe === "" && generating && (
                 <DisplayLoading />
             )}
             {persona.vibe !== "" && <Persona persona={persona} />}
-            <Previous />
+            <Previous first={setFirst} />
         </div>
     );
 }

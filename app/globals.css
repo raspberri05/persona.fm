@@ -6,11 +6,11 @@ html {
     background-color: #000;
     background: radial-gradient(circle at 10% 20%, #f5b700, transparent 50%),
         radial-gradient(circle at 60% 80%, #ba2c73, transparent 50%),
-        radial-gradient(circle at 90% 10%, #312f2f, transparent 50%),
+        radial-gradient(circle at 90% 10%, #ba2c73, transparent 50%),
         radial-gradient(circle at 30% 50%, #276fbf, transparent 50%),
-        radial-gradient(circle at 80% 40%, #339989, transparent 50%);
+        radial-gradient(circle at 80% 40%, #339989, transparent 75%);
     background-size: 200% 200%;
-    animation: Gradient 15s ease infinite;
+    animation: Gradient 60s ease infinite;
 }
 
 @keyframes Gradient {

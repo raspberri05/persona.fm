@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Prev } from "@/utils/types";
+import { Fira_Sans_Extra_Condensed } from "next/font/google";
 
-export default function Previous() {
+export default function Previous(props: { first: any }) {
     const [data, setData] = useState<Prev[]>([]);
     const [expandedRow, setExpandedRow] = useState<number | null>(null);
     const [loading, setLoading] = useState(true);
@@ -13,6 +14,9 @@ export default function Previous() {
             .then((response) => {
                 setData(response.data);
                 setLoading(false);
+                if (response.data.length == 0) {
+                    props.first(true);
+                }
             })
             .catch((error) => {
                 console.error(error);
@@ -30,8 +34,9 @@ export default function Previous() {
 
     return (
         <div>
-            <br />
-            <p className="text-2xl ml-4 fade-in">Previous Personas</p>
+            {data.length !== 0 && (
+                <h3 className="text-2xl">Previous Personas</h3>
+            )}
             {!loading &&
                 data
                     .slice()

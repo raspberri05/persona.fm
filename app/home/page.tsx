@@ -88,12 +88,14 @@ export default function Page() {
                     </i>
                 </>
             )}
-            {first && !cancel && (
-                <div className="text-center">
-                    <p>Click below to generate your first persona!</p>
-                    <br />
-                </div>
-            )}
+            {first &&
+                !cancel &&
+                !(!providerUsername || providerUsername === "") && (
+                    <div className="text-center">
+                        <p>Click below to generate your first persona!</p>
+                        <br />
+                    </div>
+                )}
             {error && <p>{error}</p>}
             {!(!providerUsername || providerUsername === "") && !loading && (
                 <GenerateButton generating={generating} getMain={getMain} />

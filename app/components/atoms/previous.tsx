@@ -1,8 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Prev } from "@/utils/types";
 
-export default function Previous(props: { first: any }) {
+export default function Previous(props: {
+    first: Dispatch<SetStateAction<boolean>>;
+}) {
     const [data, setData] = useState<Prev[]>([]);
     const [expandedRow, setExpandedRow] = useState<number | null>(null);
     const [loading, setLoading] = useState(true);

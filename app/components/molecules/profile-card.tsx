@@ -15,7 +15,6 @@ export default function ProfileCard() {
     useEffect(() => {
         const fetchData = async () => {
             await getData().then((a: User) => {
-                console.log(a);
                 setDisplayName(a?.name);
                 setFullName(a?.full_name);
                 setEmail(a?.email);
@@ -24,12 +23,8 @@ export default function ProfileCard() {
         };
 
         fetchData()
-            .then((_) => {
-                console.log("done");
-            })
-            .catch((e) => {
-                console.error(e);
-            });
+            .then((_) => {})
+            .catch((_) => {});
     }, []);
     return (
         <Card title="Your profile">

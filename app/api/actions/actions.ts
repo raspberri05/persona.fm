@@ -32,7 +32,6 @@ export async function createUser() {
             },
         })
         .then(() => {
-            console.log("User created");
             return db
                 .select()
                 .from(users)

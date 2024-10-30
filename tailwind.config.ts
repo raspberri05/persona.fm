@@ -11,8 +11,8 @@ const config: Config = {
         themes: [
             {
                 mytheme: {
-                    primary: "#312F2F",
-                    secondary: "#D3D0CB",
+                    primary: "#272525",
+                    secondary: "#f3f3f1",
                     tertiary: "#276FBF",
                     error: "#BA2C73",
                     success: "#339989",

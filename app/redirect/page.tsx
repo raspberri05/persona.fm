@@ -8,12 +8,9 @@ export default function Page() {
     useEffect(() => {
         createUser()
             .then((_) => {
-                console.log("User creation process completed.");
                 window.location.href = "/home";
             })
-            .catch((error) => {
-                console.error("Error creating user:", error);
-            });
+            .catch((_) => {});
     }, []);
     return (
         <div className="text-center">

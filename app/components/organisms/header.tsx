@@ -18,7 +18,6 @@ export default function Header() {
             data: { user },
         } = await supabase.auth.getUser();
         if (user?.id) {
-            console.log(user);
             setLoggedIn(true);
             setImage(user.user_metadata.picture);
         }
@@ -34,11 +33,9 @@ export default function Header() {
     useEffect(() => {
         client()
             .then((_) => {
-                console.log("checked user");
                 setLoading(false);
             })
             .catch((error) => {
-                console.log(error);
                 setLoading(false);
             });
     });
@@ -51,6 +48,7 @@ export default function Header() {
                         tabIndex={0}
                         role="button"
                         className="btn btn-ghost lg:hidden"
+                        aria-label="menu shown on small screens"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -103,6 +101,9 @@ export default function Header() {
                                 alt="logo"
                                 className="h-12 rounded-full mr-2"
                                 loading="eager"
+                                onError={(e) => {
+                                    e.currentTarget.src = "/placeholder.png";
+                                }}
                             />
                         </div>
                         <ul

@@ -32,7 +32,6 @@ export default function Page() {
             data: { user },
         } = await supabase.auth.getUser();
         if (user?.id) {
-            console.log(user);
             setLoggedIn(true);
         }
     }
@@ -40,11 +39,9 @@ export default function Page() {
     useEffect(() => {
         client()
             .then((_) => {
-                console.log("checked user");
                 setLoading(false);
             })
             .catch((error) => {
-                console.log(error);
                 setLoading(false);
             });
 
@@ -103,6 +100,7 @@ export default function Page() {
                     width="800"
                     alt={alt}
                     className="rounded-lg shadow-xl"
+                    loading="lazy"
                 />
                 <div className="text-sm md:text-md absolute top-[2px] md:top-3 bg-black bg-opacity-50 text-white px-2 py-1 md:py-2 md:px-4 rounded-lg">
                     <p>{description}</p>

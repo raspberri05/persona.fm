@@ -35,7 +35,12 @@ export default function UserNav() {
                     </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Log out</DropdownMenuItem>
+                <a href="/settings">
+                    <DropdownMenuItem>Settings</DropdownMenuItem>
+                </a>
+                <a href="/">
+                    <DropdownMenuItem>Log Out</DropdownMenuItem>
+                </a>
             </DropdownMenuContent>
         </DropdownMenu>
     );

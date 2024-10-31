@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function LogInButton() {
     function request() {
-        window.location.href=`https://www.last.fm/api/auth/?api_key=${process.env.LASTFM_API_KEY}&cb=${encodeURIComponent(window.location.href)}`;
+        window.location.href = `/api/auth/request`;
     }
 
     return (

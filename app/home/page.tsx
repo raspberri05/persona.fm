@@ -1,4 +1,3 @@
-import Generate from "@/components/generate";
 import Persona from "@/components/persona";
 
 export default function Page() {
@@ -9,7 +8,6 @@ export default function Page() {
             </h2>
 
             <div className="flex flex-col items-center space-y-6 ">
-                <Generate />
                 <Persona />
             </div>
         </div>

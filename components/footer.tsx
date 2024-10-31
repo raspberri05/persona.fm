@@ -6,7 +6,6 @@ export default function Footer() {
         <footer className="border-t py-12">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {/* Logo and Copyright Column */}
                     <div className="flex flex-col space-y-4">
                         <Link href="/" className="flex items-center">
                             <span className="sr-only">Persona.fm</span>
@@ -28,7 +27,6 @@ export default function Footer() {
                         </p>
                     </div>
 
-                    {/* About and Contact Column */}
                     <div>
                         <h3 className="font-semibold mb-4">Company</h3>
                         <ul className="space-y-2">
@@ -41,7 +39,6 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Terms and Privacy Policy Column */}
                     <div>
                         <h3 className="font-semibold mb-4">Legal</h3>
                         <ul className="space-y-2">
@@ -74,7 +71,7 @@ export default function Footer() {
                                     href="https://www.producthunt.com/@persona-fm"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="hover:text-gray-900 transition-colors flex items-center"
+                                    className="flex items-center"
                                 >
                                     <svg
                                         className="h-4 w-4 mr-2"

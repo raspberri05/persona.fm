@@ -9,7 +9,7 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 
-export default function Generate() {
+export default function GenerateCard(props: { fcn: () => void }) {
     return (
         <Card className="text-center">
             <CardHeader>
@@ -19,7 +19,9 @@ export default function Generate() {
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <Button className="w-full">Generate</Button>
+                <Button onClick={props.fcn} className="w-full">
+                    Generate
+                </Button>
             </CardContent>
         </Card>
     );

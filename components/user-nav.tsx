@@ -1,3 +1,5 @@
+"use client"
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,8 +10,25 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useEffect, useState } from "react";
+import { getCookie } from 'cookies-next';
 
 export default function UserNav() {
+    const [image, setImage] = useState("");
+
+    useEffect(() => {
+        fetch("/api/user/profile", {
+            method: "GET",
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                setImage(data.image[1]['#text'])
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -18,8 +37,8 @@ export default function UserNav() {
                     className="relative h-8 w-8 rounded-full"
                 >
                     <Avatar className="h-8 w-8">
-                        <AvatarImage src="/avatars/01.png" alt="@shadcn" />
-                        <AvatarFallback>NS</AvatarFallback>
+                        <AvatarImage src={image} alt="@shadcn" />
+                        <AvatarFallback></AvatarFallback>
                     </Avatar>
                 </Button>
             </DropdownMenuTrigger>
@@ -27,10 +46,7 @@ export default function UserNav() {
                 <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
                         <p className="text-sm font-medium leading-none">
-                            raspberri05
-                        </p>
-                        <p className="text-xs leading-none text-muted-foreground">
-                            naya.singhania@gmail.com
+                            {getCookie("username")}
                         </p>
                     </div>
                 </DropdownMenuLabel>

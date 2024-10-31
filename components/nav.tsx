@@ -1,5 +1,5 @@
 import UserNav from "@/components/user-nav";
-import { MainNav } from "@/components/main-nav";
+import MainNav from "@/components/main-nav";
 
 export default function Nav() {
     return (
@@ -8,7 +8,7 @@ export default function Nav() {
                 <a href="/">
                     <h1 className="text-2xl font-bold">Persona.fm</h1>
                 </a>
-                <MainNav className="mx-6" />
+                <MainNav />
 
                 <div className="ml-auto flex items-center space-x-4">
                     <UserNav />

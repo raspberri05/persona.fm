@@ -7,7 +7,7 @@ export default async function LogInButton() {
 
     return (
         <a href={authenticated ? "/home" : "/api/auth/request"}>
-            <Button className="rounded-xl h-12 px-8 font-semibold bg-red-500 hover:bg-red-600">
+            <Button className="rounded-xl h-12 px-8 font-semibold bg-black text-white">
                 {authenticated ? "Go to home" : "Log In with Last.fm"}
             </Button>
         </a>

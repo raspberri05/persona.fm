@@ -11,6 +11,7 @@ export default function Page() {
                     Transform your Last.fm listening history into a unique
                     musical personality.
                 </p>
+                <br />
                 <LogInButton />
             </div>
         </div>

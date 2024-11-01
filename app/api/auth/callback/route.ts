@@ -1,6 +1,8 @@
 import crypto from "crypto";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+import { db } from "@/db";
+import { InsertUser, users } from "@/db/schema";
 
 export async function GET(request: Request) {
     const cookieStore = await cookies();
@@ -25,6 +27,10 @@ export async function GET(request: Request) {
         .then((data) => {
             cookieStore.set("username", data.session.name);
             cookieStore.set("session", data.session.key);
+            const values: InsertUser = {
+                username: data.session.name,
+            };
+            return db.insert(users).values(values);
         })
         .catch((error) => {
             console.log(error);

@@ -2,9 +2,10 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { Persona } from "@/types";
 import { Headphones, Zap } from "lucide-react";
 
-export default function PersonaCard(props: { data: any }) {
+export default function PersonaCard(props: { data: Persona }) {
     return (
         <Card className="w-full max-w-xl">
             <CardHeader>

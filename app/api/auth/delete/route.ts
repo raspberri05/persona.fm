@@ -10,5 +10,5 @@ export async function GET() {
     await db.delete(users).where(eq(users.username, username));
     cookieStore.set("username", "", { maxAge: 0 });
     cookieStore.set("session", "", { maxAge: 0 });
-    redirect('/')
+    redirect("/");
 }

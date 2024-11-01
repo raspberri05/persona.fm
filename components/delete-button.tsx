@@ -17,7 +17,7 @@ export function DeleteAccountButton() {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleDeleteAccount = async () => {
-        window.location.href = "/";
+        window.location.href = "/api/auth/delete";
     };
 
     return (

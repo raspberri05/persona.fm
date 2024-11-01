@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useEffect, useState } from "react";
-import { getCookie } from 'cookies-next';
+import { getCookie } from "cookies-next";
 
 export default function UserNav() {
     const [image, setImage] = useState("");
@@ -22,7 +22,7 @@ export default function UserNav() {
         })
             .then((response) => response.json())
             .then((data) => {
-                setImage(data.image[1]['#text'])
+                setImage(data.image[1]["#text"]);
             })
             .catch((error) => {
                 console.log(error);
@@ -54,7 +54,7 @@ export default function UserNav() {
                 <a href="/settings">
                     <DropdownMenuItem>Settings</DropdownMenuItem>
                 </a>
-                <a href="/">
+                <a href="/api/auth/logout">
                     <DropdownMenuItem>Log Out</DropdownMenuItem>
                 </a>
             </DropdownMenuContent>

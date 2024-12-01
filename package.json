@@ -26,7 +26,7 @@
         "@radix-ui/react-progress": "^1.1.0",
         "@radix-ui/react-slot": "^1.1.0",
         "@types/mdx": "^2.0.13",
-        "axios": "^1.7.7",
+        "axios": "^1.7.8",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.1",
         "cookies-next": "^4.3.0",

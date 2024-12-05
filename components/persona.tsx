@@ -58,21 +58,18 @@ export default function Persona() {
                     </div>
                 )}
                 {!generating && !persona && (
-                    <div className="flex flex-col items-center space-y-6">
+                    <div className="flex items-center space-y-6">
                         <GenerateCard fcn={logPersona} />
                     </div>
                 )}
-                {!generating && persona && (
-                    <div className="flex justify-center">
-                        <PersonaCard data={persona} />
-                    </div>
-                )}
+                {!generating && persona && <PersonaCard data={persona} />}
             </div>
             <div>
+                <br />
                 <h2 className="text-2xl font-semibold mb-6 border-none">
                     Previous Personas
                 </h2>
-                <Card className="p-4 md: mt-4">
+                <Card className="p-4 md:mt-4 md:w-[75%] w-[95%]">
                     {prevData?.map((prev) => (
                         <PreviousCard
                             data={prev}

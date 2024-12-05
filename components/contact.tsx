@@ -1,6 +1,6 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
+/*import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -20,6 +20,8 @@ const formSchema = z.object({
     message: z.string(),
 });
 
+import { Textarea } from "@/components/ui/textarea";*/
+
 import {
     Card,
     CardContent,
@@ -28,10 +30,8 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 
-import { Textarea } from "@/components/ui/textarea";
-
 export default function Generate() {
-    const form = useForm<z.infer<typeof formSchema>>({
+    /*const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             email: "",
@@ -44,7 +44,7 @@ export default function Generate() {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
         console.log(values);
-    }
+    }*/
 
     return (
         <Card>
@@ -54,8 +54,10 @@ export default function Generate() {
                     Report a bug, request a feature, or submit feedback
                 </CardDescription>
             </CardHeader>
-            <CardContent>
-                <Form {...form}>
+            <CardContent className="text-center">
+                <p>Send us an email at support@personafm.com</p>
+                <p>and we will get back to you within 3 business days</p>
+                {/* <Form {...form}>
                     <form
                         onSubmit={form.handleSubmit(onSubmit)}
                         className="space-y-8"
@@ -94,7 +96,7 @@ export default function Generate() {
                         />
                         <Button type="submit">Submit</Button>
                     </form>
-                </Form>
+                </Form> */}
             </CardContent>
         </Card>
     );

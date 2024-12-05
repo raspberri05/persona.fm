@@ -1,16 +1,17 @@
 {
     "name": "persona.fm",
-    "version": "1.0.0",
-    "private": true,
+    "version": "1.0.1",
+    "private": false,
     "scripts": {
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
         "style": "prettier --write .",
-        "generate": "drizzle-kit generate",
-        "migrate": "drizzle-kit migrate",
-        "push": "drizzle-kit push"
+        "db:start": "supabase start",
+        "db:generate": "drizzle-kit generate",
+        "db:migrate": "drizzle-kit migrate",
+        "db:push": "drizzle-kit push"
     },
     "dependencies": {
         "@hookform/resolvers": "^3.9.1",

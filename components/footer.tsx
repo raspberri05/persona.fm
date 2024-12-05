@@ -38,7 +38,7 @@ export default function Footer() {
                         <h3 className="font-semibold mb-4">Company</h3>
                         <ul className="space-y-2">
                             <li>
-                                <Link href="/about">About</Link>
+                                <Link href="/">About</Link>
                             </li>
                             <li>
                                 <Link href="/contact">Contact</Link>

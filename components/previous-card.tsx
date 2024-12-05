@@ -20,10 +20,12 @@ function formatDate(timestamp: Date): string {
 
 export default function PreviousCard(props: { data: SelectPersona }) {
     return (
-        <Collapsible className="text-left my-4 md:w-[75%] ml-4">
-            <CollapsibleTrigger>
-                <div className="flex text-left">
-                    <p className="text-xl font-bold flex">{props.data.vibe} </p>
+        <Collapsible className="my-4 md:w-[95%] ml-4">
+            <CollapsibleTrigger className="w-full">
+                <div className="flex justify-between">
+                    <p className="text-left text-xl font-bold flex">
+                        {props.data.vibe}{" "}
+                    </p>
                     <ChevronDown className="ml-2 mt-1" size={20} />
                 </div>
                 <p className="text-sm text-muted-foreground text-left pb-2">

@@ -62,7 +62,9 @@ export default function RootLayout({
                                 "linear-gradient(45deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%)",
                         }}
                     >
-                        <div className="container mx-auto">{children}</div>
+                        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 px-4 min-h-[70vh]">
+                            {children}
+                        </div>
                     </div>
                     <div>
                         <Footer />

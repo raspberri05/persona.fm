@@ -1,5 +1,9 @@
 version = 1
 
+exclude_patterns = [
+  "components/ui/**"
+]
+
 [[analyzers]]
 name = "javascript"
 
@@ -12,3 +16,4 @@ name = "javascript"
 
 [[transformers]]
 name = "prettier"
+

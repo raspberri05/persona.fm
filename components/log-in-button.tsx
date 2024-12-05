@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { cookies } from "next/headers";
 
-export default async function LogInButton() {
-    const cookieStore = await cookies();
+export default function LogInButton() {
+    const cookieStore = cookies();
     const authenticated = cookieStore.has("username");
 
     return (

@@ -2,8 +2,8 @@ import UserNav from "@/components/user-nav";
 import MainNav from "@/components/main-nav";
 import { cookies } from "next/headers";
 
-export default async function Nav() {
-    const cookieStore = await cookies();
+export default function Nav() {
+    const cookieStore = cookies();
     const authenticated = cookieStore.has("username");
 
     return (

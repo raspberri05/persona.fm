@@ -1,3 +1,5 @@
+[![DeepSource](https://app.deepsource.com/gh/personafm/persona.fm.svg/?label=active+issues&show_trend=true&token=tgIMoNNWRSugrm1CLxp54e00)](https://app.deepsource.com/gh/personafm/persona.fm/)
+
 # Persona.fm
 
 Your AI-generated Last.fm persona

@@ -38,7 +38,7 @@
         "next-themes": "^0.3.0",
         "openai": "^4.69.0",
         "postgres": "^3.4.5",
-        "react": "^18",
+        "react": "^19",
         "react-dom": "^18",
         "react-hook-form": "^7.53.2",
         "tailwind-merge": "^2.5.4",
@@ -47,7 +47,7 @@
     },
     "devDependencies": {
         "@types/node": "^20",
-        "@types/react": "^18",
+        "@types/react": "^19",
         "@types/react-dom": "^18",
         "drizzle-kit": "^0.27.0",
         "eslint": "^8",

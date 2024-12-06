@@ -16,7 +16,7 @@ import { AlertTriangle } from "lucide-react";
 export function DeleteAccountButton() {
     const [isOpen, setIsOpen] = useState(false);
 
-    const handleDeleteAccount = async () => {
+    const handleDeleteAccount = () => {
         window.location.href = "/api/auth/delete";
     };
 

@@ -36,7 +36,7 @@ export default function RootLayout({
                 async
                 src="https://www.googletagmanager.com/gtag/js?id=G-5C6EN7BR23"
                 strategy="lazyOnload"
-            ></Script>
+             />
             <Script id="google-analytics" strategy="lazyOnload">
                 {`
                         window.dataLayer = window.dataLayer || [];

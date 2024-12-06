@@ -38,7 +38,7 @@ export default function UserNav() {
                 >
                     <Avatar className="h-8 w-8">
                         <AvatarImage src={image} alt="@shadcn" />
-                        <AvatarFallback></AvatarFallback>
+                        <AvatarFallback />
                     </Avatar>
                 </Button>
             </DropdownMenuTrigger>

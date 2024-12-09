@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest) {
     if (!username) {
         return NextResponse.redirect(new URL("/", request.url));
     }
-    return;
+    return null;
 }
 
 export const config = {

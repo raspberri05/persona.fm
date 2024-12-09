@@ -1,6 +1,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/053118a8-6595-40ce-a0d5-26ba3dcac37f/deploy-status)](https://app.netlify.com/sites/personafm/deploys)
+![ESLint](https://github.com/personafm/persona.fm/actions/workflows/eslint.yml/badge.svg)
 [![DeepSource](https://app.deepsource.com/gh/personafm/persona.fm.svg/?label=active+issues&show_trend=true&token=tgIMoNNWRSugrm1CLxp54e00)](https://app.deepsource.com/gh/personafm/persona.fm/)
-
 # Persona.fm
 
 Your AI-generated Last.fm persona

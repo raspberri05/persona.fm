@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
     Dialog,
@@ -16,9 +16,13 @@ import { AlertTriangle } from "lucide-react";
 export function DeleteAccountButton() {
     const [isOpen, setIsOpen] = useState(false);
 
-    const handleDeleteAccount = () => {
+    const handleDeleteAccount = useCallback(() => {
         window.location.href = "/api/auth/delete";
-    };
+    }, []);
+
+    const handleOpen = useCallback(() => {
+        setIsOpen(false);
+    }, []);
 
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -38,7 +42,7 @@ export function DeleteAccountButton() {
                     </DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
-                    <Button variant="outline" onClick={() => setIsOpen(false)}>
+                    <Button variant="outline" onClick={handleOpen}>
                         Cancel
                     </Button>
                     <Button variant="destructive" onClick={handleDeleteAccount}>

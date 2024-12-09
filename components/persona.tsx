@@ -2,7 +2,7 @@
 
 import GenerateCard from "@/components/generate-card";
 import PersonaCard from "@/components/persona-card";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Persona as P } from "@/types";
 import PreviousCard from "./previous-card";
 import { SelectPersona } from "@/db/schema";
@@ -26,7 +26,7 @@ export default function Persona() {
             });
     }, []);
 
-    function logPersona() {
+    const logPersona = useCallback(() => {
         setGenerating(true);
         fetch("/api/persona", {
             method: "POST",
@@ -42,7 +42,7 @@ export default function Persona() {
             .catch((error) => {
                 console.log(error);
             });
-    }
+    }, []);
 
     return (
         <div>

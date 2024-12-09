@@ -53,25 +53,19 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <div>
-                        <Nav />
-                    </div>
+                    <Nav />
+
                     <div
                         style={{
                             background:
                                 "linear-gradient(45deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%)",
                         }}
+                        className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 px-4 min-h-[70vh]"
                     >
-                        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 px-4 min-h-[70vh]">
-                            {children}
-                        </div>
+                        {children}
                     </div>
-                    <div>
-                        <Footer />
-                    </div>
-                    <div className="fixed bottom-4 right-4">
-                        <ModeToggle />
-                    </div>
+                    <Footer />
+                    <ModeToggle />
                 </ThemeProvider>
             </body>
         </html>

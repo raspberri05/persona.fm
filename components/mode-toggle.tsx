@@ -4,25 +4,26 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
+import { useCallback } from "react";
 
 export default function ModeToggle() {
     const { theme, setTheme } = useTheme();
 
-    const handleLightMode = () => {
+    function handleLightMode() {
         setTheme("light");
-    };
+    }
 
-    const handleDarkMode = () => {
+    function handleDarkMode() {
         setTheme("dark");
-    };
+    }
 
-    const handleClick = () => {
+    const handleClick = useCallback(() => {
         if (theme === "dark") {
             handleLightMode();
         } else {
             handleDarkMode();
         }
-    };
+    }, [theme]);
 
     return (
         <Button variant="outline" size="icon" onClick={handleClick}>

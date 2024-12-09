@@ -1,7 +1,8 @@
 version = 1
 
 exclude_patterns = [
-  "components/ui/**"
+  "components/ui/**",
+  "pull_request_template.md"
 ]
 
 [[analyzers]]

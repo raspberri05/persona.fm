@@ -6,13 +6,13 @@ Fixes Issue #
 
 ## Type of change
 
--   [ ] Bug fix
--   [ ] New feature
--   [ ] Feature Enhancement
--   [ ] Documentaton
--   [ ] Other
+- [ ] Bug fix
+- [ ] New feature
+- [ ] Feature Enhancement
+- [ ] Documentaton
+- [ ] Other
 
 # Checklist:
 
--   [ ] My code follows the style guidelines of this project
--   [ ] I have performed a self-review of my code
+- [ ] My code follows the style guidelines of this project
+- [ ] I have performed a self-review of my code

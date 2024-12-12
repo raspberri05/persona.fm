@@ -10,3 +10,5 @@ Your AI-generated Last.fm persona
 Please check out our [documentation](https://docs.personafm.com) to learn more about Persona.fm, set up the project for local development, learn how to contribute, and raise any questions or concerns! 
 
 We welcome contributors and especially encourage new developers to take a shot at resolving one of our issues!
+
+Any issue labeled with good first issue or help wanted are available to be worked on!

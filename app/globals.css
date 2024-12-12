@@ -12,6 +12,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body[data-scroll-locked] {
+    margin: 0 !important;
+}
+
 @layer utilities {
     .text-balance {
         text-wrap: balance;
@@ -46,6 +50,7 @@ body {
         --chart-5: 27 87% 67%;
         --radius: 0.5rem;
     }
+
     .dark {
         --background: 240 10% 3.9%;
         --foreground: 0 0% 98%;
@@ -78,12 +83,15 @@ body {
     * {
         @apply border-border;
     }
+
     body {
         @apply bg-background text-foreground;
     }
+
     h1 {
         @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
     }
+
     h2 {
         @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
     }

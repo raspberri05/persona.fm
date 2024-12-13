@@ -26,7 +26,7 @@ export default function ContactForm() {
     })
     
   
-    formRef.current.reset()
+    formRef.current?.reset()
   }
 
   return (

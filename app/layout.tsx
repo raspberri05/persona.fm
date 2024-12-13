@@ -5,7 +5,7 @@ import ModeToggle from "@/components/mode-toggle";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import Script from "next/script";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 export const metadata: Metadata = {
     title: {
         template: "%s | Persona.fm",
@@ -64,7 +64,7 @@ export default function RootLayout({
                     >
                         {children}
                     </div>
-                    <Toaster/>
+                    <Toaster />
                     <Footer />
                     <ModeToggle />
                 </ThemeProvider>

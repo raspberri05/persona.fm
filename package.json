@@ -48,7 +48,7 @@
         "tailwindcss-animate": "^1.0.7"
     },
     "devDependencies": {
-        "@types/node": "^22.10.1",
+        "@types/node": "^22.10.3",
         "@types/nodemailer": "^6.4.17",
         "@types/react": "^19.0.1",
         "@types/react-dom": "^19.0.1",

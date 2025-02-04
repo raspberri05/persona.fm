@@ -51,7 +51,7 @@
         "@types/node": "^22.10.1",
         "@types/nodemailer": "^6.4.17",
         "@types/react": "^19.0.1",
-        "@types/react-dom": "^19.0.1",
+        "@types/react-dom": "^19.0.3",
         "drizzle-kit": "^0.29.1",
         "eslint": "^9.16.0",
         "eslint-config-next": "15.0.4",
